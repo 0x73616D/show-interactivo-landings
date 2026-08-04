@@ -52,11 +52,10 @@ nav a:hover{color:var(--accent)}
 @media(max-width:640px){.video-set{grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:38px}}
 .v-card{position:relative;border:none;padding:0;cursor:pointer;background:var(--bg-deep);border-radius:14px;overflow:hidden;aspect-ratio:9/16;box-shadow:0 8px 22px rgba(0,0,0,.35);transition:transform .3s ease,box-shadow .3s ease}
 .v-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.5)}
-.v-card:hover .v-play{transform:scale(1.15);background:var(--accent)}
 .v-card video{width:100%;height:100%;object-fit:cover}
 .v-card.is-playing .v-overlay{display:none}
-.v-overlay{position:absolute;inset:0 0 44px;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 45%,rgba(0,0,0,.85) 100%);display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:16px 12px;pointer-events:none}
-.v-play{width:52px;height:52px;background:rgba(255,255,255,.9);color:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:4px;margin-top:auto;margin-bottom:auto;transition:all .3s ease;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.v-overlay{position:absolute;inset:0 0 44px;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.85) 100%);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:16px 12px;pointer-events:none}
+.v-play{display:none}
 .v-name{color:white;font-family:var(--display);font-weight:700;font-size:13px;text-align:center;text-transform:uppercase;letter-spacing:.03em;line-height:1.2;text-shadow:0 2px 6px rgba(0,0,0,.7)}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(10px)}
