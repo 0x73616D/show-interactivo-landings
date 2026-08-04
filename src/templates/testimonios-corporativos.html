@@ -567,16 +567,23 @@ const sets = document.querySelectorAll('.video-set');
 const catalog = document.querySelector('.videos-section .container');
 const categoryOrder = ['fiesta','team','otros'];
 
-function setType(t){
+function setType(t, shouldScroll = false){
   tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === t));
   [t, ...categoryOrder.filter(category => category !== t)].forEach(category => {
     const section = document.querySelector(`.video-set[data-set="${category}"]`);
     if(section) catalog.insertBefore(section, catalog.querySelector('.home-nav.bottom'));
   });
+  if(shouldScroll){
+    const selectedSection = document.querySelector(`.video-set[data-set="${t}"]`);
+    selectedSection?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+  }
   try { localStorage.setItem('si_corp_tab', t); } catch(e){}
 }
 
-tabs.forEach(tab => tab.addEventListener('click', () => setType(tab.dataset.target)));
+tabs.forEach(tab => tab.addEventListener('click', () => setType(tab.dataset.target, true)));
 
 try {
   const saved = localStorage.getItem('si_corp_tab');
