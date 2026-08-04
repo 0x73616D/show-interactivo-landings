@@ -282,11 +282,11 @@ footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(
           <div class="v-name">Iecs</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/22-mañana-seguros.mp4" data-name="MañAna Seguros">
-        <video data-src="/media/videos/fiesta/22-mañana-seguros.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/22-manana-seguros.mp4" data-name="Mañana Seguros">
+        <video data-src="/media/videos/fiesta/22-manana-seguros.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
-          <div class="v-name">MañAna Seguros</div>
+          <div class="v-name">Mañana Seguros</div>
         </div>
       </article>
       <article class="v-card" data-video="/media/videos/fiesta/23-la-jaboneria.mp4" data-name="La Jaboneria">
@@ -594,11 +594,11 @@ try {
 document.querySelectorAll('.v-card').forEach(card => {
   const video = card.querySelector('video');
   video.controls = true;
+  video.addEventListener('play', () => card.classList.add('is-playing'));
   card.addEventListener('click', () => {
     if(card.classList.contains('is-playing')) return;
     if(!video.src){ video.src = video.dataset.src; video.load(); }
     video.muted = false;
-    card.classList.add('is-playing');
     video.play().catch(()=>{});
   });
 });
