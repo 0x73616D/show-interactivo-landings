@@ -1,0 +1,666 @@
+{
+  "links": {
+    "instagram": "https://www.instagram.com/si.showinteractivo/",
+    "instagramLabel": "@si.showinteractivo"
+  },
+  "heroVideos": {
+    "sociales": {
+      "boda": "/media/clips/clip_boda.mp4",
+      "quince": "/media/clips/clip_15.mp4",
+      "adulto": "/media/clips/clip_adulto.mp4"
+    },
+    "corporativos": {
+      "fiesta": "/media/clips/clip_fiesta.mp4",
+      "team": "/media/clips/clip_team.mp4",
+      "otros": "/media/clips/clip_otros.mp4"
+    }
+  },
+  "landing": {
+    "sociales": {
+      "boda": {
+        "subTitleHtml": "Tu boda no es una fiesta más. <span class=\"accent\">Es la fiesta que vos y tu pareja imaginaron mil veces.</span>",
+        "subDescHtml": "Tu boda no tiene por qué seguir el mismo libreto de siempre. <strong>Co-creamos momentos únicos</strong>, desde una entrada al salón completamente original, cantante en vivo durante la recepción, trivias interactivas personalizadas donde tus invitados juegan en tiempo real respondiendo preguntas sobre la historia de amor de la pareja, y bloques cortos de juegos participativos a medida del festejo. <strong>Una celebración sofisticada, emotiva y divertida.</strong>",
+        "previaDesc": "Hacemos una videollamada con los dos para conocernos, escuchar sus objetivos para el desarrollo de la fiesta, entender la vibra que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+        "previaPoints": [
+          "Reuniones para conversar sobre el estilo, la temática y la energía que imaginan para su fiesta.",
+          "Producción de todos los momentos que se hayan elegido para realizar y personalizar (ceremonia, música en vivo, entradas originales, trivias, otros juegos y más).",
+          "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y wedding/organizador/a)."
+        ],
+        "eventoPoints": [
+          "Recepción cálida y divertida para tus invitados (entrevistas y más).",
+          "Música en vivo en recepción y otros momentos.",
+          "Juegos y dinámicas pensadas para tu fiesta.",
+          "Locución y animación cercana y descontracturada."
+        ],
+        "resultadoDesc": "Ustedes logran relajarse y disfrutar por completo mientras sus invitados se van fascinados, repitiendo lo original, divertida y diferente que estuvo la fiesta. Un recuerdo imborrable que se cuenta toda la vida.",
+        "testiTitleHtml": "Lo que dicen las parejas que <span class=\"accent\">celebraron su boda con nosotros.</span>",
+        "visualPreviaTop": "/media/images/events/SI-Boda-Previa-01.jpg",
+        "visualPreviaBot": "/media/images/events/SI-Boda-Previa-02.jpg",
+        "visualEventoTop": "/media/images/events/SI-Boda-Evento-01.jpg",
+        "visualEventoBot": "/media/images/events/SI-Boda-Evento-02.jpg",
+        "visualResultadoTop": "/media/images/events/SI-Boda-Resultado-01.jpg",
+        "visualResultadoBot": "/media/images/events/SI-Boda-Resultado-02.jpg"
+      },
+      "quince": {
+        "subTitleHtml": "La de los 15 no es una fiesta más. <span class=\"accent\">Es la que se imaginaron mil veces.</span>",
+        "subDescHtml": "La fiesta de 15 no tiene por qué seguir el mismo libreto de siempre. <strong>Co-creamos momentos únicos</strong>, desde una entrada al salón completamente original, cantante en vivo durante la recepción, trivias interactivas personalizadas donde tus invitados juegan en tiempo real respondiendo preguntas sobre la cumpleañera, y bloques cortos de juegos participativos a medida del festejo. <strong>Una celebración sofisticada, emotiva y divertida.</strong>",
+        "previaDesc": "Hacemos una videollamada con la familia y la cumpleañera para escuchar sus objetivos para el desarrollo de la fiesta, entender la vibra que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+        "previaPoints": [
+          "Reuniones para conversar sobre el estilo, la temática y la energía que imaginan para su fiesta.",
+          "Producción de todos los momentos que se hayan elegido para realizar y personalizar (ingreso de invitados, música en vivo, entradas originales, trivias, otros juegos y más).",
+          "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizador/a)."
+        ],
+        "eventoPoints": [
+          "Recepción cálida y divertida para tus invitados (entrevistas y más).",
+          "Música en vivo en recepción y otros momentos.",
+          "Juegos y dinámicas pensadas para tu fiesta.",
+          "Locución y animación cercana y descontracturada."
+        ],
+        "resultadoDesc": "Familia y homenajeada logran relajarse y disfrutar por completo mientras sus invitados se van fascinados, repitiendo lo original, divertida y diferente que estuvo la fiesta. Un recuerdo imborrable que se cuenta toda la vida.",
+        "testiTitleHtml": "Lo que dicen las familias que <span class=\"accent\">celebraron los 15 con nosotros.</span>",
+        "visualPreviaTop": "/media/images/events/SI-Cumple15-Previa-01.jpg",
+        "visualPreviaBot": "/media/images/events/SI-Cumple15-Previa-02.jpg",
+        "visualEventoTop": "/media/images/events/SI-Cumple15-Evento-01.jpg",
+        "visualEventoBot": "/media/images/events/SI-Cumple15-Evento-02.jpg",
+        "visualResultadoTop": "/media/images/events/SI-Cumple15-Resultado-01.jpg",
+        "visualResultadoBot": "/media/images/events/SI-Cumple15-Resultado-02.jpg"
+      },
+      "adulto": {
+        "subTitleHtml": "Festejar con amigos y familia en <span class=\"accent\">una fiesta que se sienta como vos.</span>",
+        "subDescHtml": "Un cumple de 40, 50, 60 o 70 tiene una particularidad: lo armás vos para vos. <strong>¿Qué fiesta querés tener?</strong> (íntima, energética, sorpresa, temática) <strong>La fiesta que vos imaginaste</strong>, con calidad, logrando un ritmo fluido y dinámico y sin sobrecarga. Cantante en vivo, bloques cortos de juegos a medida del festejo y trivias interactivas personalizadas donde tus invitados juegan en tiempo real respondiendo preguntas y anécdotas sobre vos. <strong>Una celebración sofisticada, emotiva y divertida.</strong>",
+        "previaDesc": "Hacemos una videollamada para escuchar tus objetivos para el desarrollo de la fiesta, entender la vibra que querés generar y contarte cómo podemos ayudarte desde nuestra experiencia con nuestros servicios.",
+        "previaPoints": [
+          "Reuniones para conversar sobre el estilo, la temática y la energía que imaginás para tu fiesta.",
+          "Producción de todos los momentos que se hayan elegido para realizar y personalizar (ingreso de invitados, música en vivo, entradas originales, trivias, otros juegos y más).",
+          "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizador/a)."
+        ],
+        "eventoPoints": [
+          "Recepción cálida y divertida para tus invitados (entrevistas y más).",
+          "Música en vivo en recepción y otros momentos.",
+          "Juegos y dinámicas pensadas para tu fiesta.",
+          "Animación a medida e hilo conductor."
+        ],
+        "resultadoDesc": "Vos lográs relajarte y disfrutar por completo mientras tus invitados se van fascinados, repitiendo lo original, divertida y diferente que estuvo la reunión. Un recuerdo imborrable que se cuenta toda la vida.",
+        "testiTitleHtml": "Lo que dicen quienes <span class=\"accent\">festejaron con nosotros.</span>",
+        "visualPreviaTop": "/media/images/events/SI-Adultos-Previa-01.jpg",
+        "visualPreviaBot": "/media/images/events/SI-Adultos-Previa-02.jpg",
+        "visualEventoTop": "/media/images/events/SI-Adultos-Evento-01.jpg",
+        "visualEventoBot": "/media/images/events/SI-Adultos-Evento-02.jpg",
+        "visualResultadoTop": "/media/images/events/SI-Adultos-Resultado-01.jpg",
+        "visualResultadoBot": "/media/images/events/SI-Adultos-Resultado-02.jpg"
+      }
+    },
+    "corporativos": {
+      "fiesta": {
+        "subEyebrow": "Innovar, conectar, sorprender",
+        "subTitle": "Fiesta corporativa",
+        "subTagline": "Tecnología que une, experiencias que trascienden.",
+        "subDesc": "El hilo conductor del evento y dinámicas de entretenimiento a medida. Una celebración sofisticada y divertida.",
+        "previaDesc": "Hacemos una videollamada con el equipo organizador para escuchar sus objetivos para el desarrollo de la fiesta, entender lo que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+        "previaPoints": [
+          "Reuniones para conversar sobre el estilo, la temática y la energía que imaginan para su fiesta.",
+          "Producción de todos los momentos que se hayan elegido para realizar y personalizar (música en vivo, recepción original de invitados, trivias, otros juegos y más).",
+          "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizadores)."
+        ],
+        "eventoDesc": "Somos el hilo conductor que sostiene la fiesta de principio a fin, logrando un ritmo fluido y dinámico y sin sobrecarga. Cantante en vivo para diferentes momentos con un repertorio que crea el ambiente ideal. Bloques cortos de juegos y trivias interactivas exclusivas: un formato donde el celular de tus invitados se convierte en el control de juego para responder preguntas en tiempo real. Sorteos y premiaciones innovadoras. Generamos pura adrenalina, risas e integración entre todos.",
+        "eventoPoints": [
+          "Recepción cálida y divertida para tus invitados (entrevistas y más).",
+          "Música en vivo en recepción y otros momentos.",
+          "Juegos y dinámicas pensadas para la fiesta.",
+          "Sorteos y premiaciones innovadoras.",
+          "Locución y animación con el tono justo para cada momento."
+        ],
+        "resultadoSub": "El éxito de la fiesta.",
+        "resultadoDesc": "Logramos que la fiesta corporativa supere las expectativas y sea memorable. Los invitados se van fascinados con una experiencia original, divertida y completamente diferente. Un impulso de energía y conexión generando un eco positivo que se comenta durante los días siguientes, se convierte en tema de conversación principal y refuerza el sentido de pertenencia.",
+        "resultadoPoints": [
+          "Anfitriones 100% relajados y presentes.",
+          "Invitados divertidos y felices.",
+          "Sinergia colectiva: Inyección de energía real.",
+          "Experiencia colectiva memorable."
+        ],
+        "visualPreviaTop": "/media/images/events/SI-Fiesta-Previa-01.jpg",
+        "visualPreviaBot": "/media/images/events/SI-Fiesta-Previa-02.jpg",
+        "visualEventoTop": "/media/images/events/SI-Fiesta-Evento-01.jpg",
+        "visualEventoBot": "/media/images/events/SI-Fiesta-Evento-02.jpg",
+        "visualResultadoTop": "/media/images/events/SI-Fiesta-Resultado-01.jpg",
+        "visualResultadoBot": "/media/images/events/SI-Fiesta-Resultado-02.jpg",
+        "faq01": "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Y lo mejor de todo es que con nuestro servicio no hay que eliminar una tanda de baile para desarrollarlo porque hacemos intervenciones cortas de 15 minutos cada una que se integran a lo largo de la fiesta. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+      },
+      "team": {
+        "subEyebrow": "Innovar, conectar, sorprender",
+        "subTitle": "Team Building",
+        "subTagline": "Tecnología que une, experiencias que trascienden.",
+        "subDesc": "Conexión, interactividad y diversión con un propósito. Creamos el hilo conductor de tu jornada de Team Building con dinámicas gamificadas a la medida de tu empresa. Un encuentro sofisticado que desafía, integra y divierte a todo tu capital humano.",
+        "previaDesc": "Hacemos una videollamada con el equipo organizador para escuchar sus objetivos para el desarrollo del encuentro, entender lo que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+        "previaPoints": [
+          "Reuniones para conversar sobre el estilo, la temática y los objetivos que quieren alcanzar.",
+          "Producción y personalización de las actividades del evento.",
+          "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizadores)."
+        ],
+        "eventoDesc": "El balance exacto entre el juego inteligente, la sinergia colectiva y la diversión pura. Una propuesta a medida que dosifica la intensidad de las actividades para garantizar la máxima participación, el disfrute y el impacto en el clima del equipo. Un ritmo dinámico y perfectamente equilibrado que mantiene al equipo conectado y motivado.",
+        "eventoPoints": [
+          "Juego inteligente: Diversión pura con propósito y sinergia.",
+          "Intensidad a medida: Actividades dosificadas para una participación del 100%.",
+          "Clima y motivación: Impacto directo en la conexión del equipo.",
+          "Ritmo dinámico: Energía equilibrada de principio a fin."
+        ],
+        "resultadoSub": "El éxito del encuentro.",
+        "resultadoDesc": "Logramos que la jornada de Team Building supere las expectativas y sea verdaderamente memorable. Los participantes se retiran motivados, tras vivir una experiencia original, integradora y completamente diferente. Un impulso real de energía y sinergia colectiva que genera un eco positivo en el día a día de la empresa y consolidando el sentido de pertenencia y el trabajo en equipo.",
+        "resultadoPoints": [
+          "Expectativas superadas: Una experiencia memorable.",
+          "Integración y motivación: Participantes 100% activos.",
+          "Sinergia colectiva: Inyección de energía real.",
+          "Sentido de pertenencia: Impacto positivo en el trabajo diario."
+        ],
+        "visualPreviaTop": "/media/images/events/SI-Team-Previa-01.jpg",
+        "visualPreviaBot": "/media/images/events/SI-Team-Previa-02.jpg",
+        "visualEventoTop": "/media/images/events/SI-Team-Evento-01.jpg",
+        "visualEventoBot": "/media/images/events/SI-Team-Evento-02.jpg",
+        "visualResultadoTop": "/media/images/events/SI-Team-Resultado-01.jpg",
+        "visualResultadoBot": "/media/images/events/SI-Team-Resultado-02.jpg",
+        "faq01": "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+      },
+      "otros": {
+        "subEyebrow": "Innovar, conectar, sorprender",
+        "subTitle": "Otros eventos corporativos",
+        "subTagline": "Tecnología que une, experiencias que trascienden.",
+        "subDesc": "Conexión, interactividad y diversión con un objetivo. Somos el hilo conductor del evento con dinámicas gamificadas a la medida del encuentro. Inauguraciones, lanzamientos, congresos, workshops, family day, jornadas de integración, capacitaciones.",
+        "previaDesc": "Hacemos una videollamada con el equipo organizador para escuchar sus objetivos para el desarrollo del encuentro, entender lo que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+        "previaPoints": [
+          "Reuniones para conversar sobre el estilo, la temática y los objetivos que quieren alcanzar.",
+          "Producción y personalización de las actividades del evento.",
+          "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizadores)."
+        ],
+        "eventoDesc": "Somos el hilo conductor que sostiene el evento de principio a fin, logrando un ritmo fluido y dinámico y sin sobrecarga. Cantante en vivo para diferentes momentos con un repertorio que crea el ambiente ideal. Bloques cortos de juegos y trivias interactivas exclusivas: un formato donde el celular de tus invitados se convierte en el control de juego para responder preguntas en tiempo real. Sorteos y premiaciones innovadoras. Generamos pura adrenalina, risas e integración entre todos.",
+        "eventoPoints": [
+          "Recepción cálida y divertida para tus invitados (entrevistas y más).",
+          "Música en vivo en recepción y otros momentos.",
+          "Juegos y dinámicas personalizadas.",
+          "Sorteos y premiaciones innovadoras.",
+          "Locución y animación con el tono justo para cada momento."
+        ],
+        "resultadoSub": "El éxito del encuentro.",
+        "resultadoDesc": "Ayudamos a que el evento supere las expectativas y sea memorable. Los invitados se van fascinados con una experiencia original, divertida y completamente diferente. Un impulso de energía y conexión generando un eco positivo que se comenta durante los días siguientes, se convierte en tema de conversación principal y refuerza el sentido de pertenencia.",
+        "resultadoPoints": [
+          "Anfitriones 100% relajados y presentes.",
+          "Invitados divertidos y felices.",
+          "Sinergia colectiva: Inyección de energía real.",
+          "Experiencia colectiva memorable."
+        ],
+        "visualPreviaTop": "/media/images/events/SI-Otros-Previa-01.jpg",
+        "visualPreviaBot": "/media/images/events/SI-Otros-Previa-02.jpg",
+        "visualEventoTop": "/media/images/events/SI-Otros-Evento-01.jpg",
+        "visualEventoBot": "/media/images/events/SI-Otros-Evento-02.jpg",
+        "visualResultadoTop": "/media/images/events/SI-Otros-Resultado-01.jpg",
+        "visualResultadoBot": "/media/images/events/SI-Otros-Resultado-02.jpg",
+        "faq01": "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+      }
+    }
+  },
+  "featuredTestimonials": {
+    "sociales": {
+      "boda": [
+        {
+          "quote": "La fiesta salió muy bien, los invitados quedaron fascinados. La voz de Guada es hermosa, todos la elogiaron. Les encantó la entrada al salón que hicieron, fue muy original.",
+          "author": "Mariela y Sergio",
+          "event": "Boda"
+        },
+        {
+          "quote": "Sentíamos que nos faltaba algo y decidimos buscar para sumar al evento. No queríamos a los típicos animadores que cargosean. Ellos son todo lo que está bien. Nos supieron entender a la perfección.",
+          "author": "Julieta y Brian",
+          "event": "Boda"
+        }
+      ],
+      "quince": [
+        {
+          "quote": "Todos quedamos encantados con lo que hicieron, nos divertimos muchísimo. Grandes y chicos diciendo que fue un cumple diferente, muy original. Hicieron un trabajo extraordinario.",
+          "author": "Naiara",
+          "event": "Cumple de 15"
+        },
+        {
+          "quote": "No me voy a cansar de decir que los amo y que fue la mejor fiesta que podría haber imaginado. Todos los invitados nos comentaron lo hermosa, original y divertida que estuvo la fiesta.",
+          "author": "Barbie",
+          "event": "Cumple de 15"
+        }
+      ],
+      "adulto": [
+        {
+          "quote": "Aposté a ellos sin conocerlos y no encuentro palabras suficientes para recomendarlos. La voz de Guada es de primera. Andrés tiene una simpatía enorme. Es divertido sin ser invasivo.",
+          "author": "Andrea",
+          "event": "Cumple de 50"
+        },
+        {
+          "quote": "Una de las mejores cosas que hice fue contratar a Guada y a Andrés. No dejaron que la fiesta decaiga en ningún momento. Guada canta increíble y Andrés te levanta la fiesta.",
+          "author": "Florencia",
+          "event": "Cumple de 50"
+        }
+      ]
+    },
+    "corporativos": [
+      {
+        "quote": "Hubo muy buenos comentarios de su trabajo en la fiesta. Espero verlos en otro evento.",
+        "author": "Carina Aguilar",
+        "event": "Delga"
+      },
+      {
+        "quote": "La pasamos bárbaro, increíble la animación, súper recomendable.",
+        "author": "Sofía Hermida",
+        "event": "Variacode"
+      }
+    ]
+  },
+  "socialTestimonials": {
+    "boda": [
+      {
+        "name": "BODA JULIETA Y MARTÍN",
+        "title": "¡Son los mejores!",
+        "body": "Sin dudarlo, los contrataría para todos mis eventos, Guada y Andrés hicieron de mi casamiento una noche soñada. Guada es una excelente cantante, los invitados me felicitaban por la elección. Cantó en la entrada al civil, en la recepción, y durante la fiesta. UNA GROSA! Y Andrés la rompe, un gran host y actor, la tiene clarísima animando, es super carismático, talentoso y muy buena onda. Hicieron una entrada actuada, con videos, mucha producción, todos me decían que fue muy original. Los chicos son muy profesionales, trabajan en pos de la fiesta y se involucran para que todo salga lo mejor posible y la gente la pase bien. Generan climas muy divertidos y participan todos los invitados. Hacen que el evento sea bien dinámico y llevadero, garantía de que la fiesta va a ser super divertida. Altamente recomendables. No lo duden, son los mejores."
+      },
+      {
+        "name": "BODA MAIA Y ALEJANDRO",
+        "title": "Increíbles!!!",
+        "body": "Cumplieron con todo lo pactado superando ampliamente las expectativas. Guada y Andy, dos personas increíbles y super profesionales. Si quieren diversión asegurada, no pueden faltar en su evento. Nos ayudaron a que nuestra noche sea soñada. Estamos más que agradecidos!"
+      },
+      {
+        "name": "BODA MARIELA Y SERGIO",
+        "title": "¡Muy contentos!",
+        "body": "La fiesta salió muy bien, los invitados quedaron muy contentos, Guadalupe tu voz es hermosa, todos te elogiaron, vinieron nos hablaron, les encantó a todos la entrada especial de la radio que hicieron, fue muy original, todos nos dijeron. Nos gustó mucho la onda que le pusieron a la fiesta y los invitados se engancharon en todo y quedaron muy contentos con la fiesta."
+      },
+      {
+        "name": "BODA CLARA Y MARCELO",
+        "title": "Profesionales excelentes",
+        "body": "Muy contentos con todo el trabajo. Son dos profesionales excelentes, muy comprensivos con todos nuestros requerimientos y, además, supieron sortear todas las dificultades que surgieron en ese mismo día. En medio de tanto estrés fue un bálsamo saber que ellos iban a hacer lo suyo. Y salió mejor de lo que pensamos!"
+      },
+      {
+        "name": "BODA CAMILA Y NICOLÁS",
+        "title": "¡Excelente!",
+        "body": "Super recomendable, la verdad que hicieron un trabajo impecable y espectacular, los invitados se divirtieron un montón y fue algo distinto. La hermosa voz de Guada se lució con cada canción que cantó. ¡Todo excelente!"
+      },
+      {
+        "name": "BODA YANINA Y PABLO",
+        "title": "¡Los mejores lejos!",
+        "body": "Increíbles, originales, divertidos, muy muy recomendados, ya quiero que esté listo el video solo para volver a verlos."
+      },
+      {
+        "name": "BODA SOFÍA Y MATÍAS",
+        "title": "Hermosa experiencia",
+        "body": "Fue una experiencia inolvidable! Todos la pasaron bomba, los chicos levantaron la fiesta en todo momento! Y por supuesto resaltando la maravillosa voz de Guada! Super recomendable."
+      },
+      {
+        "name": "BODA LORELEY Y FRAN",
+        "title": "¡Excelente!",
+        "body": "Sumamente agradecidos con Andrés y Guada. ¡Nos hicieron pasar la boda de nuestros sueños! Hermoso todo lo que hacen, y gracias por prestarse a nuestras ideas locas, el falso cura estuvo genial! Ja, ja, ja. Andrés, excelente actor, animador y locutor. Guada, una genia cantando y animando."
+      },
+      {
+        "name": "BODA JULIETA Y BRIAN",
+        "title": "¡Espectaculares ambos!",
+        "body": "Teníamos todo organizado y sentíamos que nos faltaba algo, ahí decidimos buscar algún show para sumar al evento. La verdad es que no queríamos a los típicos animadores que te \"cargosean\" o te invitan cuando quizás no hay ganas de los invitados de participar. Por suerte ellos son todo lo que está bien. Desde un principio nos supieron entender a la perfección lo que queríamos, nos trataron hermosamente bien y lo dieron todo en nuestra gran noche. Guada canta como los dioses, todos hablaron de lo hermosa que fue la recepción con sus canciones en vivo... Como novia entre con su voz de fondo y les digo FUE la mejor decisión lejos. Andres, es el remador nato... ante cualquier tipo de público da vuelta con humor todas las cosas. La verdad es que los juegos fueron full entretenidos y la gente se re copo, ellos se quedaron hasta casi el final, lograron que cada centavo valiera la pena. Los mega recomiendo y los volvería a elegir! Gracias a ambos por cada buena predisposición y la paciencia... !"
+      },
+      {
+        "name": "BODA FRANCA Y MARCOS",
+        "title": "¡No duden en contratarlos! ¡La mejor elección!",
+        "body": "¡Superaron ampliamente mis expectativas! Andrés y Guada son excelentes profesionales. Guada canta como los dioses y Andrés es muy divertido y también canta muy bien. Los juegos que hicieron fueron un golazo y animaron un montón la fiesta, la gente quedó super feliz y sorprendida porque fue algo diferente. También les hice un pedido especial y lo hicieron sin problema. Contratar su servicio fue la mejor decisión sin dudas. Los juegos que hicieron durante la fiesta animaron un montón, la gente se divirtió y es algo diferente para ofrecerle a los invitados. Son muy flexibles para hacerles pedidos especiales, le solicité a Andrés hacer una imitación de Elvis al estilo las vegas y fue increíble!"
+      },
+      {
+        "name": "BODA CAROLINA Y GABRIEL",
+        "title": "",
+        "body": "Total adaptación a lo que queríamos y excelentes las trivias Quedamos muy contentos, salió todo como habíamos planeado, cubrió nuestras expectativas, la pasamos bien y va a ser un momento que no nos vamos a olvidar, que va a quedar grabado. Son un equipo bárbaro de trabajo. Teníamos pensado una idea, y nos ayudaron a redondearla, con el aporte de su profesionalismo, hicieron que la fiesta saliera perfecta. Son considerados con los pedidos y fueron atentos con nosotros en todo momento calmando nuestros nervios y ansiedades haciendo nuestro casamiento un momento memorable. Gracias por todo."
+      },
+      {
+        "name": "BODA BELÉN Y MICHAEL",
+        "title": "¡Excelente ¡Recomendadisimos!",
+        "body": "¡Guadalupe tiene una voz increíble! Necesitábamos un maestro de ceremonias y Andrés supo adecuarse a nuestros pedidos con 0la00000 bendición de la ceremonia del reloj de arena. También animó la fiesta con Guadalupe de manera muy profesional. Son parte de lo que fue una fiesta inolvidable. Quedamos muy satisfechos con el servicio.¡Excelente! Lo recomendamos 100 %."
+      },
+      {
+        "name": "BODA MARA Y MARIANO",
+        "title": "¡Profesionales increíbles!",
+        "body": "Andrés y Guada la rompieron! Los juegos fueron excelentes. Todos los invitados estaban super divertidos, hicieron que todos disfrutarán el día, estuvieron atentos a los detalles. ¡Guada cantando fue algo alucinante! Una voz preciosa que fue ovacionada por todos. ¡Gracias chicos por hacer una fiesta increíble! ¡Gracias por acompañarnos! Lo recontra recomendamos, nos divertimos muchísimo organizándolo y, el día del evento, fue lo más. Excelentes profesionales y detallistas. ¡Gracias por todo! 0 00000"
+      },
+      {
+        "name": "BODAS DE ORO DE CARMEN Y RICARDO",
+        "title": "Garantía de diversión",
+        "body": "Buen timming, trato super ameno antes y durante la fiesta. Están súper atentos a armar un show personalizado. La pasamos genial! ¡Participamos todos y nos súper divertimos! Una alternativa participativa e integradora para cualquier evento!!"
+      },
+      {
+        "name": "BODA JAVIER Y FLOR",
+        "title": "",
+        "body": "Estamos super agradecidos por todo lo que hicieron por nosotros, salió todo espectacular lo que hicieron y la pasamos muy bien."
+      },
+      {
+        "name": "BODA SONIA Y JOSE",
+        "title": "¡Super recomendable!",
+        "body": "Estamos felices porque estuvieron en nuestro casamiento. La gente quedó fascinada con el show. Super conformes con todo. Guadalupe cantó en la recepción y la rompió, los invitados estaban chochos! Re copada con los comentarios. Y toda la conducción y el entretenimiento con la medida justa, ¡Gracias!"
+      },
+      {
+        "name": "BODA COTY Y MATI",
+        "title": "¡Excelente!",
+        "body": "La verdad, me quiero casar de nuevo para volver a contratarlos. Superaron ampliamente nuestras expectativas y gracias a ellos lo pasamos bomba. Son super profesionales, buenísima onda y brindan un servicio espectacular. Como punto a destacar que nos convenció de entrada, fueron los únicos de los que contactamos que nos llamaron para charlar sobre cómo iba a ser la fiesta y contarnos con más detalle lo que hacen y ver cuáles eran nuestras expectativas. Se nota todo el amor que le ponen a lo que hacen y el resultado es excelente. Estamos felices por el fiestón que salió gracias a Guada y Andrés. ¡Genios, genios, genios!"
+      },
+      {
+        "name": "BODA CECI Y FRANCO",
+        "title": "¡Excelente! ¡Super recomendable! Muy divertido",
+        "body": "¡Hicieron de la noche una fiesta! Fue muy divertido, lo disfrutamos muchísimo. Muy profesionales e innovadores en las propuestas."
+      },
+      {
+        "name": "BODA ROMINA Y DIEGO",
+        "title": "Genios, ¡Andrés y Guadalupe!",
+        "body": "¡¡Vale la pena, parejas!! Anímense a hacer algo diferente. Nos divertimos muchísimo, la noche pasó volando. Los invitados no querían irse y todos los buenos comentarios son respecto al evento, lo novedoso, todo lo original. No nos arrepentimos de haberlos contratado, fue la mejor decisión. Totalmente original. Siempre atentos a lo que se les pidió. No duden por favor pídanles ¡y ellos conceden! Unos genios. ¡Los recomendamos!"
+      },
+      {
+        "name": "BODA SOFIA Y FRANCO",
+        "title": "Todo estuvo excelente",
+        "body": "Estuvo todo perfecto, fue un plus para nuestra fiesta que nadie esperaba, algo innovador que llamó la atención de todos y sobre todo divirtió a todos. Super divertido Andrés, un genio para dirigir y animar la fiesta. Super recomendable. Además de la excelente voz de Guada para interpretar el tema con el cual hicimos la entrada al salón con mi esposo."
+      },
+      {
+        "name": "BODA ALE Y DANI",
+        "title": "Una y otra vez los elegiría!",
+        "body": "Brindaron un gran show, no hubo tiempo de aburrirse... Unas voces únicas. Estamos super agradecidos por su responsabilidad y por su excelente trabajo. Todos los invitados quedaron fascinados con los dos. Nos divertimos y disfrutamos tanto, que nos queda todo guardadito en nuestro corazón ❤ . Excelentes profesionales, la verdad hacen que la fiesta sea dinámica, con mucha diversión, baile, canciones y juegos. Realmente un placer!!! Esperamos que sigan así con esa buena onda y transmitiendo tantas energías para que la noche de la fiesta sea inolvidable."
+      },
+      {
+        "name": "BODA FACUNDO Y AGUSTINA",
+        "title": "¡Tremendos! Genios totales",
+        "body": "Animaron mi casamiento y estuvo espectacular, me encantó, te levantan la fiesta a full, hacen que todo sea muy participativo. La voz de Guadalupe es imponente, cantó varios temas en vivo y estuvo bárbaro. Los volvería a contratar y los súper recomiendo."
+      },
+      {
+        "name": "BODA CLIO Y DIEGO",
+        "title": "Si hubiesen más estrellas ¡se las pondría! ¡Excelentísimo!",
+        "body": "¡Excelentes! Estuvieron en todos los detalles, nos divertimos muchísimo. Los invitados quedaron todos maravillados y la gente nos pidió su contacto. ¡Un genio, Andrés! Nos super divertimos, se nota la experiencia que tiene. Estuvo en todo, super flexible, animó todo el tiempo, versátil y, la buena onda, ¡ni hablar! ¡Quedamos y quedaron todos encantados! ¡La voz de Guada impresionante! ¡Cantando y animando! La música excelente, Guadalupe 10 sobre 10, y las trivias 10 sobre 10. Los volveríamos a elegir definitivamente ¡Los elegiríamos mil veces más!"
+      }
+    ],
+    "quince": [
+      {
+        "name": "CUMPLE DE 15 DE ANGIE",
+        "title": "Hola chicos, salió todo espectacular, gracias! Estábamos super",
+        "body": "ansiosos antes de la fiesta y pudimos disfrutarla un montón, al igual que los invitados que se divertían a full. Besos!"
+      },
+      {
+        "name": "CUMPLE DE 15 AVRIL",
+        "title": "Super recomendable",
+        "body": "Gracias chicos por la hermosa noche que nos hicieron pasar, la buena onda… energía… los comentarios fueron todos positivos!!!!!. Gracias por la dedicatoria tan linda en el cuaderno para Avru!!! Una hermosa noche!!! 😀"
+      },
+      {
+        "name": "CUMPLE DE 15 AGUS",
+        "title": "Muy divertido!!!",
+        "body": "¡Salió todo muy bien! Las trivias personalizadas de Agus quedaron buenísimas! Los invitados se coparon con el juego!!!"
+      }
+    ],
+    "adulto": [
+      {
+        "name": "CUMPLE DE 50 DE ANDREA",
+        "title": "Calidad y calidez",
+        "body": "Contraté a dos artistas excelentes. La voz de Guada es de primera. Andrés tiene una simpatía enorme. Es divertido sin ser invasivo. La combinación de ambos es excelente. Pero lo más lindo es que encontré dos seres humanos de una calidez increíble. ¡Ponen mucho amor en su trabajo! ¡Aposté a ellos sin conocerlos y no encuentro palabras suficientes para recomendarlos! Entendieron perfectamente el estilo de animación que buscamos. Organizados y atentos. ¡Super recomendable!"
+      },
+      {
+        "name": "CUMPLE DE 50 DE FLORENCIA",
+        "title": "¡Genios!",
+        "body": "Una de las mejores cosas que hice fue contratar a Guada y a Andrés. Son muy buenos y no dejaron que la fiesta decaiga en ningún momento. Guada canta increíble y Andrés te levanta la fiesta cada vez que la gente afloja. ¡¡Son unos genios!!"
+      },
+      {
+        "name": "CUMPLE DE 50 DE MIRTA",
+        "title": "¡Excelente su trabajo, les encantó a todos!",
+        "body": "Estuvo muy bueno!!!! Los vi en un evento de Expo Vinos y no dudé en llamarlos para mi fiesta, ¡fue muy divertido! Las trivias estuvieron excelentes, ¡me las guardo de recuerdo!"
+      },
+      {
+        "name": "CUMPLE DE 50 VERO",
+        "title": "Salió perfecto!!!",
+        "body": "Unos genios armando todo personalizado y respondiendo todas las dudas, están en todos los detalles. Mil gracias!"
+      },
+      {
+        "name": "CUMPLE DE 50 DE GERARDO",
+        "title": "¡Salió maravilloso todo!!! Muchas gracias a los dos!!!",
+        "body": "La verdad que la noche fue espectacular, fue la noche soñada, la gente fascinada, cuando las cosas se hacen programadas bien armadas y del corazón se ven reflejadas en el disfrute de los invitados. La gente se sorprendió con el juego de la trivia, vio algo diferente, gustó muchísimo, tuvo muy buena repercusión porque no paran de decirme que fue fantástico, divertido, entretenido y distinto. Salió todo muy bien coordinado. Gracias!"
+      },
+      {
+        "name": "CUMPLE DE 50 DE YANINA",
+        "title": "¡100% genios totales!",
+        "body": "Contraté a los chicos sin tener demasiadas referencias, y no me arrepiento un segundo de haberlo hecho. Hicieron una conducción de la fiesta impecable, interviniendo en los momentos justos con sus trivias re divertidas, logrando una noche inolvidable. La pasé super! Salió todo divino, la gente se divirtió mucho con las trivias. La voz de Guada es impresionante y todos quedaron encantados con su voz! Quiero agradecerles por haber sido parte de una noche hermosa! ¡Éxitos, Andrés y Guada! Se lo merecen."
+      },
+      {
+        "name": "CUMPLE DE 40 DE DEBORA",
+        "title": "¡Muy divertido!",
+        "body": "Estuvo linda la fiesta!! La gente se copó y jugaron bastante!! ¡Se divirtieron un montón! Super feliz!"
+      },
+      {
+        "name": "CUMPLE DE 60 DIANA",
+        "title": "La fiesta salió hermosa!",
+        "body": "Estoy super agradecida, me gustaron mucho los juegos porque no nos daba para estar bailando todo el tiempo y que haya momentos lúdicos sirvió mucho. Guada es hermosa, una divina y canta como los dioses. La verdad es que hacen un dúo perfecto. Quedamos muy contentos."
+      }
+    ]
+  },
+  "corporateVideos": {
+    "fiesta": [
+      {
+        "src": "/media/videos/fiesta/01-cooperacion-seguros.mp4",
+        "name": "Cooperacion Seguros"
+      },
+      {
+        "src": "/media/videos/fiesta/02-biol.mp4",
+        "name": "Biol"
+      },
+      {
+        "src": "/media/videos/fiesta/03-dos-hermanos.mp4",
+        "name": "Dos Hermanos"
+      },
+      {
+        "src": "/media/videos/fiesta/04-unigis.mp4",
+        "name": "Unigis"
+      },
+      {
+        "src": "/media/videos/fiesta/05-agd-aceitera-general-deheza.mp4",
+        "name": "Agd Aceitera General Deheza"
+      },
+      {
+        "src": "/media/videos/fiesta/06-febicom.mp4",
+        "name": "Febicom"
+      },
+      {
+        "src": "/media/videos/fiesta/07-grupo-pinares.mp4",
+        "name": "Grupo Pinares"
+      },
+      {
+        "src": "/media/videos/fiesta/08-thonet-vander.mp4",
+        "name": "Thonet Vander"
+      },
+      {
+        "src": "/media/videos/fiesta/09-chabas.mp4",
+        "name": "Chabas"
+      },
+      {
+        "src": "/media/videos/fiesta/10-sommier-center.mp4",
+        "name": "Sommier Center"
+      },
+      {
+        "src": "/media/videos/fiesta/11-coa.mp4",
+        "name": "Coa"
+      },
+      {
+        "src": "/media/videos/fiesta/12-el-abastecedor.mp4",
+        "name": "El Abastecedor"
+      },
+      {
+        "src": "/media/videos/fiesta/13-datawise.mp4",
+        "name": "Datawise"
+      },
+      {
+        "src": "/media/videos/fiesta/14-imasa.mp4",
+        "name": "Imasa"
+      },
+      {
+        "src": "/media/videos/fiesta/15-itapu.mp4",
+        "name": "Itapu"
+      },
+      {
+        "src": "/media/videos/fiesta/16-riggio.mp4",
+        "name": "Riggio"
+      },
+      {
+        "src": "/media/videos/fiesta/17-expex-tsc-cas.mp4",
+        "name": "Expex Tsc Cas"
+      },
+      {
+        "src": "/media/videos/fiesta/18-enod.mp4",
+        "name": "Enod"
+      },
+      {
+        "src": "/media/videos/fiesta/19-jayor.mp4",
+        "name": "Jayor"
+      },
+      {
+        "src": "/media/videos/fiesta/20-symco-coamtra.mp4",
+        "name": "Symco Coamtra"
+      },
+      {
+        "src": "/media/videos/fiesta/21-iecs.mp4",
+        "name": "Iecs"
+      },
+      {
+        "src": "/media/videos/fiesta/22-mañana-seguros.mp4",
+        "name": "MañAna Seguros"
+      },
+      {
+        "src": "/media/videos/fiesta/23-la-jaboneria.mp4",
+        "name": "La Jaboneria"
+      },
+      {
+        "src": "/media/videos/fiesta/24-mutual-argentino.mp4",
+        "name": "Mutual Argentino"
+      },
+      {
+        "src": "/media/videos/fiesta/25-oblita.mp4",
+        "name": "Oblita"
+      },
+      {
+        "src": "/media/videos/fiesta/26-plaswag.mp4",
+        "name": "Plaswag"
+      },
+      {
+        "src": "/media/videos/fiesta/27-amia.mp4",
+        "name": "Amia"
+      },
+      {
+        "src": "/media/videos/fiesta/28-estructuras.mp4",
+        "name": "Estructuras"
+      },
+      {
+        "src": "/media/videos/fiesta/29-lodiser.mp4",
+        "name": "Lodiser"
+      },
+      {
+        "src": "/media/videos/fiesta/30-la-sastreria.mp4",
+        "name": "La Sastreria"
+      },
+      {
+        "src": "/media/videos/fiesta/31-club-independiente-chanar-ladeado.mp4",
+        "name": "Club Independiente Chanar Ladeado"
+      },
+      {
+        "src": "/media/videos/fiesta/32-comercializadora-morres.mp4",
+        "name": "Comercializadora Morres"
+      },
+      {
+        "src": "/media/videos/fiesta/33-abel-santos-y-asociados.mp4",
+        "name": "Abel Santos Y Asociados"
+      }
+    ],
+    "team": [
+      {
+        "src": "/media/videos/team/01-mercado-pago.mp4",
+        "name": "Mercado Pago"
+      },
+      {
+        "src": "/media/videos/team/02-adrian-mercado.mp4",
+        "name": "Adrian Mercado"
+      },
+      {
+        "src": "/media/videos/team/03-agea-clarin.mp4",
+        "name": "Agea Clarin"
+      },
+      {
+        "src": "/media/videos/team/04-sew-eurodrive.mp4",
+        "name": "Sew Eurodrive"
+      },
+      {
+        "src": "/media/videos/team/05-klinger.mp4",
+        "name": "Klinger"
+      },
+      {
+        "src": "/media/videos/team/06-mercado-libre.mp4",
+        "name": "Mercado Libre"
+      },
+      {
+        "src": "/media/videos/team/07-silfab.mp4",
+        "name": "Silfab"
+      },
+      {
+        "src": "/media/videos/team/08-zara.mp4",
+        "name": "Zara"
+      },
+      {
+        "src": "/media/videos/team/09-cofco-intl.mp4",
+        "name": "Cofco Intl"
+      },
+      {
+        "src": "/media/videos/team/10-onboard.mp4",
+        "name": "Onboard"
+      },
+      {
+        "src": "/media/videos/team/11-huinoil.mp4",
+        "name": "Huinoil"
+      },
+      {
+        "src": "/media/videos/team/12-iam-seguros.mp4",
+        "name": "Iam Seguros"
+      },
+      {
+        "src": "/media/videos/team/13-koppert.mp4",
+        "name": "Koppert"
+      },
+      {
+        "src": "/media/videos/team/14-la-morena.mp4",
+        "name": "La Morena"
+      },
+      {
+        "src": "/media/videos/team/15-pwc.mp4",
+        "name": "Pwc"
+      },
+      {
+        "src": "/media/videos/team/16-variacode.mp4",
+        "name": "Variacode"
+      },
+      {
+        "src": "/media/videos/team/17-neko-games.mp4",
+        "name": "Neko Games"
+      },
+      {
+        "src": "/media/videos/team/18-verifarma.mp4",
+        "name": "Verifarma"
+      }
+    ],
+    "otros": [
+      {
+        "src": "/media/videos/otros/01-summit-agro.mp4",
+        "name": "Summit Agro"
+      },
+      {
+        "src": "/media/videos/otros/02-fada.mp4",
+        "name": "Fada"
+      },
+      {
+        "src": "/media/videos/otros/03-catpro.mp4",
+        "name": "Catpro"
+      },
+      {
+        "src": "/media/videos/otros/04-produ.mp4",
+        "name": "Produ"
+      },
+      {
+        "src": "/media/videos/otros/05-pavon-arriba.mp4",
+        "name": "Pavon Arriba"
+      },
+      {
+        "src": "/media/videos/otros/06-neone.mp4",
+        "name": "Neone"
+      }
+    ]
+  }
+}

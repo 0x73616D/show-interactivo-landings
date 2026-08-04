@@ -1,0 +1,21 @@
+---
+interface Item { title: string; body: string }
+interface Props { items: Item[] }
+const { items } = Astro.props;
+---
+<section class="section differences">
+  <div class="shell">
+    <div class="section-heading reveal"><div class="eyebrow">Nuestro diferencial</div><h2>Lo que nos hace <span class="accent">únicos.</span></h2></div>
+    <div class="grid">{items.map((item,index) => <article class="glass-card reveal"><span>0{index+1}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
+  </div>
+</section>
+<style>
+  .differences{border-block:1px solid var(--line);background:var(--color-plum-deep)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+  article{padding:clamp(1.4rem,3vw,2.2rem);transition:transform .25s ease,border-color .25s ease,background .25s ease}
+  article:hover{transform:translateY(-4px);border-color:rgba(231,4,143,.45);background:rgba(255,255,255,.07)}
+  article span{color:var(--color-brand);font-size:.72rem;font-weight:800;letter-spacing:.14em}
+  h3{margin:.45rem 0 .55rem;font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.65rem);text-transform:uppercase}
+  p{margin:0;color:var(--light)}
+  @media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style>

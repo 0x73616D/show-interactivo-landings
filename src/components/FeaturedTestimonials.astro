@@ -1,0 +1,23 @@
+---
+interface Testimonial { quote: string; author: string; event: string }
+interface Props { items: Testimonial[]; target: string; heading?: string }
+const { items, target, heading = 'Lo que dicen de nosotros.' } = Astro.props;
+---
+<section class="section-tight testimonials" id="testimonios">
+  <div class="shell">
+    <div class="section-heading reveal"><div class="eyebrow">Testimonios</div><h2 id="testimonial-heading" set:html={heading}></h2></div>
+    <div class="grid" id="featured-testimonials">
+      {items.map(item => <article class="glass-card reveal"><p>“{item.quote}”</p><strong>{item.author}</strong><span>{item.event}</span></article>)}
+    </div>
+    <div class="more reveal"><a href={target} target="_blank" rel="noopener" class="button button-secondary">Ver videos de testimonios ↗</a></div>
+  </div>
+</section>
+<style>
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+  article{padding:clamp(1.5rem,3vw,2rem);transition:transform .25s ease,border-color .25s ease}
+  article:hover{transform:translateY(-4px);border-color:rgba(231,4,143,.45)}
+  p{margin:0 0 1.25rem;color:var(--light);font-size:1.04rem}
+  strong,span{display:block} strong{font-family:var(--font-display);text-transform:uppercase} span{margin-top:.15rem;color:var(--color-brand);font-size:.8rem;font-weight:700}
+  .more{margin-top:1.5rem;text-align:center}
+  @media(max-width:650px){.grid{grid-template-columns:1fr}}
+</style>

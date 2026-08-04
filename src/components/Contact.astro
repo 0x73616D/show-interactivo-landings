@@ -1,0 +1,32 @@
+---
+interface Props { variant: 'sociales' | 'corporativos' }
+const { variant } = Astro.props;
+const corporate = variant === 'corporativos';
+const whatsapp = corporate ? 'https://wa.me/541124629086' : 'https://wa.me/5411300555';
+---
+<section class="contact section" id="contacto">
+  <div class="shell wrap">
+    <div class="copy reveal"><div class="eyebrow">Contactanos</div><h2>Hablemos de <span class="accent">tu evento.</span></h2><p>Completá el formulario o escribinos por WhatsApp. Te respondemos lo antes posible.</p><a href={whatsapp} target="_blank" rel="noopener" class="button button-primary">Hablar por WhatsApp</a></div>
+    <form class="glass-card reveal" name={`contacto-${variant}`} method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value={`contacto-${variant}`} />
+      <label>Nombre y apellido<input required name="nombre" autocomplete="name" /></label>
+      <div class="row"><label>Email<input required type="email" name="email" autocomplete="email" /></label><label>Teléfono<input required type="tel" name="telefono" autocomplete="tel" /></label></div>
+      <div class="row"><label>Tipo de evento<select required name="tipo"><option value="">Seleccionar</option>{corporate ? <><option>Fiesta corporativa</option><option>Team Building</option><option>Otro corporativo</option></> : <><option>Boda</option><option>Cumple de 15</option><option>Cumpleaños de adultos</option><option>Otro social</option></>}</select></label><label>Localidad<input required name="localidad" autocomplete="address-level2" /></label></div>
+      <label>Contanos sobre el evento<textarea name="mensaje" rows="4"></textarea></label>
+      <button class="button button-primary" type="submit">Enviar</button>
+    </form>
+  </div>
+</section>
+<style>
+  .contact{border-top:1px solid var(--line);background:linear-gradient(145deg,var(--color-plum),var(--color-plum-dark))}
+  .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(1.5rem,5vw,4rem);align-items:center}
+  h2{margin:.6rem 0 .8rem;font-family:var(--font-display);font-size:clamp(2.3rem,5vw,4.2rem);line-height:1;text-transform:uppercase}
+  .copy p{max-width:520px;color:var(--light);margin:0 0 1.4rem}
+  form{padding:clamp(1.3rem,3vw,2rem);display:grid;gap:.9rem}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  label{display:grid;gap:.35rem;color:var(--light);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  input,select,textarea{width:100%;padding:.8rem .9rem;border:1px solid var(--line);border-radius:.65rem;background:rgba(255,255,255,.07);color:white;text-transform:none;letter-spacing:0}
+  select option{color:#1d0821} textarea{resize:vertical}
+  form .button{justify-self:start}
+  @media(max-width:800px){.wrap{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>

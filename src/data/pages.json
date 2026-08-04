@@ -1,0 +1,474 @@
+{
+  "sociales": {
+    "hero": {
+      "eyebrow": "Eventos sociales · Argentina",
+      "title": "Convertimos tu fiesta en una experiencia inolvidable.",
+      "description": "Conducción, animación, música en vivo y tecnología interactiva para bodas, cumpleaños de 15 y cumpleaños de adultos."
+    },
+    "tabs": [
+      {
+        "id": "boda",
+        "name": "Boda",
+        "sub": "Una celebración única"
+      },
+      {
+        "id": "quince",
+        "name": "Cumple de 15",
+        "sub": "Su noche soñada"
+      },
+      {
+        "id": "adulto",
+        "name": "Cumpleaños de adultos",
+        "sub": "Una fiesta que se sienta como vos"
+      }
+    ],
+    "stats": [
+      {
+        "value": 20,
+        "prefix": "+",
+        "label": "Años de experiencia"
+      },
+      {
+        "value": 500,
+        "prefix": "+",
+        "label": "Eventos realizados"
+      },
+      {
+        "value": 9.9,
+        "decimals": 1,
+        "label": "Valoración de clientes"
+      }
+    ],
+    "differences": [
+      {
+        "title": "Sin baches",
+        "body": "Somos el hilo conductor que maneja la energía del encuentro con animación y música en vivo con cantantes profesionales."
+      },
+      {
+        "title": "Softwares interactivos propios",
+        "body": "Juegos 100% personalizados con contenidos y la estética del evento. Trivias, memotest y más."
+      },
+      {
+        "title": "Profesionales de eventos",
+        "body": "Locutores, conductores y cantantes con más de 20 años de experiencia y cientos de eventos realizados."
+      },
+      {
+        "title": "Respeto por el público",
+        "body": "No forzamos a nadie a participar. Percibimos el ambiente y conectamos con empatía, sin humor incómodo."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "¿En qué se diferencia Show Interactivo de otros servicios?",
+        "answer": "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Y lo mejor de todo es que con nuestro servicio no hay que eliminar una tanda de baile para desarrollarlo porque hacemos intervenciones cortas de 15 minutos cada una que se integran a lo largo de la fiesta. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+      },
+      {
+        "question": "¿Qué incluye el servicio?",
+        "answer": "Se arma a medida de cada evento. El servicio más contratado incluye la dupla (hombre/mujer) como conductores animadores de todo el evento, cantante en vivo para recepción y/o segmentos a elección, producción de trivias interactivas personalizadas con software propio, y bloques cortos de juegos a medida. Servicios bonificados opcionales incluidos: 1) Entrevistas divertidas en la llegada de invitados. 2) Ceremonias originales. 3) Actuaciones especiales personalizadas para entradas creativas. 4) Memotest personalizado. 5) Sorteos y premiaciones innovadoras. Extras opcionales con costo adicional: Tótems touch y pulseras LED audiorítmicas."
+      },
+      {
+        "question": "¿Hacen eventos en todas las provincias? ¿Cómo manejan los traslados?",
+        "answer": "Sí, trabajamos en todo el país. No cobramos extra por traslados, siempre están incluidos dentro del servicio del evento. A veces viajamos nosotros desde donde estuvimos en un evento anterior y también contamos con animadores del equipo en diferentes localidades de Argentina."
+      },
+      {
+        "question": "¿Qué tipo de eventos hacen?",
+        "answer": "Cumples de 15, bodas, cumpleaños de adultos, bar y bat mitzvá, cumples desde los 12 años, revelación de género, cumple de 1 (para adultos), y otras reuniones sociales. También todo tipo de eventos corporativos (fiestas de fin de año, team buildings, inauguraciones, lanzamientos, congresos, workshops, family day, jornadas de integración, capacitaciones, etc.). Ver landing corporativos →"
+      },
+      {
+        "question": "¿En fiestas con tandas de baile hay que sacar una tanda para hacer su show?",
+        "answer": "No, justamente lo bueno de nuestro servicio es que no hay que eliminar ninguna tanda de baile del timing, ya que nosotros realizamos intervenciones de 15-20 minutos previas a cada tanda uniendo el segmento participativo con la invitación a volver a la pista."
+      },
+      {
+        "question": "¿Si no hay baile en nuestra fiesta qué hacen?",
+        "answer": "En los eventos sin tandas de baile el entretenimiento dosificado a lo largo de todo el cronograma es fundamental, haciendo que el encuentro sea dinámico y armonioso."
+      },
+      {
+        "question": "¿Los invitados tienen que descargar alguna app para los juegos?",
+        "answer": "No, para nada. Nadie tiene que descargar nada en su teléfono, lo cual agiliza muchísimo la participación. Los invitados simplemente escanean un código QR de las pantallas o entran directamente desde el navegador de su celular a la página web que los animadores mencionan. Desde allí responden preguntas en tiempo real y participan del ranking general."
+      },
+      {
+        "question": "¿Qué pasa si el salón o el predio del evento no tiene WiFi o no alcanza para todos?",
+        "answer": "No pasa nada, no utilizamos las redes WiFi de los lugares. Nosotros usamos recursos propios y los invitados los datos de sus propios teléfonos (red 4G/5G) para participar."
+      },
+      {
+        "question": "¿Cómo es el proceso de personalización de los juegos?",
+        "answer": "Una vez confirmado el evento enviamos un link con un cuestionario para responder y pedido de material. Nosotros procesamos toda la información y producimos todo a medida."
+      },
+      {
+        "question": "¿Qué estilo de música en vivo ofrecen?",
+        "answer": "Contamos con un repertorio muy versátil de géneros que se adapta a los diferentes estilos de eventos y momentos de los mismos. (Pop, Rock, Chill, Jazz, Bossa Nova, Tango, Folclore, Cuarteto, Cumbia, Música Religiosa, Soul, Blues, Baladas). Castellano, Inglés, Portugués, Italiano, Francés."
+      },
+      {
+        "question": "¿Tienen una banda de música o cantantes con pistas?",
+        "answer": "La mayoría de los eventos los realizamos con cantantes con pistas. Se pueden sumar más músicos en vivo."
+      },
+      {
+        "question": "¿Qué pasa si ya tenemos una banda de música contratada?",
+        "answer": "La banda musical reemplaza una tanda de baile, nosotros la presentamos y no modifica en nada el desarrollo de todo lo que realizamos durante el evento."
+      },
+      {
+        "question": "¿Con cuánta anticipación recomiendan reservar la fecha del evento?",
+        "answer": "No hay un tiempo preestablecido, a veces nos reservan con un año de anticipación y otras veces hasta unos días antes si hay disponibilidad. Siempre recomendamos asegurarse la fecha con tiempo."
+      },
+      {
+        "question": "¿Qué hacen cuando hay invitados al evento que son de perfil muy bajo y no les gusta exponerse?",
+        "answer": "Ese es precisamente nuestro mayor orgullo y diferencial. No somos invasivos. Nuestro rol como locutores, conductores y animadores profesionales es adaptarnos orgánicamente al tono del evento. Los juegos se realizan desde el lugar donde están los invitados. En los que se participa de manera individual si alguno no se suma nadie se entera ni se expone. En los grupales pasa lo mismo. Si se realiza un juego de pasar al frente no se expone a nadie y se invita a hacerlo de manera voluntaria para los que quieran. De esta manera la participación fluye con total libertad."
+      },
+      {
+        "question": "¿Para qué cantidad de invitados hacen eventos?",
+        "answer": "Trabajamos desde reuniones íntimas de 20 personas hasta fiestas y eventos de más de 100 invitados."
+      },
+      {
+        "question": "¿Qué datos necesitan para presupuestar?",
+        "answer": "Fecha, tipo de evento, localidad, cantidad aproximada de invitados y horario. Con eso ya podemos armarte una propuesta."
+      }
+    ]
+  },
+  "corporativos": {
+    "hero": {
+      "eyebrow": "Eventos corporativos · Argentina",
+      "title": "Experiencias que conectan, integran y sorprenden.",
+      "description": "Conducción, gamificación, música en vivo y tecnología para transformar cada encuentro de tu empresa."
+    },
+    "tabs": [
+      {
+        "id": "fiesta",
+        "name": "Fiesta",
+        "sub": "Fin de año y aniversarios"
+      },
+      {
+        "id": "team",
+        "name": "Team Building",
+        "sub": "Integración y motivación"
+      },
+      {
+        "id": "otros",
+        "name": "Otros",
+        "sub": "Lanzamientos, congresos y family day"
+      }
+    ],
+    "stats": [
+      {
+        "value": 20,
+        "prefix": "+",
+        "label": "Años de experiencia"
+      },
+      {
+        "value": 500,
+        "prefix": "+",
+        "label": "Eventos realizados"
+      },
+      {
+        "value": 9.9,
+        "decimals": 1,
+        "label": "Valoración de clientes"
+      }
+    ],
+    "differences": [
+      {
+        "title": "Hilo conductor integral",
+        "body": "Sostenemos la energía de principio a fin y coordinamos con todos los proveedores para evitar baches."
+      },
+      {
+        "title": "Tecnología propia",
+        "body": "Trivias, memotest, sorteos y dinámicas personalizadas con la identidad y objetivos de cada empresa."
+      },
+      {
+        "title": "Equipo profesional",
+        "body": "Locutores, conductores y cantantes con experiencia real en eventos de distintas escalas."
+      },
+      {
+        "title": "Participación con propósito",
+        "body": "Diseñamos experiencias inclusivas, medibles y respetuosas que generan conexión auténtica."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "¿En qué se diferencia Show Interactivo de otros servicios?",
+        "answer": "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+      },
+      {
+        "question": "¿Qué incluye el servicio?",
+        "answer": "Se arma a medida de cada evento. El servicio más contratado incluye la dupla (hombre/mujer) como conductores animadores de todo el evento, cantante en vivo para recepción y/o segmentos a elección, producción de trivias interactivas personalizadas con software propio, y bloques cortos de juegos a medida. Servicios bonificados opcionales incluidos: 1) Entrevistas divertidas en la llegada de invitados. 2) Memotest personalizado. 3) Software propio de sorteos con branding personalizado y premiaciones innovadoras. Extras opcionales con costo adicional: Tótems touch y pulseras LED audiorítmicas."
+      },
+      {
+        "question": "¿Hacen eventos en todas las provincias? ¿Cómo manejan los traslados?",
+        "answer": "Sí, trabajamos en todo el país. No cobramos extra por traslados, siempre están incluidos dentro del servicio del evento. A veces viajamos nosotros desde donde estuvimos en un evento anterior y también contamos con animadores del equipo en diferentes localidades de Argentina."
+      },
+      {
+        "question": "¿Qué tipo de eventos hacen?",
+        "answer": "Fiestas de fin de año, team buildings, inauguraciones, lanzamientos, congresos, workshops, family day, jornadas de integración, capacitaciones, etc. Para eventos sociales ingresá a landing sociales →"
+      },
+      {
+        "question": "¿En fiestas con tandas de baile hay que sacar una tanda para hacer su show?",
+        "answer": "No, justamente lo bueno de nuestro servicio es que no hay que eliminar ninguna tanda de baile del timing, ya que nosotros realizamos intervenciones de 15-20 minutos previas a cada tanda uniendo el segmento participativo con la invitación a volver a la pista."
+      },
+      {
+        "question": "¿Si no hay baile en nuestra fiesta qué hacen?",
+        "answer": "En los eventos sin tandas de baile el entretenimiento dosificado a lo largo de todo el cronograma es fundamental, haciendo que el encuentro sea dinámico y armonioso."
+      },
+      {
+        "question": "¿Los invitados tienen que descargar alguna app para los juegos?",
+        "answer": "No, para nada. Nadie tiene que descargar nada en su teléfono, lo cual agiliza muchísimo la participación. Los invitados simplemente escanean un código QR de las pantallas o entran directamente desde el navegador de su celular a la página web que los animadores mencionan. Desde allí responden preguntas en tiempo real y participan del ranking general."
+      },
+      {
+        "question": "¿Qué pasa si el salón o el predio del evento no tiene WiFi o no alcanza para todos?",
+        "answer": "No pasa nada, no utilizamos las redes WiFi de los lugares. Nosotros usamos recursos propios y los invitados los datos de sus propios teléfonos (red 4G/5G) para participar."
+      },
+      {
+        "question": "¿Cómo es el proceso de personalización de los juegos?",
+        "answer": "Una vez confirmado el evento enviamos un link con un cuestionario para responder y pedido de material. Nosotros procesamos toda la información y producimos todo a medida."
+      },
+      {
+        "question": "¿Qué estilo de música en vivo ofrecen?",
+        "answer": "Contamos con un repertorio muy versátil de géneros que se adapta a los diferentes estilos de eventos y momentos de los mismos. (Pop, Rock, Chill, Jazz, Bossa Nova, Tango, Folclore, Cuarteto, Cumbia, Música Religiosa, Soul, Blues, Baladas). Castellano, Inglés, Portugués, Italiano, Francés."
+      },
+      {
+        "question": "¿Tienen una banda de música o cantantes con pistas?",
+        "answer": "La mayoría de los eventos los realizamos con cantantes con pistas. Se pueden sumar más músicos en vivo."
+      },
+      {
+        "question": "¿Qué pasa si ya tenemos una banda de música contratada?",
+        "answer": "La banda musical reemplaza una tanda de baile, nosotros la presentamos y no modifica en nada el desarrollo de todo lo que realizamos durante el evento."
+      },
+      {
+        "question": "¿Con cuánta anticipación recomiendan reservar la fecha del evento?",
+        "answer": "No hay un tiempo preestablecido, a veces nos reservan con un año de anticipación y otras veces hasta unos días antes si hay disponibilidad. Siempre recomendamos asegurarse la fecha con tiempo."
+      },
+      {
+        "question": "¿Qué hacen cuando hay invitados al evento que son de perfil muy bajo y no les gusta exponerse?",
+        "answer": "Ese es precisamente nuestro mayor orgullo y diferencial. No somos invasivos. Nuestro rol como locutores, conductores y animadores profesionales es adaptarnos orgánicamente al tono del evento. Los juegos se realizan desde el lugar donde están los invitados. En los que se participa de manera individual si alguno no se suma nadie se entera ni se expone. En los grupales pasa lo mismo. Si se realiza un juego de pasar al frente no se expone a nadie y se invita a hacerlo de manera voluntaria para los que quieran. De esta manera la participación fluye con total libertad."
+      },
+      {
+        "question": "¿Qué alternativas ofrecen si parte de nuestro equipo trabaja de forma remota o distribuida?",
+        "answer": "Contamos con Show Interactivo Virtual o Híbrido, un formato consolidado e ideal para equipos distribuidos en Latam y Worldwide. Conducimos el evento en vivo vía Zoom con excelente calidad de transmisión de audio y video. Implementamos trivias masivas, desafíos instantáneos por chat y dinámicas competitivas, logrando romper la pantalla y generando una adrenalina similar a la de un evento presencial."
+      },
+      {
+        "question": "¿Pueden adaptarse al tono y la cultura de mi empresa?",
+        "answer": "Es una parte importante de lo que hacemos. En la reunión de briefing definimos el tono, los temas que se pueden y no se pueden tocar, las referencias internas que tiene sentido usar y los mensajes que la empresa quiere transmitir."
+      },
+      {
+        "question": "¿Para qué cantidad de invitados hacen eventos?",
+        "answer": "Trabajamos desde reuniones de 15 personas hasta eventos masivos de 500, 1000 o más asistentes."
+      },
+      {
+        "question": "¿Emiten factura?",
+        "answer": "Sí, emitimos la documentación correspondiente. Coordinamos la modalidad de contratación y pago que tu organización necesite."
+      },
+      {
+        "question": "¿Qué datos necesitan para presupuestar?",
+        "answer": "Fecha, tipo de evento, localidad, cantidad aproximada de invitados y horario. Con eso ya podemos armarte una propuesta."
+      }
+    ]
+  },
+  "logos": [
+    {
+      "src": "/media/images/logos/3M.jpg",
+      "alt": "3M"
+    },
+    {
+      "src": "/media/images/logos/AFA.png",
+      "alt": "AFA"
+    },
+    {
+      "src": "/media/images/logos/AGD.png",
+      "alt": "AGD"
+    },
+    {
+      "src": "/media/images/logos/Aamf.jpg",
+      "alt": "Aamf"
+    },
+    {
+      "src": "/media/images/logos/Accenture.jpg",
+      "alt": "Accenture"
+    },
+    {
+      "src": "/media/images/logos/Adrian-Mercado.png",
+      "alt": "Adrian Mercado"
+    },
+    {
+      "src": "/media/images/logos/Alto-Palermo.jpg",
+      "alt": "Alto Palermo"
+    },
+    {
+      "src": "/media/images/logos/Amanco-Wavin.jpg",
+      "alt": "Amanco Wavin"
+    },
+    {
+      "src": "/media/images/logos/Apyce.jpg",
+      "alt": "Apyce"
+    },
+    {
+      "src": "/media/images/logos/Artear.png",
+      "alt": "Artear"
+    },
+    {
+      "src": "/media/images/logos/Avalian.png",
+      "alt": "Avalian"
+    },
+    {
+      "src": "/media/images/logos/BNP-Paribas-Cardif.jpg",
+      "alt": "BNP Paribas Cardif"
+    },
+    {
+      "src": "/media/images/logos/Boca-Juniors.png",
+      "alt": "Boca Juniors"
+    },
+    {
+      "src": "/media/images/logos/Cabal.png",
+      "alt": "Cabal"
+    },
+    {
+      "src": "/media/images/logos/Camuzzi.jpg",
+      "alt": "Camuzzi"
+    },
+    {
+      "src": "/media/images/logos/Clarin.png",
+      "alt": "Clarin"
+    },
+    {
+      "src": "/media/images/logos/Cooperacion-Seguros.png",
+      "alt": "Cooperacion Seguros"
+    },
+    {
+      "src": "/media/images/logos/Dos-Hermanos.png",
+      "alt": "Dos Hermanos"
+    },
+    {
+      "src": "/media/images/logos/Errepar.png",
+      "alt": "Errepar"
+    },
+    {
+      "src": "/media/images/logos/Esab.jpg",
+      "alt": "Esab"
+    },
+    {
+      "src": "/media/images/logos/Federada.jpg",
+      "alt": "Federada"
+    },
+    {
+      "src": "/media/images/logos/Garantizar.jpg",
+      "alt": "Garantizar"
+    },
+    {
+      "src": "/media/images/logos/Gerdau.jpg",
+      "alt": "Gerdau"
+    },
+    {
+      "src": "/media/images/logos/Globant.jpg",
+      "alt": "Globant"
+    },
+    {
+      "src": "/media/images/logos/IRSA.png",
+      "alt": "IRSA"
+    },
+    {
+      "src": "/media/images/logos/Imasa-Komatsu.png",
+      "alt": "Imasa Komatsu"
+    },
+    {
+      "src": "/media/images/logos/Infuy.jpg",
+      "alt": "Infuy"
+    },
+    {
+      "src": "/media/images/logos/Inta.jpg",
+      "alt": "Inta"
+    },
+    {
+      "src": "/media/images/logos/Interassist.png",
+      "alt": "Interassist"
+    },
+    {
+      "src": "/media/images/logos/John-Deere.jpg",
+      "alt": "John Deere"
+    },
+    {
+      "src": "/media/images/logos/Kinder.jpg",
+      "alt": "Kinder"
+    },
+    {
+      "src": "/media/images/logos/Litoral-Gas.png",
+      "alt": "Litoral Gas"
+    },
+    {
+      "src": "/media/images/logos/Mercado-Libre.png",
+      "alt": "Mercado Libre"
+    },
+    {
+      "src": "/media/images/logos/Metrogas.png",
+      "alt": "Metrogas"
+    },
+    {
+      "src": "/media/images/logos/Musimundo.jpg",
+      "alt": "Musimundo"
+    },
+    {
+      "src": "/media/images/logos/Naranja-X.png",
+      "alt": "Naranja X"
+    },
+    {
+      "src": "/media/images/logos/New-Holland.png",
+      "alt": "New Holland"
+    },
+    {
+      "src": "/media/images/logos/Oblita.png",
+      "alt": "Oblita"
+    },
+    {
+      "src": "/media/images/logos/PwC.jpg",
+      "alt": "PwC"
+    },
+    {
+      "src": "/media/images/logos/Red-Hat.jpg",
+      "alt": "Red Hat"
+    },
+    {
+      "src": "/media/images/logos/SAP.jpg",
+      "alt": "SAP"
+    },
+    {
+      "src": "/media/images/logos/Scania.jpg",
+      "alt": "Scania"
+    },
+    {
+      "src": "/media/images/logos/Silfab.png",
+      "alt": "Silfab"
+    },
+    {
+      "src": "/media/images/logos/Sommier-Center.png",
+      "alt": "Sommier Center"
+    },
+    {
+      "src": "/media/images/logos/Stanley-Black-Decker.jpg",
+      "alt": "Stanley Black Decker"
+    },
+    {
+      "src": "/media/images/logos/Summit-Agro.png",
+      "alt": "Summit Agro"
+    },
+    {
+      "src": "/media/images/logos/Ternium.png",
+      "alt": "Ternium"
+    },
+    {
+      "src": "/media/images/logos/Thonet-Vander.png",
+      "alt": "Thonet Vander"
+    },
+    {
+      "src": "/media/images/logos/Tuteur.jpg",
+      "alt": "Tuteur"
+    },
+    {
+      "src": "/media/images/logos/Uala.png",
+      "alt": "Uala"
+    },
+    {
+      "src": "/media/images/logos/YPF.jpg",
+      "alt": "YPF"
+    },
+    {
+      "src": "/media/images/logos/Zara.png",
+      "alt": "Zara"
+    }
+  ]
+}

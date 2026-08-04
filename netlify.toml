@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[redirects]]
+  from = "/landing_sociales.html"
+  to = "/sociales"
+  status = 301
+
+[[redirects]]
+  from = "/landing_corporativos.html"
+  to = "/corporativos"
+  status = 301
+
+[[redirects]]
+  from = "/testimonios-sociales.html"
+  to = "/sociales/testimonios"
+  status = 301
+
+[[redirects]]
+  from = "/testimonios-corporativos.html"
+  to = "/corporativos/testimonios"
+  status = 301
+
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

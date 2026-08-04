@@ -1,0 +1,62 @@
+---
+interface Props { initial: Record<string, any>; variant: 'sociales' | 'corporativos' }
+const { initial, variant } = Astro.props;
+const title = variant === 'sociales' ? initial.subTitleHtml : initial.subTitle;
+const description = variant === 'sociales' ? initial.subDescHtml : initial.subDesc;
+const cards = [
+  { key:'previa', number:'01', eyebrow:'Antes', title:'La previa', description:initial.previaDesc, points:initial.previaPoints, top:initial.visualPreviaTop, bottom:initial.visualPreviaBot },
+  { key:'evento', number:'02', eyebrow:'Durante', title:'El evento', description:initial.eventoDesc ?? 'Somos el hilo conductor del encuentro y cuidamos cada transición para sostener la energía.', points:initial.eventoPoints, top:initial.visualEventoTop, bottom:initial.visualEventoBot },
+  { key:'resultado', number:'03', eyebrow:'Después', title:'El resultado', description:initial.resultadoDesc, points:initial.resultadoPoints ?? [], top:initial.visualResultadoTop, bottom:initial.visualResultadoBot }
+];
+---
+
+<section class="intro section-tight" id="experiencia">
+  <div class="shell section-heading reveal">
+    <div class="eyebrow" id="sub-eyebrow">{variant === 'corporativos' ? initial.subEyebrow : 'Una experiencia hecha a medida'}</div>
+    <h2 id="sub-title" set:html={title}></h2>
+    {variant === 'corporativos' && <strong id="sub-tagline" class="tagline">{initial.subTagline}</strong>}
+    <p id="sub-description" set:html={description}></p>
+  </div>
+</section>
+
+<section class="journey section-tight">
+  <div class="shell cards">
+    {cards.map(card => (
+      <article class="journey-card glass-card reveal" data-journey={card.key}>
+        <div class="copy">
+          <span class="step">{card.number} · {card.eyebrow}</span>
+          <h3>{card.title}</h3>
+          <p data-description>{card.description}</p>
+          <ul>{card.points.map((point: string) => <li>{point}</li>)}</ul>
+        </div>
+        <div class="visuals" aria-hidden="true">
+          <img data-image="top" src={card.top} width="720" height="480" loading="lazy" alt="" />
+          <img data-image="bottom" src={card.bottom} width="720" height="480" loading="lazy" alt="" />
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .intro { border-bottom: 1px solid var(--line); background: var(--color-plum-deep); }
+  .intro .section-heading { margin-bottom: 0; }
+  .tagline { display: block; margin: -.15rem 0 .65rem; color: var(--color-brand); font-family: var(--font-display); font-size: 1.05rem; }
+  .journey { background: linear-gradient(180deg,var(--color-plum),var(--color-plum-deep)); }
+  .cards { display: grid; gap: 1rem; }
+  .journey-card { min-height: 430px; display: grid; grid-template-columns: 1.05fr .95fr; overflow: hidden; }
+  .journey-card:nth-child(even) .copy { order: 2; }
+  .copy { padding: clamp(1.5rem,4vw,3rem); }
+  .step { color: var(--color-brand); font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+  h3 { margin: .4rem 0 .7rem; font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem); line-height: 1; text-transform: uppercase; }
+  p { color: var(--light); }
+  ul { display: grid; gap: .45rem; margin: 1.2rem 0 0; padding-left: 1.15rem; color: var(--light); }
+  li::marker { color: var(--color-brand); }
+  .visuals { position: relative; min-height: 380px; background: var(--color-plum-dark); overflow: hidden; }
+  .visuals img { position: absolute; width: 72%; height: 70%; object-fit: cover; border-radius: 1rem; box-shadow: 0 18px 44px rgba(0,0,0,.38); transition: transform .5s ease; }
+  .visuals img:first-child { left: 5%; top: 5%; }
+  .visuals img:last-child { right: 5%; bottom: 5%; }
+  .journey-card:hover .visuals img:first-child { transform: translate(-3px,-3px) rotate(-1deg); }
+  .journey-card:hover .visuals img:last-child { transform: translate(3px,3px) rotate(1deg); }
+  @media(max-width:780px){.journey-card{grid-template-columns:1fr}.journey-card:nth-child(even) .copy{order:0}.visuals{min-height:300px}}
+</style>
