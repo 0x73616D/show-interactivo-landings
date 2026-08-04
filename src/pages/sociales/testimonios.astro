@@ -1,9 +1,4 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import TestimonialHero from '../../components/TestimonialHero.astro';
-import TextTestimonials from '../../components/TextTestimonials.astro';
+import page from '../../templates/testimonios-sociales.html?raw';
 ---
-<BaseLayout title="Testimonios Sociales · Show Interactivo" description="Historias reales de familias que celebraron su evento con Show Interactivo." variant="sociales">
-  <TestimonialHero variant="sociales" title={'Lo que dicen <span class="accent">de nosotros.</span>'} description="Historias reales de familias que celebraron su evento con Show Interactivo." />
-  <TextTestimonials />
-</BaseLayout>
+<Fragment set:html={page} />

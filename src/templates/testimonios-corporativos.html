@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonios · Show Interactivo · Corporativos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#4C1C56;--bg-deep:#3A1442;--bg-darker:#2A0E30;--accent:#E7048F;--accent-soft:rgba(231,4,143,.1);--white:#fff;--light:#e5d8e8;--muted:#a598aa;--line:rgba(255,255,255,.08);--display:'Montserrat',sans-serif;--body:'Inter',sans-serif;--wa:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--white);line-height:1.5}
+img,video{display:block;max-width:100%}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+@media(max-width:768px){.container{padding:0 20px}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(76,28,86,.85);border-bottom:1px solid var(--line);transition:background .3s ease,box-shadow .3s ease}
+nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+nav .container{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px}
+.logo-img{height:40px;width:auto}
+nav ul{list-style:none;display:flex;gap:32px;align-items:center}
+nav a{color:var(--white);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--accent)}
+.nav-cta{background:var(--white);color:var(--bg);padding:11px 24px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
+@media(max-width:900px){nav ul{display:none}}
+
+.page-hero{padding:120px 0 32px;text-align:center;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-deep) 100%)}
+.page-hero .eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.page-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-0.025em;margin-bottom:20px;text-transform:uppercase}
+.page-hero h1 em{color:var(--accent);font-style:normal}
+.page-hero p{font-size:17px;color:var(--light);max-width:60ch;margin:0 auto}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--light);text-decoration:none;font-size:14px;margin-bottom:20px;transition:color .2s}
+.back-link:hover{color:var(--accent)}
+
+.selector{padding:24px 0 12px}
+.selector-label{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;text-align:center}
+.type-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto}
+.type-tab{background:rgba(255,255,255,.03);border:2px solid var(--line);color:var(--white);padding:16px 20px;border-radius:16px;cursor:pointer;transition:all .25s ease;font-family:inherit;text-align:left}
+.type-tab:hover{background:rgba(255,255,255,.06);border-color:rgba(231,4,143,.4)}
+.type-tab.active{border-color:var(--accent);background:var(--accent-soft)}
+.type-tab .tab-name{font-family:var(--display);font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:2px}
+.type-tab .tab-sub{font-size:13px;color:var(--light);opacity:.8}
+@media(max-width:700px){.type-tabs{grid-template-columns:1fr}}
+
+.home-nav{text-align:center;margin:14px 0 22px}
+.home-nav.bottom{margin:28px 0 0}
+
+.videos-section{padding:12px 0 60px}
+.video-set{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:52px}
+.video-set::before{content:attr(data-title);grid-column:1/-1;font-family:var(--display);font-size:clamp(24px,4vw,38px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:4px}
+@media(max-width:900px){.video-set{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.video-set{grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:38px}}
+.v-card{position:relative;border:none;padding:0;cursor:pointer;background:var(--bg-deep);border-radius:14px;overflow:hidden;aspect-ratio:9/16;box-shadow:0 8px 22px rgba(0,0,0,.35);transition:transform .3s ease,box-shadow .3s ease}
+.v-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.5)}
+.v-card:hover .v-play{transform:scale(1.15);background:var(--accent)}
+.v-card video{width:100%;height:100%;object-fit:cover}
+.v-card.is-playing .v-overlay{display:none}
+.v-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 45%,rgba(0,0,0,.85) 100%);display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:16px 12px;pointer-events:none}
+.v-play{width:52px;height:52px;background:rgba(255,255,255,.9);color:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:4px;margin-top:auto;margin-bottom:auto;transition:all .3s ease;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.v-name{color:white;font-family:var(--display);font-weight:700;font-size:13px;text-align:center;text-transform:uppercase;letter-spacing:.03em;line-height:1.2;text-shadow:0 2px 6px rgba(0,0,0,.7)}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(10px)}
+.modal-overlay.open{display:flex;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-inner{position:relative;max-width:min(420px,90vw);width:100%}
+.modal-video{width:100%;aspect-ratio:9/16;border-radius:20px;box-shadow:0 25px 80px rgba(0,0,0,.6);background:#000}
+.modal-close{position:absolute;top:-42px;right:-4px;width:36px;height:36px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:white;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.modal-close:hover{background:var(--accent)}
+.modal-title{color:white;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.05em;text-align:center;margin-top:16px}
+
+footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(--line);margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.foot-contact-line{margin-bottom:10px;font-size:14px}
+.foot-contact-line a{color:var(--accent);text-decoration:none}
+.foot-copy{font-size:12px;color:var(--muted);text-align:center;padding-top:24px;border-top:1px solid var(--line);margin-top:24px}
+@media(max-width:700px){.foot-grid{grid-template-columns:1fr;text-align:center}}
+
+.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:99;transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:28px;height:28px;fill:white}
+@media(max-width:700px){
+  .type-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .type-tab{min-width:0;padding:12px 8px;text-align:center}
+  .type-tab .tab-name{font-size:12px;line-height:1.2;overflow-wrap:anywhere}
+  .type-tab .tab-sub{display:none}
+}
+@media(max-width:520px){.wa-float{display:none}}
+@media(max-width:400px){.type-tab .tab-name{font-size:11px;overflow-wrap:normal}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/corporativos" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+    <ul>
+      <li><a href="/corporativos">Inicio</a></li>
+      <li><a href="/corporativos#proceso">Proceso</a></li>
+      <li><a href="/corporativos#clientes">Clientes</a></li>
+      <li><a href="/corporativos/testimonios">Testimonios</a></li>
+      <li><a href="/corporativos#faq">FAQ</a></li>
+      <li><a href="/sociales">Sociales</a></li>
+    </ul>
+    <a href="/corporativos#cta" class="nav-cta">Cotizar Evento</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <a href="/corporativos" class="back-link">← Volver a Corporativos</a>
+    <div class="eyebrow">Show Interactivo · Corporativos</div>
+    <h1>Lo que dicen <em>de nosotros.</em></h1>
+    <p>Testimonios de empresas y equipos que vivieron una experiencia Show Interactivo.</p>
+  </div>
+</section>
+
+<div class="container selector">
+  <div class="selector-label">¿Qué tipo de evento te interesa?</div>
+  <div class="type-tabs">
+    <button class="type-tab active" data-target="fiesta">
+      <div class="tab-name">Fiesta</div>
+      <div class="tab-sub">Fin de año, aniversarios</div>
+    </button>
+    <button class="type-tab" data-target="team">
+      <div class="tab-name">Team Building</div>
+      <div class="tab-sub">Integración y motivación</div>
+    </button>
+    <button class="type-tab" data-target="otros">
+      <div class="tab-name">Otros</div>
+      <div class="tab-sub">Lanzamientos, congresos, family day</div>
+    </button>
+  </div>
+</div>
+
+<section class="videos-section">
+  <div class="container">
+    <div class="home-nav"><a href="/corporativos" class="back-link">← Volver a la Home</a></div>
+    <div class="video-set active" data-set="fiesta" data-title="Fiestas corporativas">
+      <article class="v-card" data-video="/media/videos/fiesta/01-cooperacion-seguros.mp4" data-name="Cooperacion Seguros">
+        <video data-src="/media/videos/fiesta/01-cooperacion-seguros.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Cooperacion Seguros</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/02-biol.mp4" data-name="Biol">
+        <video data-src="/media/videos/fiesta/02-biol.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Biol</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/03-dos-hermanos.mp4" data-name="Dos Hermanos">
+        <video data-src="/media/videos/fiesta/03-dos-hermanos.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Dos Hermanos</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/04-unigis.mp4" data-name="Unigis">
+        <video data-src="/media/videos/fiesta/04-unigis.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Unigis</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/05-agd-aceitera-general-deheza.mp4" data-name="Agd Aceitera General Deheza">
+        <video data-src="/media/videos/fiesta/05-agd-aceitera-general-deheza.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Agd Aceitera General Deheza</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/06-febicom.mp4" data-name="Febicom">
+        <video data-src="/media/videos/fiesta/06-febicom.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Febicom</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/07-grupo-pinares.mp4" data-name="Grupo Pinares">
+        <video data-src="/media/videos/fiesta/07-grupo-pinares.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Grupo Pinares</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/08-thonet-vander.mp4" data-name="Thonet Vander">
+        <video data-src="/media/videos/fiesta/08-thonet-vander.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Thonet Vander</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/09-chabas.mp4" data-name="Chabas">
+        <video data-src="/media/videos/fiesta/09-chabas.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Chabas</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/10-sommier-center.mp4" data-name="Sommier Center">
+        <video data-src="/media/videos/fiesta/10-sommier-center.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Sommier Center</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/11-coa.mp4" data-name="Coa">
+        <video data-src="/media/videos/fiesta/11-coa.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Coa</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/12-el-abastecedor.mp4" data-name="El Abastecedor">
+        <video data-src="/media/videos/fiesta/12-el-abastecedor.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">El Abastecedor</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/13-datawise.mp4" data-name="Datawise">
+        <video data-src="/media/videos/fiesta/13-datawise.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Datawise</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/14-imasa.mp4" data-name="Imasa">
+        <video data-src="/media/videos/fiesta/14-imasa.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Imasa</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/15-itapu.mp4" data-name="Itapu">
+        <video data-src="/media/videos/fiesta/15-itapu.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Itapu</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/16-riggio.mp4" data-name="Riggio">
+        <video data-src="/media/videos/fiesta/16-riggio.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Riggio</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/17-expex-tsc-cas.mp4" data-name="Expex Tsc Cas">
+        <video data-src="/media/videos/fiesta/17-expex-tsc-cas.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Expex Tsc Cas</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/18-enod.mp4" data-name="Enod">
+        <video data-src="/media/videos/fiesta/18-enod.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Enod</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/19-jayor.mp4" data-name="Jayor">
+        <video data-src="/media/videos/fiesta/19-jayor.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Jayor</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/20-symco-coamtra.mp4" data-name="Symco Coamtra">
+        <video data-src="/media/videos/fiesta/20-symco-coamtra.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Symco Coamtra</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/21-iecs.mp4" data-name="Iecs">
+        <video data-src="/media/videos/fiesta/21-iecs.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Iecs</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/22-mañana-seguros.mp4" data-name="MañAna Seguros">
+        <video data-src="/media/videos/fiesta/22-mañana-seguros.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">MañAna Seguros</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/23-la-jaboneria.mp4" data-name="La Jaboneria">
+        <video data-src="/media/videos/fiesta/23-la-jaboneria.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">La Jaboneria</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/24-mutual-argentino.mp4" data-name="Mutual Argentino">
+        <video data-src="/media/videos/fiesta/24-mutual-argentino.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Mutual Argentino</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/25-oblita.mp4" data-name="Oblita">
+        <video data-src="/media/videos/fiesta/25-oblita.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Oblita</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/26-plaswag.mp4" data-name="Plaswag">
+        <video data-src="/media/videos/fiesta/26-plaswag.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Plaswag</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/27-amia.mp4" data-name="Amia">
+        <video data-src="/media/videos/fiesta/27-amia.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Amia</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/28-estructuras.mp4" data-name="Estructuras">
+        <video data-src="/media/videos/fiesta/28-estructuras.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Estructuras</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/29-lodiser.mp4" data-name="Lodiser">
+        <video data-src="/media/videos/fiesta/29-lodiser.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Lodiser</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/30-la-sastreria.mp4" data-name="La Sastreria">
+        <video data-src="/media/videos/fiesta/30-la-sastreria.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">La Sastreria</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/31-club-independiente-chanar-ladeado.mp4" data-name="Club Independiente Chanar Ladeado">
+        <video data-src="/media/videos/fiesta/31-club-independiente-chanar-ladeado.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Club Independiente Chanar Ladeado</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/32-comercializadora-morres.mp4" data-name="Comercializadora Morres">
+        <video data-src="/media/videos/fiesta/32-comercializadora-morres.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Comercializadora Morres</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/fiesta/33-abel-santos-y-asociados.mp4" data-name="Abel Santos Y Asociados">
+        <video data-src="/media/videos/fiesta/33-abel-santos-y-asociados.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Abel Santos Y Asociados</div>
+        </div>
+      </article>
+    </div>
+    <div class="video-set" data-set="team" data-title="Team Building">
+      <article class="v-card" data-video="/media/videos/team/01-mercado-pago.mp4" data-name="Mercado Pago">
+        <video data-src="/media/videos/team/01-mercado-pago.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Mercado Pago</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/02-adrian-mercado.mp4" data-name="Adrian Mercado">
+        <video data-src="/media/videos/team/02-adrian-mercado.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Adrian Mercado</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/03-agea-clarin.mp4" data-name="Agea Clarin">
+        <video data-src="/media/videos/team/03-agea-clarin.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Agea Clarin</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/04-sew-eurodrive.mp4" data-name="Sew Eurodrive">
+        <video data-src="/media/videos/team/04-sew-eurodrive.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Sew Eurodrive</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/05-klinger.mp4" data-name="Klinger">
+        <video data-src="/media/videos/team/05-klinger.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Klinger</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/06-mercado-libre.mp4" data-name="Mercado Libre">
+        <video data-src="/media/videos/team/06-mercado-libre.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Mercado Libre</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/07-silfab.mp4" data-name="Silfab">
+        <video data-src="/media/videos/team/07-silfab.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Silfab</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/08-zara.mp4" data-name="Zara">
+        <video data-src="/media/videos/team/08-zara.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Zara</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/09-cofco-intl.mp4" data-name="Cofco Intl">
+        <video data-src="/media/videos/team/09-cofco-intl.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Cofco Intl</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/10-onboard.mp4" data-name="Onboard">
+        <video data-src="/media/videos/team/10-onboard.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Onboard</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/11-huinoil.mp4" data-name="Huinoil">
+        <video data-src="/media/videos/team/11-huinoil.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Huinoil</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/12-iam-seguros.mp4" data-name="Iam Seguros">
+        <video data-src="/media/videos/team/12-iam-seguros.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Iam Seguros</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/13-koppert.mp4" data-name="Koppert">
+        <video data-src="/media/videos/team/13-koppert.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Koppert</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/14-la-morena.mp4" data-name="La Morena">
+        <video data-src="/media/videos/team/14-la-morena.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">La Morena</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/15-pwc.mp4" data-name="Pwc">
+        <video data-src="/media/videos/team/15-pwc.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Pwc</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/16-variacode.mp4" data-name="Variacode">
+        <video data-src="/media/videos/team/16-variacode.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Variacode</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/17-neko-games.mp4" data-name="Neko Games">
+        <video data-src="/media/videos/team/17-neko-games.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Neko Games</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/team/18-verifarma.mp4" data-name="Verifarma">
+        <video data-src="/media/videos/team/18-verifarma.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Verifarma</div>
+        </div>
+      </article>
+    </div>
+    <div class="video-set" data-set="otros" data-title="Otros eventos">
+      <article class="v-card" data-video="/media/videos/otros/01-summit-agro.mp4" data-name="Summit Agro">
+        <video data-src="/media/videos/otros/01-summit-agro.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Summit Agro</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/otros/02-fada.mp4" data-name="Fada">
+        <video data-src="/media/videos/otros/02-fada.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Fada</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/otros/03-catpro.mp4" data-name="Catpro">
+        <video data-src="/media/videos/otros/03-catpro.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Catpro</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/otros/04-produ.mp4" data-name="Produ">
+        <video data-src="/media/videos/otros/04-produ.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Produ</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/otros/05-pavon-arriba.mp4" data-name="Pavon Arriba">
+        <video data-src="/media/videos/otros/05-pavon-arriba.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Pavon Arriba</div>
+        </div>
+      </article>
+      <article class="v-card" data-video="/media/videos/otros/06-neone.mp4" data-name="Neone">
+        <video data-src="/media/videos/otros/06-neone.mp4" muted playsinline preload="none"></video>
+        <div class="v-overlay">
+          <div class="v-play">▶</div>
+          <div class="v-name">Neone</div>
+        </div>
+      </article>
+    </div>
+    <div class="home-nav bottom"><a href="/corporativos" class="back-link">← Volver a la Home</a></div>
+  </div>
+</section>
+
+<a href="https://wa.me/541124629086" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</a>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-contact-line">WhatsApp Corporativos · <a href="https://wa.me/541124629086">+54 11 2462-9086</a></div>
+        <div class="foot-contact-line">Instagram · <a href="https://instagram.com/si.showinteractivo">@si.showinteractivo</a></div>
+      </div>
+      <a href="/corporativos" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+    </div>
+    <div class="foot-copy">Show Interactivo © 2026 · Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+const tabs = document.querySelectorAll('.type-tab');
+const sets = document.querySelectorAll('.video-set');
+const catalog = document.querySelector('.videos-section .container');
+const categoryOrder = ['fiesta','team','otros'];
+
+function setType(t){
+  tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === t));
+  [t, ...categoryOrder.filter(category => category !== t)].forEach(category => {
+    const section = document.querySelector(`.video-set[data-set="${category}"]`);
+    if(section) catalog.insertBefore(section, catalog.querySelector('.home-nav.bottom'));
+  });
+  try { localStorage.setItem('si_corp_tab', t); } catch(e){}
+}
+
+tabs.forEach(tab => tab.addEventListener('click', () => setType(tab.dataset.target)));
+
+try {
+  const saved = localStorage.getItem('si_corp_tab');
+  const valid = ['fiesta','team','otros'];
+  if(saved && valid.includes(saved)) setType(saved);
+  else setType('fiesta');
+} catch(e){ setType('fiesta'); }
+
+document.querySelectorAll('.v-card').forEach(card => {
+  card.addEventListener('click', () => {
+    if(card.classList.contains('is-playing')) return;
+    const video = card.querySelector('video');
+    if(!video.src){ video.src = video.dataset.src; video.load(); }
+    video.controls = true;
+    video.muted = false;
+    card.classList.add('is-playing');
+    video.play().catch(()=>{});
+  });
+});
+
+const lazyVideos = document.querySelectorAll('.v-card video[data-src]');
+if('IntersectionObserver' in window){
+  const videoObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const video = entry.target;
+      if(!video.src){ video.src = video.dataset.src; video.load(); }
+      videoObserver.unobserve(video);
+    });
+  }, { rootMargin:'400px 0px' });
+  lazyVideos.forEach(video => videoObserver.observe(video));
+} else {
+  lazyVideos.forEach(video => { video.src = video.dataset.src; video.load(); });
+}
+
+// Nav scroll
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if(navEl) navEl.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+document.querySelectorAll('.v-card video').forEach(v => {
+  v.addEventListener('loadedmetadata', () => {
+    v.currentTime = 0.5;
+  });
+});
+</script>
+</body>
+</html>

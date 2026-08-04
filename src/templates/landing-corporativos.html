@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show Interactivo · Eventos Corporativos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#4C1C56;
+  --bg-deep:#3A1442;
+  --bg-darker:#2A0E30;
+  --accent:#E7048F;
+  --accent-soft:rgba(231,4,143,.15);
+  --white:#FFFFFF;
+  --light:rgba(255,255,255,.85);
+  --muted:rgba(255,255,255,.65);
+  --line:rgba(255,255,255,.12);
+  --wa:#25D366;
+  --display:'Montserrat',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+@media(max-width:768px){.container{padding:0 20px}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(76,28,86,.85);border-bottom:1px solid var(--line)}
+nav .container{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px}
+.logo-link{display:inline-block;line-height:0}
+.logo-img{height:44px;width:auto;display:block}
+nav ul{display:flex;gap:36px;list-style:none;align-items:center}
+nav ul a{color:var(--white);text-decoration:none;font-size:15px;font-weight:600;position:relative;padding:6px 0}
+nav ul a.active::after, nav ul a:hover::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent);border-radius:2px}
+.nav-cta{background:var(--white);color:var(--bg);padding:11px 24px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
+@media(max-width:900px){nav ul{display:none}}
+
+.hero{padding:110px 0 20px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-deep) 50%,var(--bg) 100%)}
+.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.55;pointer-events:none;transition:opacity .4s ease}
+.hero-bg-video.swapping{opacity:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(58,20,66,.72) 0%,rgba(42,14,48,.6) 50%,rgba(58,20,66,.72) 100%);z-index:1;pointer-events:none}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(231,4,143,.2) 0%,transparent 40%),radial-gradient(circle at 80% 70%,rgba(231,4,143,.15) 0%,transparent 45%);pointer-events:none}
+.hero-content{position:relative;z-index:3}
+.eyebrow{font-size:15px;font-weight:500;color:var(--white);margin-bottom:16px;display:inline-block;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(42px,6.5vw,84px);line-height:1;letter-spacing:-0.02em;margin-bottom:32px;text-transform:uppercase;max-width:18ch}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero p.lead{font-size:19px;color:var(--light);max-width:65ch;margin-bottom:48px;line-height:1.55}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary,.btn-secondary{padding:16px 36px;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .2s;border:none;cursor:pointer;font-family:inherit;letter-spacing:.05em}
+.btn-uppercase{text-transform:uppercase}
+.btn-primary{background:var(--white);color:var(--bg)}
+.btn-primary:hover{background:var(--accent);color:var(--white);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--white);border:2px solid var(--white)}
+.btn-secondary:hover{background:var(--white);color:var(--bg);transform:translateY(-2px)}
+
+.stats{padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-deep)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.stat{text-align:center}
+.stat-num{font-family:var(--display);font-weight:800;font-size:clamp(56px,7vw,96px);line-height:1;color:var(--accent);letter-spacing:-0.03em}
+.stat-label{font-size:13px;text-transform:uppercase;letter-spacing:.15em;color:var(--light);margin-top:12px;font-weight:600}
+@media(max-width:700px){.stats-grid{grid-template-columns:1fr;gap:40px}}
+
+.why{padding:20px 0;border-top:1px solid var(--line);background:linear-gradient(180deg,var(--bg) 0%,var(--bg-deep) 100%)}
+.why-wrap{text-align:center;max-width:900px;margin:0 auto}
+.why h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1.05;letter-spacing:-0.02em;margin:24px 0 32px;text-transform:uppercase}
+.why h2 em{color:var(--accent);font-style:normal}
+.why p{font-size:20px;color:var(--light);line-height:1.6;margin-bottom:16px}
+
+.journey{padding:16px 0}
+.section-intro{max-width:800px;margin-bottom:16px}
+.section-intro h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1.05;letter-spacing:-0.02em;margin:24px 0 20px;text-transform:uppercase}
+.section-intro p{font-size:18px;color:var(--light);line-height:1.6}
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:18px}
+.stage:nth-child(even){direction:rtl}
+.stage:nth-child(even) > *{direction:ltr}
+.stage-num{font-family:var(--display);font-weight:900;font-size:200px;line-height:1;color:var(--accent);opacity:.25;margin-bottom:-30px;letter-spacing:-0.05em}
+.stage-visual{background-color:var(--bg-deep);background-size:cover;background-position:center;border-radius:24px;aspect-ratio:4/5;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.stage-visual.double{display:flex;flex-direction:column;gap:12px;aspect-ratio:auto;background:none;border:none;box-shadow:none}
+.stage-visual.double .visual-img{flex:1;aspect-ratio:16/10;background-color:var(--bg-deep);background-size:cover;background-position:center 30%;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,.25);min-height:0}
+.stage-visual.double .visual-img.pos-left{background-position:left center}
+.stage-content h3{font-family:var(--display);font-weight:800;font-size:52px;line-height:1;margin-bottom:12px;text-transform:uppercase;letter-spacing:-0.02em}
+.stage-content .stage-sub{color:var(--accent);font-size:18px;font-weight:600;margin-bottom:24px;font-style:italic}
+.stage-content p{font-size:17px;color:var(--light);margin-bottom:32px;line-height:1.65}
+.stage-points{list-style:none;display:flex;flex-direction:column;gap:14px}
+.stage-points li{padding-left:32px;position:relative;font-size:15px;line-height:1.55;color:var(--light)}
+.stage-points li::before{content:"";position:absolute;left:0;top:10px;width:18px;height:2px;background:var(--accent)}
+@media(max-width:900px){.stage{grid-template-columns:1fr;gap:40px;margin-bottom:80px}.stage:nth-child(even){direction:ltr}.stage-num{font-size:120px}}
+
+.diffs{padding:120px 0;background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.diff-header{text-align:center;max-width:780px;margin:0 auto 80px}
+.diff-header h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1.05;margin:24px 0 20px;text-transform:uppercase;letter-spacing:-0.02em}
+.diff-header p{font-size:18px;color:var(--light)}
+.diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.diff{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:40px;transition:all .25s}
+.diff:hover{border-color:var(--accent);background:rgba(231,4,143,.08);transform:translateY(-4px)}
+.diff-num{font-family:var(--display);color:var(--accent);font-size:13px;letter-spacing:.2em;margin-bottom:16px;font-weight:700}
+.diff h3{font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:16px;line-height:1.2;text-transform:uppercase}
+.diff p{color:var(--light);font-size:15px;line-height:1.6}
+@media(max-width:800px){.diff-grid{grid-template-columns:1fr}}
+
+.testimonials{padding:20px 0}
+.testimonials-header{text-align:center;max-width:780px;margin:0 auto 18px}
+.testimonials-header h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.5vw,52px);line-height:1.05;margin:24px 0 16px;text-transform:uppercase;letter-spacing:-0.02em}
+.testimonials-header p{color:var(--light);font-size:17px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testi-grid.two-cols{grid-template-columns:repeat(2,1fr);max-width:900px;margin:0 auto}
+.testi-more-wrap{text-align:center;margin-top:24px}
+.testi{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;transition:all .25s}
+.testi:hover{border-color:var(--accent);background:rgba(231,4,143,.06)}
+.testi-quote{font-family:var(--body);font-style:italic;font-size:16px;line-height:1.55;margin-bottom:24px;flex:1;color:var(--light)}
+.testi-quote::before{content:"\201C";display:block;font-family:var(--display);font-size:48px;color:var(--accent);line-height:1;margin-bottom:8px}
+.testi-author{font-size:14px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.testi-co{font-size:13px;color:var(--muted);margin-top:4px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+
+.logos{padding:16px 0;overflow:hidden;background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.logos-rows{display:flex;flex-direction:column;gap:24px}
+.logos-marquee{display:flex;gap:24px;align-items:center;width:max-content}
+.logos-marquee.row-1{animation:scroll 55s linear infinite}
+.logos-marquee.row-2{animation:scroll-reverse 65s linear infinite}
+.logos-marquee.row-3{animation:scroll 75s linear infinite}
+.logos-marquee .logo-card{height:140px;width:140px;background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:20px;flex-shrink:0;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:transform .3s}
+.logos-marquee .logo-card:hover{transform:translateY(-4px) scale(1.02)}
+.logos-marquee .logo-card img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scroll-reverse{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(max-width:900px){.logos-marquee .logo-card{height:110px;width:110px;padding:16px}}
+.virtual{padding:26px 0;background:linear-gradient(135deg,var(--bg-deep) 0%,var(--bg) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.virtual-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.virtual-visual{background-size:cover;background-position:center;border-radius:24px;aspect-ratio:4/3;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.virtual h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.5vw,52px);line-height:1.05;margin:24px 0 20px;text-transform:uppercase;letter-spacing:-0.02em}
+.virtual h2 em{color:var(--accent);font-style:normal}
+.virtual .virtual-sub{color:var(--accent);font-size:17px;font-weight:600;margin-bottom:20px}
+.virtual p{color:var(--light);font-size:16px;margin-bottom:24px;line-height:1.65}
+.virtual ul{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:12px}
+.virtual ul li{padding-left:32px;position:relative;font-size:15px;color:var(--light);line-height:1.55}
+.virtual ul li::before{content:"";position:absolute;left:0;top:10px;width:18px;height:2px;background:var(--accent)}
+@media(max-width:900px){.virtual-wrap{grid-template-columns:1fr;gap:40px}}
+
+.faq-num{position:absolute;left:0;top:22px;font-family:var(--display);font-weight:800;color:var(--accent);font-size:15px;letter-spacing:.05em;line-height:1.5}
+
+
+.faq{padding:24px 0}
+.faq h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.5vw,52px);line-height:1.05;margin-bottom:48px;text-align:center;text-transform:uppercase;letter-spacing:-0.02em}
+.faq-list{max-width:880px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{padding:22px 0 22px 60px;font-size:17px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;background:none;border:none;color:var(--white);width:100%;text-align:left;font-family:inherit;transition:color .2s;position:relative}
+.faq-q:hover{color:var(--accent)}
+.faq-q::after{content:"+";font-size:28px;color:var(--accent);transition:transform .25s;flex-shrink:0;font-weight:300}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--light);font-size:15px;line-height:1.65}
+.faq-item.open .faq-a{max-height:600px;padding-bottom:24px}
+
+.cta-final{padding:28px 0;background:linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-darker) 100%);border-top:1px solid var(--line)}
+.cta-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.cta-final h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1.02;margin:24px 0 24px;text-transform:uppercase;letter-spacing:-0.025em}
+.cta-final h2 em{color:var(--accent);font-style:normal}
+.cta-final p{color:var(--light);font-size:17px;margin-bottom:32px;line-height:1.6}
+.form{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(10px)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form input,.form select,.form textarea{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--white);padding:14px 16px;border-radius:10px;font-family:inherit;font-size:15px;width:100%}
+.form input::placeholder,.form textarea::placeholder{color:var(--muted)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--accent);background:rgba(231,4,143,.08)}
+.form select option{background:var(--bg);color:var(--white)}
+.form textarea{resize:vertical;min-height:80px}
+.form button{margin-top:8px;justify-content:center}
+@media(max-width:900px){.cta-wrap{grid-template-columns:1fr;gap:40px}.form-row{grid-template-columns:1fr}}
+
+footer{padding:56px 0;border-top:1px solid var(--line);background:var(--bg-darker)}
+.foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:32px}
+.foot-tagline{font-family:var(--display);color:var(--light);font-size:14px;margin-top:12px;font-weight:500;font-style:italic}
+.foot-contact{font-size:14px;color:var(--light);text-align:right}
+.foot-contact-line{margin-bottom:10px}
+.foot-contact a{color:var(--white);text-decoration:none;font-weight:600}
+.foot-contact a:hover{color:var(--accent)}
+.foot-copy{font-size:12px;color:var(--muted);text-align:center;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:700px){.foot-grid{grid-template-columns:1fr}.foot-contact{text-align:left}}
+
+
+.selector{margin:32px 0 32px}
+.selector-label{font-size:13px;text-transform:uppercase;letter-spacing:.15em;color:var(--light);margin-bottom:16px;font-weight:600}
+.type-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px}
+.type-tab{background:rgba(255,255,255,.06);border:2px solid transparent;border-radius:16px;padding:24px;cursor:pointer;transition:all .25s;font-family:inherit;color:var(--white);text-align:left}
+.type-tab:hover{background:rgba(255,255,255,.1)}
+.type-tab.active{border-color:var(--accent);background:var(--accent-soft)}
+.type-tab .tab-name{font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:6px;text-transform:uppercase;letter-spacing:-0.01em}
+.type-tab .tab-sub{font-size:13px;color:var(--light)}
+@media(max-width:700px){.type-tabs{grid-template-columns:1fr}}
+
+.sub-hero{padding:70px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-deep)}
+.sub-hero .eyebrow-tag{font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px}
+.sub-hero h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:12px;text-transform:uppercase;max-width:24ch}
+.sub-hero .sub-tagline{color:var(--light);font-size:18px;font-weight:600;margin-bottom:24px;font-style:italic}
+.sub-hero p{font-size:17px;color:var(--light);line-height:1.65;max-width:70ch}
+.dyn{transition:opacity .3s ease,transform .3s ease}
+.dyn.fading{opacity:0;transform:translateY(6px)}
+.accent{color:var(--accent);font-weight:inherit}
+.wa-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.45);z-index:200;transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px;fill:white}
+
+/* ============ RESPONSIVE MOBILE MEJORADO ============ */
+@media(max-width:768px){
+  .hero{padding:90px 0 12px}
+  .hero h1{font-size:clamp(34px,9vw,52px);margin-bottom:20px}
+  .hero p.lead{font-size:16px;margin-bottom:24px}
+  .hero-actions{flex-direction:column;gap:12px;align-items:stretch}
+  .hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%;justify-content:center;padding:14px 24px;font-size:14px}
+  .type-tabs{gap:10px;margin-bottom:20px}
+  .section-intro h2{font-size:clamp(28px,7vw,40px)}
+  .stage-num{font-size:100px !important;margin-bottom:-16px !important}
+  .stage-visual.double{gap:10px}
+  .stage-visual.double .visual-img{aspect-ratio:16/11}
+  .testi-grid.two-cols{grid-template-columns:1fr;gap:16px;max-width:100%}
+  .testimonials{padding:20px 0}
+  .testimonials-header{margin-bottom:18px}
+  .logos-marquee{gap:14px}
+  .btn-primary,.btn-secondary{padding:14px 24px;font-size:14px}
+  .faq h2{font-size:clamp(26px,7vw,40px);margin-bottom:24px}
+  .faq-q{font-size:15px;padding:16px 0 16px 44px}
+  .faq-num{font-size:13px}
+  .cta-final h2{font-size:clamp(28px,7vw,42px)}
+  .stats-value{font-size:36px !important}
+  .stats-grid{gap:20px}
+}
+@media(max-width:480px){
+  .container{padding:0 16px}
+  .hero{padding:80px 0 10px}
+  .hero h1{font-size:clamp(30px,9vw,44px)}
+  .nav-cta{padding:9px 18px;font-size:13px}
+  .type-tab{padding:14px 16px}
+  .type-tab .tab-title{font-size:16px}
+  .type-tab .tab-sub{font-size:12px}
+}
+/* ============ FIN RESPONSIVE ============ */
+
+/* ============ ANIMACIONES DE ENTRADA ============ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal.delay-1{transition-delay:.08s}
+.reveal.delay-2{transition-delay:.16s}
+.reveal.delay-3{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+/* ============ FIN ANIMACIONES ============ */
+
+/* ============ NAV SCROLL EFFECT ============ */
+nav{transition:background .3s ease,box-shadow .3s ease,padding .3s ease}
+nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+/* ============ */
+.stage:last-child{margin-bottom:0}
+.section-intro:only-child{margin-bottom:0}
+@media(max-width:700px){
+  .type-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .type-tab{min-width:0;padding:12px 8px;text-align:center}
+  .type-tab .tab-name{font-size:13px;line-height:1.2;overflow-wrap:anywhere}
+  .type-tab .tab-sub{display:none}
+}
+@media(max-width:520px){
+  .wa-float{display:none}
+  .form input,.form select,.form textarea{font-size:16px}
+}
+@media(max-width:400px){.type-tab .tab-name{font-size:11px;overflow-wrap:normal}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="https://www.showinteractivo.com" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+    <ul>
+      <li><a href="#previa" class="active">Inicio</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#clientes">Clientes</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/sociales">Sociales</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Cotizar Evento</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <video class="hero-bg-video" id="hero-bg-video" src="/media/clips/clip_fiesta.mp4" autoplay muted loop playsinline></video>
+  <div class="container hero-content">
+    <div class="eyebrow">Show Interactivo · Corporativos</div>
+    <h1>El evento que <em>conecta</em>, <em>integra</em> y <em>divierte</em> a todos.</h1>
+    <p class="lead"><strong>Aliados estratégicos de RRHH, MKT y AGENCIAS.</strong> Juegos interactivos y participativos <strong>para integrar a todos los invitados.</strong> Conductores, animadores, locutores, cantantes, con <strong>más de 20 años de experiencia.</strong> Trivias interactivas personalizadas y <strong>dinámicas originales de nuestro método exclusivo</strong> probado en más de 500 eventos.</p>
+
+    <div class="selector" id="tipos">
+      <div class="selector-label">¿Qué tipo de evento estás organizando?</div>
+      <div class="type-tabs">
+        <button class="type-tab active" data-target="fiesta">
+          <div class="tab-name">Fiesta</div>
+          <div class="tab-sub">Fin de año, aniversarios</div>
+        </button>
+        <button class="type-tab" data-target="team">
+          <div class="tab-name">Team Building</div>
+          <div class="tab-sub">Integración y motivación</div>
+        </button>
+        <button class="type-tab" data-target="otros">
+          <div class="tab-name">Otros</div>
+          <div class="tab-sub">Lanzamientos, congresos, family day</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="#cta" class="btn-primary btn-uppercase">Cotizá tu evento corporativo</a>
+      <a href="https://wa.me/541124629086" class="btn-secondary">Hablar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="logos" id="clientes">
+  <div class="logos-rows">
+  <div class="logos-marquee row-1">
+    <div class="logo-card"><img src="/media/images/logos/3M.jpg" alt="3M" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/YPF.jpg" alt="YPF" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Mercado-Libre.png" alt="Mercado Libre" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Boca-Juniors.png" alt="Boca Juniors" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/AFA.png" alt="AFA" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Clarin.png" alt="Clarin" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/PwC.jpg" alt="PwC" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Cabal.png" alt="Cabal" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Ternium.png" alt="Ternium" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/John-Deere.jpg" alt="John Deere" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/SAP.jpg" alt="SAP" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/IRSA.png" alt="IRSA" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Adrian-Mercado.png" alt="Adrian Mercado" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Alto-Palermo.jpg" alt="Alto Palermo" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/BNP-Paribas-Cardif.jpg" alt="BNP Paribas Cardif" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Amanco-Wavin.jpg" alt="Amanco Wavin" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Camuzzi.jpg" alt="Camuzzi" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/AGD.png" alt="AGD" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/3M.jpg" alt="3M" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/YPF.jpg" alt="YPF" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Mercado-Libre.png" alt="Mercado Libre" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Boca-Juniors.png" alt="Boca Juniors" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/AFA.png" alt="AFA" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Clarin.png" alt="Clarin" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/PwC.jpg" alt="PwC" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Cabal.png" alt="Cabal" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Ternium.png" alt="Ternium" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/John-Deere.jpg" alt="John Deere" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/SAP.jpg" alt="SAP" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/IRSA.png" alt="IRSA" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Adrian-Mercado.png" alt="Adrian Mercado" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Alto-Palermo.jpg" alt="Alto Palermo" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/BNP-Paribas-Cardif.jpg" alt="BNP Paribas Cardif" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Amanco-Wavin.jpg" alt="Amanco Wavin" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Camuzzi.jpg" alt="Camuzzi" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/AGD.png" alt="AGD" loading="lazy"></div>
+  </div>
+  <div class="logos-marquee row-2">
+    <div class="logo-card"><img src="/media/images/logos/Accenture.jpg" alt="Accenture" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Naranja-X.png" alt="Naranja X" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Zara.png" alt="Zara" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Musimundo.jpg" alt="Musimundo" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Red-Hat.jpg" alt="Red Hat" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Globant.jpg" alt="Globant" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Uala.png" alt="Uala" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Metrogas.png" alt="Metrogas" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Litoral-Gas.png" alt="Litoral Gas" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Artear.png" alt="Artear" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Avalian.png" alt="Avalian" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Federada.jpg" alt="Federada" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Garantizar.jpg" alt="Garantizar" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Gerdau.jpg" alt="Gerdau" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Cooperacion-Seguros.png" alt="Cooperacion Seguros" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/New-Holland.png" alt="New Holland" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Kinder.jpg" alt="Kinder" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Accenture.jpg" alt="Accenture" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Naranja-X.png" alt="Naranja X" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Zara.png" alt="Zara" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Musimundo.jpg" alt="Musimundo" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Red-Hat.jpg" alt="Red Hat" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Globant.jpg" alt="Globant" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Uala.png" alt="Uala" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Metrogas.png" alt="Metrogas" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Litoral-Gas.png" alt="Litoral Gas" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Artear.png" alt="Artear" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Avalian.png" alt="Avalian" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Federada.jpg" alt="Federada" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Garantizar.jpg" alt="Garantizar" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Gerdau.jpg" alt="Gerdau" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Cooperacion-Seguros.png" alt="Cooperacion Seguros" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/New-Holland.png" alt="New Holland" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Kinder.jpg" alt="Kinder" loading="lazy"></div>
+  </div>
+  <div class="logos-marquee row-3">
+    <div class="logo-card"><img src="/media/images/logos/Errepar.png" alt="Errepar" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Esab.jpg" alt="Esab" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Imasa-Komatsu.png" alt="Imasa Komatsu" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Infuy.jpg" alt="Infuy" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Inta.jpg" alt="Inta" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Silfab.png" alt="Silfab" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Sommier-Center.png" alt="Sommier Center" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Stanley-Black-Decker.jpg" alt="Stanley Black Decker" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Summit-Agro.png" alt="Summit Agro" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Thonet-Vander.png" alt="Thonet Vander" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Tuteur.jpg" alt="Tuteur" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Oblita.png" alt="Oblita" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Scania.jpg" alt="Scania" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Dos-Hermanos.png" alt="Dos Hermanos" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Apyce.jpg" alt="Apyce" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Aamf.jpg" alt="Aamf" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Interassist.png" alt="Interassist" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Errepar.png" alt="Errepar" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Esab.jpg" alt="Esab" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Imasa-Komatsu.png" alt="Imasa Komatsu" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Infuy.jpg" alt="Infuy" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Inta.jpg" alt="Inta" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Silfab.png" alt="Silfab" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Sommier-Center.png" alt="Sommier Center" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Stanley-Black-Decker.jpg" alt="Stanley Black Decker" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Summit-Agro.png" alt="Summit Agro" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Thonet-Vander.png" alt="Thonet Vander" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Tuteur.jpg" alt="Tuteur" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Oblita.png" alt="Oblita" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Scania.jpg" alt="Scania" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Dos-Hermanos.png" alt="Dos Hermanos" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Apyce.jpg" alt="Apyce" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Aamf.jpg" alt="Aamf" loading="lazy"></div>
+    <div class="logo-card"><img src="/media/images/logos/Interassist.png" alt="Interassist" loading="lazy"></div>
+  </div>
+  </div>
+</section>
+
+<section class="sub-hero">
+  <div class="container">
+    <div class="eyebrow-tag dyn" id="subhero-eyebrow">Innovar, conectar, sorprender</div>
+    <h2 class="dyn" id="subhero-title">Fiesta corporativa</h2>
+    <div class="sub-tagline dyn" id="subhero-tagline">Tecnología que une, experiencias que trascienden.</div>
+    <p class="dyn" id="subhero-desc">El hilo conductor del evento y dinámicas de entretenimiento a medida. Una celebración sofisticada y divertida.</p>
+  </div>
+</section>
+
+<section class="stats reveal">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num" data-target="20" data-prefix="+">+20</div><div class="stat-label">Años de experiencia</div></div>
+      <div class="stat"><div class="stat-num" data-target="500" data-prefix="+">+500</div><div class="stat-label">Eventos realizados</div></div>
+      <div class="stat"><div class="stat-num" data-target="9.9" data-decimal="1">9.9</div><div class="stat-label">Valoración de clientes</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="why-wrap">
+      <h2>Eventos <em>memorables.</em></h2>
+      <p>Sabemos generar los diferentes climas que necesita cada momento.</p>
+      <p>Utilizamos la tecnología en favor del evento para crear experiencias personalizadas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="proceso">
+  <div class="container">
+    <div class="section-intro reveal">
+      <div class="eyebrow">El proceso</div>
+    </div>
+
+    <div class="stage reveal" id="previa">
+      <div>
+        <div class="stage-num">01</div>
+        <div class="stage-content">
+          <h3>La Previa.</h3>
+          <div class="stage-sub">Planificación con criterio.</div>
+          <p class="dyn" id="previa-desc">Hacemos una videollamada con el equipo organizador para escuchar sus objetivos para el desarrollo de la fiesta, entender lo que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.</p>
+          <ul class="stage-points dyn" id="previa-points">
+            <li>Reuniones para conversar sobre el estilo, la temática y la energía que imaginan para su fiesta.</li>
+            <li>Producción de todos los momentos que se hayan elegido para realizar y personalizar (música en vivo, recepción original de invitados, trivias, otros juegos y más).</li>
+            <li>Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizadores).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stage-visual double" id="visual-previa">
+        <div class="visual-img" id="visual-previa-top" style="background-image:url('/media/images/events/SI-Fiesta-Previa-01.jpg')"></div>
+        <div class="visual-img" id="visual-previa-bottom" style="background-image:url('/media/images/events/SI-Fiesta-Previa-02.jpg')"></div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div>
+        <div class="stage-num">02</div>
+        <div class="stage-content">
+          <h3>El Evento.</h3>
+          <div class="stage-sub">El equilibrio perfecto de climas.</div>
+          <p class="dyn" id="evento-desc">Somos el hilo conductor que sostiene la fiesta de principio a fin, logrando un ritmo fluido y dinámico y sin sobrecarga. Cantante en vivo para diferentes momentos con un repertorio que crea el ambiente ideal. Bloques cortos de juegos y trivias interactivas exclusivas: un formato donde el celular de tus invitados se convierte en el control de juego para responder preguntas en tiempo real. Sorteos y premiaciones innovadoras. Generamos pura adrenalina, risas e integración entre todos.</p>
+          <ul class="stage-points dyn" id="evento-points">
+            <li>Recepción cálida y divertida para tus invitados (entrevistas y más).</li>
+            <li>Música en vivo en recepción y otros momentos.</li>
+            <li>Juegos y dinámicas pensadas para la fiesta.</li>
+            <li>Sorteos y premiaciones innovadoras.</li>
+            <li>Locución y animación con el tono justo para cada momento.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stage-visual double" id="visual-evento">
+        <div class="visual-img" id="visual-evento-top" style="background-image:url('/media/images/events/SI-Fiesta-Evento-01.jpg')"></div>
+        <div class="visual-img" id="visual-evento-bottom" style="background-image:url('/media/images/events/SI-Fiesta-Evento-02.jpg')"></div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div>
+        <div class="stage-num">03</div>
+        <div class="stage-content">
+          <h3>El Resultado.</h3>
+          <div class="stage-sub dyn" id="resultado-sub">El éxito de la fiesta.</div>
+          <p class="dyn" id="resultado-desc">Logramos que la fiesta corporativa supere las expectativas y sea memorable. Los invitados se van fascinados con una experiencia original, divertida y completamente diferente. Un impulso de energía y conexión generando un eco positivo que se comenta durante los días siguientes, se convierte en tema de conversación principal y refuerza el sentido de pertenencia.</p>
+          <ul class="stage-points dyn" id="resultado-points">
+            <li>Anfitriones 100% relajados y presentes.</li>
+            <li>Invitados divertidos y felices.</li>
+            <li>Sinergia colectiva: Inyección de energía real.</li>
+            <li>Experiencia colectiva memorable.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stage-visual double" id="visual-resultado">
+        <div class="visual-img" id="visual-resultado-top" style="background-image:url('/media/images/events/SI-Fiesta-Resultado-01.jpg')"></div>
+        <div class="visual-img" id="visual-resultado-bottom" style="background-image:url('/media/images/events/SI-Fiesta-Resultado-02.jpg')"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diffs">
+  <div class="container">
+    <div class="diff-header">
+      <h2>Lo que nos hace <em>únicos.</em></h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff"><div class="diff-num">DIFERENCIAL 01</div><h3>Sin baches</h3><p>Somos el hilo conductor que maneja la energía del encuentro con animación y música en vivo con cantantes profesionales.</p></div>
+      <div class="diff"><div class="diff-num">DIFERENCIAL 02</div><h3>Softwares interactivos propios</h3><p>Juegos 100% personalizados con contenidos y la estética del evento. Trivias, memotest, y más.</p></div>
+      <div class="diff"><div class="diff-num">DIFERENCIAL 03</div><h3>Profesionales de eventos</h3><p>Locutores, conductores, cantantes, con más de 20 años de experiencia y más de 1000 eventos realizados.</p></div>
+      <div class="diff"><div class="diff-num">DIFERENCIAL 04</div><h3>Respeto por el público</h3><p>No forzamos a nadie a participar ni pasar al frente. Somos divertidos sin necesidad de hacer chistes ni humor incómodo. Sabemos leer el salón y conectar desde la empatía lúdica.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="virtual reveal">
+  <div class="container">
+    <div class="virtual-wrap">
+      <div class="virtual-visual" style="background-image:url('https://www.showinteractivo.com/wp-content/uploads/2026/04/VIRTUALES.webp')"></div>
+      <div>
+        <div class="eyebrow">Show Interactivo Virtual</div>
+        <h2>Ideal para <em>equipos distribuidos.</em></h2>
+        <div class="virtual-sub">Integración, distensión, diversión. Virtual o Híbrido.</div>
+        <p>Un formato consolidado e ideal para equipos remotos distribuidos en Latam y Worldwide. Conducimos el evento en vivo vía Zoom con excelente calidad de transmisión de audio y video. Implementamos trivias masivas, desafíos instantáneos por chat y dinámicas competitivas, logrando romper la pantalla y generando una adrenalina similar a la de un evento presencial.</p>
+        <ul>
+          <li>Conducción en vivo por Zoom.</li>
+          <li>Trivias y otros desafíos cortos.</li>
+          <li>Transmisión con calidad de audio y video profesional.</li>
+          <li>Contenidos personalizados a medida del evento.</li>
+        </ul>
+        <a href="#cta" class="btn-secondary">Conocer más</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonios">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="eyebrow">Testimonios</div>
+      <h2>Lo que dicen de nosotros</h2>
+    </div>
+    <div class="testi-grid two-cols">
+      <div class="testi reveal"><p class="testi-quote">Hubo muy buenos comentarios de su trabajo en la fiesta. Espero verlos en otro evento.</p><div class="testi-author">Carina Aguilar</div><div class="testi-co">Delga</div></div>
+      <div class="testi reveal"><p class="testi-quote">La pasamos bárbaro, increíble la animación, súper recomendable.</p><div class="testi-author">Sofía Hermida</div><div class="testi-co">Variacode</div></div>
+    </div>
+    <div class="testi-more-wrap">
+      <a href="/corporativos/testimonios" class="btn-secondary" target="_blank" rel="noopener">Ver videos de testimonios</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">01</span>¿En qué se diferencia Show Interactivo de otros servicios?</button><div class="faq-a"><p class="dyn" id="faq-01-a">La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">02</span>¿Qué incluye el servicio?</button><div class="faq-a"><p>Se arma a medida de cada evento. El servicio más contratado incluye la dupla (hombre/mujer) como conductores animadores de todo el evento, cantante en vivo para recepción y/o segmentos a elección, producción de trivias interactivas personalizadas con software propio, y bloques cortos de juegos a medida.</p><p><strong>Servicios bonificados opcionales incluidos:</strong> 1) Entrevistas divertidas en la llegada de invitados. 2) Memotest personalizado. 3) Software propio de sorteos con branding personalizado y premiaciones innovadoras.</p><p><strong>Extras opcionales con costo adicional:</strong> Tótems touch y pulseras LED audiorítmicas.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">03</span>¿Hacen eventos en todas las provincias? ¿Cómo manejan los traslados?</button><div class="faq-a"><p>Sí, trabajamos en todo el país. No cobramos extra por traslados, siempre están incluidos dentro del servicio del evento. A veces viajamos nosotros desde donde estuvimos en un evento anterior y también contamos con animadores del equipo en diferentes localidades de Argentina.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">04</span>¿Qué tipo de eventos hacen?</button><div class="faq-a"><p>Fiestas de fin de año, team buildings, inauguraciones, lanzamientos, congresos, workshops, family day, jornadas de integración, capacitaciones, etc.</p><p>Para eventos sociales ingresá a <a href="/sociales" style="color:var(--accent);font-weight:600">landing sociales →</a></p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">05</span>¿En fiestas con tandas de baile hay que sacar una tanda para hacer su show?</button><div class="faq-a"><p>No, justamente lo bueno de nuestro servicio es que no hay que eliminar ninguna tanda de baile del timing, ya que nosotros realizamos intervenciones de 15-20 minutos previas a cada tanda uniendo el segmento participativo con la invitación a volver a la pista.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">06</span>¿Si no hay baile en nuestra fiesta qué hacen?</button><div class="faq-a"><p>En los eventos sin tandas de baile el entretenimiento dosificado a lo largo de todo el cronograma es fundamental, haciendo que el encuentro sea dinámico y armonioso.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">07</span>¿Los invitados tienen que descargar alguna app para los juegos?</button><div class="faq-a"><p>No, para nada. Nadie tiene que descargar nada en su teléfono, lo cual agiliza muchísimo la participación. Los invitados simplemente escanean un código QR de las pantallas o entran directamente desde el navegador de su celular a la página web que los animadores mencionan. Desde allí responden preguntas en tiempo real y participan del ranking general.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">08</span>¿Qué pasa si el salón o el predio del evento no tiene WiFi o no alcanza para todos?</button><div class="faq-a"><p>No pasa nada, no utilizamos las redes WiFi de los lugares. Nosotros usamos recursos propios y los invitados los datos de sus propios teléfonos (red 4G/5G) para participar.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">09</span>¿Cómo es el proceso de personalización de los juegos?</button><div class="faq-a"><p>Una vez confirmado el evento enviamos un link con un cuestionario para responder y pedido de material. Nosotros procesamos toda la información y producimos todo a medida.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">10</span>¿Qué estilo de música en vivo ofrecen?</button><div class="faq-a"><p>Contamos con un repertorio muy versátil de géneros que se adapta a los diferentes estilos de eventos y momentos de los mismos. (Pop, Rock, Chill, Jazz, Bossa Nova, Tango, Folclore, Cuarteto, Cumbia, Música Religiosa, Soul, Blues, Baladas). Castellano, Inglés, Portugués, Italiano, Francés.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">11</span>¿Tienen una banda de música o cantantes con pistas?</button><div class="faq-a"><p>La mayoría de los eventos los realizamos con cantantes con pistas. Se pueden sumar más músicos en vivo.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">12</span>¿Qué pasa si ya tenemos una banda de música contratada?</button><div class="faq-a"><p>La banda musical reemplaza una tanda de baile, nosotros la presentamos y no modifica en nada el desarrollo de todo lo que realizamos durante el evento.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">13</span>¿Con cuánta anticipación recomiendan reservar la fecha del evento?</button><div class="faq-a"><p>No hay un tiempo preestablecido, a veces nos reservan con un año de anticipación y otras veces hasta unos días antes si hay disponibilidad. Siempre recomendamos asegurarse la fecha con tiempo.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">14</span>¿Qué hacen cuando hay invitados al evento que son de perfil muy bajo y no les gusta exponerse?</button><div class="faq-a"><p>Ese es precisamente nuestro mayor orgullo y diferencial. No somos invasivos. Nuestro rol como locutores, conductores y animadores profesionales es adaptarnos orgánicamente al tono del evento. Los juegos se realizan desde el lugar donde están los invitados. En los que se participa de manera individual si alguno no se suma nadie se entera ni se expone. En los grupales pasa lo mismo. Si se realiza un juego de pasar al frente no se expone a nadie y se invita a hacerlo de manera voluntaria para los que quieran. De esta manera la participación fluye con total libertad.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">15</span>¿Qué alternativas ofrecen si parte de nuestro equipo trabaja de forma remota o distribuida?</button><div class="faq-a"><p>Contamos con Show Interactivo Virtual o Híbrido, un formato consolidado e ideal para equipos distribuidos en Latam y Worldwide. Conducimos el evento en vivo vía Zoom con excelente calidad de transmisión de audio y video. Implementamos trivias masivas, desafíos instantáneos por chat y dinámicas competitivas, logrando romper la pantalla y generando una adrenalina similar a la de un evento presencial.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">16</span>¿Pueden adaptarse al tono y la cultura de mi empresa?</button><div class="faq-a"><p>Es una parte importante de lo que hacemos. En la reunión de briefing definimos el tono, los temas que se pueden y no se pueden tocar, las referencias internas que tiene sentido usar y los mensajes que la empresa quiere transmitir.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">17</span>¿Para qué cantidad de invitados hacen eventos?</button><div class="faq-a"><p>Trabajamos desde reuniones de 15 personas hasta eventos masivos de 500, 1000 o más asistentes.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">18</span>¿Emiten factura?</button><div class="faq-a"><p>Sí, emitimos la documentación correspondiente. Coordinamos la modalidad de contratación y pago que tu organización necesite.</p></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">19</span>¿Qué datos necesitan para presupuestar?</button><div class="faq-a"><p>Fecha, tipo de evento, localidad, cantidad aproximada de invitados y horario. Con eso ya podemos armarte una propuesta.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="cta">
+  <div class="container">
+    <div class="cta-wrap">
+      <div>
+        <div class="eyebrow">Contactanos</div>
+        <h2>Hablemos del <em>próximo evento</em> de tu empresa.</h2>
+        <p>Llenás el formulario o nos escribís por WhatsApp. Te respondemos lo antes posible en menos de 24 horas.</p>
+        <a href="https://wa.me/541124629086" class="btn-primary">Hablar por WhatsApp</a>
+      </div>
+      <form class="form" name="contacto-corporativos" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contacto-corporativos">
+        <div class="form-row">
+          <input required type="text" name="nombre" placeholder="Nombre y apellido" autocomplete="name">
+          <input required type="text" name="empresa" placeholder="Empresa" autocomplete="organization">
+        </div>
+        <input required type="email" name="email" placeholder="Email corporativo" autocomplete="email">
+        <input required type="tel" name="telefono" placeholder="Teléfono" autocomplete="tel">
+        <div class="form-row">
+          <select required name="tipo">
+            <option value="">Tipo de evento</option>
+            <option>Fiesta de fin de año</option>
+            <option>Team Building</option>
+            <option>Lanzamiento</option>
+            <option>Congreso / Convención</option>
+            <option>Family Day</option>
+            <option>Show Interactivo Virtual</option>
+            <option>Otro</option>
+          </select>
+          <input type="text" name="fecha" placeholder="Fecha">
+        </div>
+        <div class="form-row">
+          <input required type="text" name="localidad" placeholder="Localidad" autocomplete="address-level2">
+          <select required name="invitados">
+            <option value="">Cantidad de invitados</option>
+            <option>Hasta 50</option><option>50-100</option><option>100-200</option><option>200-500</option><option>+500</option>
+          </select>
+        </div>
+        <textarea name="mensaje" placeholder="Contanos sobre el evento (opcional — recomendado para una respuesta más rápida)"></textarea>
+        <button type="submit" class="btn-primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="https://www.showinteractivo.com" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+        <div class="foot-tagline">Experiencias Memorables</div>
+      </div>
+      <div class="foot-contact">
+        <div class="foot-contact-line">WhatsApp Corporativos · <a href="https://wa.me/541124629086">+54 11 2462-9086</a></div>
+        <div class="foot-contact-line">Instagram · <a href="https://instagram.com/si.showinteractivo">@si.showinteractivo</a></div>
+      </div>
+    </div>
+    <div class="foot-copy">Show Interactivo © 2026 · Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/541124629086" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+
+const content = {
+  fiesta: {
+    subEyebrow: "Innovar, conectar, sorprender",
+    subTitle: "Fiesta corporativa",
+    subTagline: "Tecnología que une, experiencias que trascienden.",
+    subDesc: "El hilo conductor del evento y dinámicas de entretenimiento a medida. Una celebración sofisticada y divertida.",
+    previaDesc: "Hacemos una videollamada con el equipo organizador para escuchar sus objetivos para el desarrollo de la fiesta, entender lo que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+    previaPoints: [
+      "Reuniones para conversar sobre el estilo, la temática y la energía que imaginan para su fiesta.",
+      "Producción de todos los momentos que se hayan elegido para realizar y personalizar (música en vivo, recepción original de invitados, trivias, otros juegos y más).",
+      "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizadores)."
+    ],
+    eventoDesc: "Somos el hilo conductor que sostiene la fiesta de principio a fin, logrando un ritmo fluido y dinámico y sin sobrecarga. Cantante en vivo para diferentes momentos con un repertorio que crea el ambiente ideal. Bloques cortos de juegos y trivias interactivas exclusivas: un formato donde el celular de tus invitados se convierte en el control de juego para responder preguntas en tiempo real. Sorteos y premiaciones innovadoras. Generamos pura adrenalina, risas e integración entre todos.",
+    eventoPoints: [
+      "Recepción cálida y divertida para tus invitados (entrevistas y más).",
+      "Música en vivo en recepción y otros momentos.",
+      "Juegos y dinámicas pensadas para la fiesta.",
+      "Sorteos y premiaciones innovadoras.",
+      "Locución y animación con el tono justo para cada momento."
+    ],
+    resultadoSub: "El éxito de la fiesta.",
+    resultadoDesc: "Logramos que la fiesta corporativa supere las expectativas y sea memorable. Los invitados se van fascinados con una experiencia original, divertida y completamente diferente. Un impulso de energía y conexión generando un eco positivo que se comenta durante los días siguientes, se convierte en tema de conversación principal y refuerza el sentido de pertenencia.",
+    resultadoPoints: [
+      "Anfitriones 100% relajados y presentes.",
+      "Invitados divertidos y felices.",
+      "Sinergia colectiva: Inyección de energía real.",
+      "Experiencia colectiva memorable."
+    ],
+    visualPreviaTop: '/media/images/events/SI-Fiesta-Previa-01.jpg',
+    visualPreviaBot: '/media/images/events/SI-Fiesta-Previa-02.jpg',
+    visualEventoTop: '/media/images/events/SI-Fiesta-Evento-01.jpg',
+    visualEventoBot: '/media/images/events/SI-Fiesta-Evento-02.jpg',
+    visualResultadoTop: '/media/images/events/SI-Fiesta-Resultado-01.jpg',
+    visualResultadoBot: '/media/images/events/SI-Fiesta-Resultado-02.jpg',
+    faq01: "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Y lo mejor de todo es que con nuestro servicio no hay que eliminar una tanda de baile para desarrollarlo porque hacemos intervenciones cortas de 15 minutos cada una que se integran a lo largo de la fiesta. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+  },
+  team: {
+    subEyebrow: "Innovar, conectar, sorprender",
+    subTitle: "Team Building",
+    subTagline: "Tecnología que une, experiencias que trascienden.",
+    subDesc: "Conexión, interactividad y diversión con un propósito. Creamos el hilo conductor de tu jornada de Team Building con dinámicas gamificadas a la medida de tu empresa. Un encuentro sofisticado que desafía, integra y divierte a todo tu capital humano.",
+    previaDesc: "Hacemos una videollamada con el equipo organizador para escuchar sus objetivos para el desarrollo del encuentro, entender lo que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+    previaPoints: [
+      "Reuniones para conversar sobre el estilo, la temática y los objetivos que quieren alcanzar.",
+      "Producción y personalización de las actividades del evento.",
+      "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizadores)."
+    ],
+    eventoDesc: "El balance exacto entre el juego inteligente, la sinergia colectiva y la diversión pura. Una propuesta a medida que dosifica la intensidad de las actividades para garantizar la máxima participación, el disfrute y el impacto en el clima del equipo. Un ritmo dinámico y perfectamente equilibrado que mantiene al equipo conectado y motivado.",
+    eventoPoints: [
+      "Juego inteligente: Diversión pura con propósito y sinergia.",
+      "Intensidad a medida: Actividades dosificadas para una participación del 100%.",
+      "Clima y motivación: Impacto directo en la conexión del equipo.",
+      "Ritmo dinámico: Energía equilibrada de principio a fin."
+    ],
+    resultadoSub: "El éxito del encuentro.",
+    resultadoDesc: "Logramos que la jornada de Team Building supere las expectativas y sea verdaderamente memorable. Los participantes se retiran motivados, tras vivir una experiencia original, integradora y completamente diferente. Un impulso real de energía y sinergia colectiva que genera un eco positivo en el día a día de la empresa y consolidando el sentido de pertenencia y el trabajo en equipo.",
+    resultadoPoints: [
+      "Expectativas superadas: Una experiencia memorable.",
+      "Integración y motivación: Participantes 100% activos.",
+      "Sinergia colectiva: Inyección de energía real.",
+      "Sentido de pertenencia: Impacto positivo en el trabajo diario."
+    ],
+    visualPreviaTop: '/media/images/events/SI-Team-Previa-01.jpg',
+    visualPreviaBot: '/media/images/events/SI-Team-Previa-02.jpg',
+    visualEventoTop: '/media/images/events/SI-Team-Evento-01.jpg',
+    visualEventoBot: '/media/images/events/SI-Team-Evento-02.jpg',
+    visualResultadoTop: '/media/images/events/SI-Team-Resultado-01.jpg',
+    visualResultadoBot: '/media/images/events/SI-Team-Resultado-02.jpg',
+    faq01: "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+  },
+  otros: {
+    subEyebrow: "Innovar, conectar, sorprender",
+    subTitle: "Otros eventos corporativos",
+    subTagline: "Tecnología que une, experiencias que trascienden.",
+    subDesc: "Conexión, interactividad y diversión con un objetivo. Somos el hilo conductor del evento con dinámicas gamificadas a la medida del encuentro. Inauguraciones, lanzamientos, congresos, workshops, family day, jornadas de integración, capacitaciones.",
+    previaDesc: "Hacemos una videollamada con el equipo organizador para escuchar sus objetivos para el desarrollo del encuentro, entender lo que quieren generar y contarles cómo podemos ayudarlos desde nuestra experiencia con nuestros servicios.",
+    previaPoints: [
+      "Reuniones para conversar sobre el estilo, la temática y los objetivos que quieren alcanzar.",
+      "Producción y personalización de las actividades del evento.",
+      "Coordinación con el equipo involucrado en el evento (salón/catering, técnica, y organizadores)."
+    ],
+    eventoDesc: "Somos el hilo conductor que sostiene el evento de principio a fin, logrando un ritmo fluido y dinámico y sin sobrecarga. Cantante en vivo para diferentes momentos con un repertorio que crea el ambiente ideal. Bloques cortos de juegos y trivias interactivas exclusivas: un formato donde el celular de tus invitados se convierte en el control de juego para responder preguntas en tiempo real. Sorteos y premiaciones innovadoras. Generamos pura adrenalina, risas e integración entre todos.",
+    eventoPoints: [
+      "Recepción cálida y divertida para tus invitados (entrevistas y más).",
+      "Música en vivo en recepción y otros momentos.",
+      "Juegos y dinámicas personalizadas.",
+      "Sorteos y premiaciones innovadoras.",
+      "Locución y animación con el tono justo para cada momento."
+    ],
+    resultadoSub: "El éxito del encuentro.",
+    resultadoDesc: "Ayudamos a que el evento supere las expectativas y sea memorable. Los invitados se van fascinados con una experiencia original, divertida y completamente diferente. Un impulso de energía y conexión generando un eco positivo que se comenta durante los días siguientes, se convierte en tema de conversación principal y refuerza el sentido de pertenencia.",
+    resultadoPoints: [
+      "Anfitriones 100% relajados y presentes.",
+      "Invitados divertidos y felices.",
+      "Sinergia colectiva: Inyección de energía real.",
+      "Experiencia colectiva memorable."
+    ],
+    visualPreviaTop: '/media/images/events/SI-Otros-Previa-01.jpg',
+    visualPreviaBot: '/media/images/events/SI-Otros-Previa-02.jpg',
+    visualEventoTop: '/media/images/events/SI-Otros-Evento-01.jpg',
+    visualEventoBot: '/media/images/events/SI-Otros-Evento-02.jpg',
+    visualResultadoTop: '/media/images/events/SI-Otros-Resultado-01.jpg',
+    visualResultadoBot: '/media/images/events/SI-Otros-Resultado-02.jpg',
+    faq01: "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+  }
+};
+
+const tabs = document.querySelectorAll('.type-tab');
+const subEyebrow = document.getElementById('subhero-eyebrow');
+const subTitle = document.getElementById('subhero-title');
+const subTagline = document.getElementById('subhero-tagline');
+const subDesc = document.getElementById('subhero-desc');
+const previaDesc = document.getElementById('previa-desc');
+const previaPoints = document.getElementById('previa-points');
+const eventoDesc = document.getElementById('evento-desc');
+const eventoPoints = document.getElementById('evento-points');
+const resultadoSub = document.getElementById('resultado-sub');
+const resultadoDesc = document.getElementById('resultado-desc');
+const resultadoPoints = document.getElementById('resultado-points');
+
+// Mapa videos por solapa (Corporativos)
+const heroVideos = {
+  fiesta: '/media/clips/clip_fiesta.mp4',
+  team: '/media/clips/clip_team.mp4',
+  otros: '/media/clips/clip_otros.mp4'
+};
+
+function swapHeroVideo(t){
+  const v = document.getElementById('hero-bg-video');
+  if(!v) return;
+  const target = heroVideos[t] || '/media/clips/clip_fiesta.mp4';
+  const current = v.getAttribute('src');
+  if(current === target) return;
+  v.classList.add('swapping');
+  setTimeout(()=>{
+    v.setAttribute('src', target);
+    v.load();
+    v.play().catch(()=>{});
+    v.classList.remove('swapping');
+  }, 250);
+}
+
+function setType(t){
+  tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === t));
+  swapHeroVideo(t);
+  const faq01El = document.getElementById('faq-01-a');
+  const dyns = [subEyebrow, subTitle, subTagline, subDesc, previaDesc, previaPoints, eventoDesc, eventoPoints, resultadoSub, resultadoDesc, resultadoPoints, faq01El];
+  dyns.forEach(el => { if(el){ el.classList.remove('fading'); void el.offsetWidth; el.classList.add('fading'); } });
+  setTimeout(()=>{
+    const c = content[t];
+    subEyebrow.textContent = c.subEyebrow;
+    subTitle.textContent = c.subTitle;
+    subTagline.textContent = c.subTagline;
+    subDesc.textContent = c.subDesc;
+    previaDesc.textContent = c.previaDesc;
+    previaPoints.innerHTML = c.previaPoints.map(p => `<li>${p}</li>`).join('');
+    eventoDesc.textContent = c.eventoDesc;
+    eventoPoints.innerHTML = c.eventoPoints.map(p => `<li>${p}</li>`).join('');
+    resultadoSub.textContent = c.resultadoSub;
+    resultadoDesc.textContent = c.resultadoDesc;
+    resultadoPoints.innerHTML = c.resultadoPoints.map(p => `<li>${p}</li>`).join('');
+    if(faq01El) faq01El.textContent = c.faq01;
+    const vpTop = document.getElementById('visual-previa-top');
+    const vpBot = document.getElementById('visual-previa-bottom');
+    const veTop = document.getElementById('visual-evento-top');
+    const veBot = document.getElementById('visual-evento-bottom');
+    const vrTop = document.getElementById('visual-resultado-top');
+    const vrBot = document.getElementById('visual-resultado-bottom');
+    if(vpTop) vpTop.style.backgroundImage = `url('${c.visualPreviaTop}')`;
+    if(vpBot) vpBot.style.backgroundImage = `url('${c.visualPreviaBot}')`;
+    if(veTop) veTop.style.backgroundImage = `url('${c.visualEventoTop}')`;
+    if(veBot) veBot.style.backgroundImage = `url('${c.visualEventoBot}')`;
+    if(vrTop) vrTop.style.backgroundImage = `url('${c.visualResultadoTop}')`;
+    if(vrBot) vrBot.style.backgroundImage = `url('${c.visualResultadoBot}')`;
+    dyns.forEach(el => el && el.classList.remove('fading'));
+    if(typeof animateAllStats === 'function') animateAllStats();
+  }, 250);
+}
+
+tabs.forEach(tab => tab.addEventListener('click', () => {
+  const t = tab.dataset.target;
+  try { localStorage.setItem('si_corp_tab', t); } catch(e){}
+  setType(t);
+}));
+
+// Restaurar la última solapa elegida al cargar la página
+try {
+  const saved = localStorage.getItem('si_corp_tab');
+  const validTabs = ['fiesta','team','otros'];
+  if(saved && validTabs.includes(saved)) {
+    setType(saved);
+  }
+} catch(e){}
+
+function animateStatEl(el){
+  const target = parseFloat(el.dataset.target);
+  const prefix = el.dataset.prefix || "";
+  const isDecimal = el.dataset.decimal === "1";
+  const dur = 1500;
+  const start = performance.now();
+  const tick = (now)=>{
+    const p = Math.min((now-start)/dur, 1);
+    const val = target * (1 - Math.pow(1-p, 3));
+    el.textContent = prefix + (isDecimal ? val.toFixed(1) : Math.floor(val));
+    if(p<1) requestAnimationFrame(tick);
+    else el.textContent = prefix + (isDecimal ? target.toFixed(1) : target);
+  };
+  requestAnimationFrame(tick);
+}
+
+// Anima todas las stats desde 0
+function animateAllStats(){
+  document.querySelectorAll('.stat-num').forEach(el=>{
+    // Empieza desde 0 y anima hasta el target
+    const prefix = el.dataset.prefix || "";
+    const isDecimal = el.dataset.decimal === "1";
+    el.textContent = prefix + (isDecimal ? "0.0" : "0");
+    animateStatEl(el);
+  });
+}
+
+// Primera vez que las stats entran en viewport
+const observe = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      animateStatEl(e.target);
+      observe.unobserve(e.target);
+    }
+  });
+}, {threshold:.5});
+document.querySelectorAll('.stat-num').forEach(el=>observe.observe(el));
+
+// ============ ANIMACIONES DE ENTRADA AL SCROLL ============
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+// ============ FIN ============
+
+
+// ============ NAV SCROLL ============
+const navEl = document.querySelector('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if(navEl) navEl.classList.toggle('scrolled', y > 40);
+  lastScroll = y;
+}, { passive: true });
+// ============ FIN ============
+
+</script>
+</body>
+</html>

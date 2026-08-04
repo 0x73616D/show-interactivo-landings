@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonios · Show Interactivo · Sociales</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#4C1C56;--bg-deep:#3A1442;--bg-darker:#2A0E30;--accent:#E7048F;--accent-soft:rgba(231,4,143,.1);--white:#fff;--light:#e5d8e8;--muted:#a598aa;--line:rgba(255,255,255,.08);--display:'Montserrat',sans-serif;--body:'Inter',sans-serif;--wa:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--white);line-height:1.5}
+img{display:block;max-width:100%}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+@media(max-width:768px){.container{padding:0 20px}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(76,28,86,.85);border-bottom:1px solid var(--line);transition:background .3s ease,box-shadow .3s ease}
+nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+nav .container{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px}
+.logo-img{height:40px;width:auto}
+nav ul{list-style:none;display:flex;gap:32px;align-items:center}
+nav a{color:var(--white);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--accent)}
+.nav-cta{background:var(--white);color:var(--bg);padding:11px 24px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
+@media(max-width:900px){nav ul{display:none}}
+
+.page-hero{padding:120px 0 32px;text-align:center;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-deep) 100%)}
+.page-hero .eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.page-hero h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-0.025em;margin-bottom:20px;text-transform:uppercase}
+.page-hero h1 em{color:var(--accent);font-style:normal}
+.page-hero p{font-size:17px;color:var(--light);max-width:60ch;margin:0 auto}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--light);text-decoration:none;font-size:14px;margin-bottom:20px;transition:color .2s}
+.back-link:hover{color:var(--accent)}
+
+.selector{padding:24px 0 12px}
+.selector-label{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;text-align:center}
+.type-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto}
+.type-tab{background:rgba(255,255,255,.03);border:2px solid var(--line);color:var(--white);padding:16px 20px;border-radius:16px;cursor:pointer;transition:all .25s ease;font-family:inherit;text-align:left}
+.type-tab:hover{background:rgba(255,255,255,.06);border-color:rgba(231,4,143,.4)}
+.type-tab.active{border-color:var(--accent);background:var(--accent-soft)}
+.type-tab .tab-name{font-family:var(--display);font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:2px}
+.type-tab .tab-sub{font-size:13px;color:var(--light);opacity:.8}
+@media(max-width:700px){.type-tabs{grid-template-columns:1fr}}
+
+.testimonials{padding:32px 0 60px}
+.testi-set{display:none}
+.testi-set.active{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:1024px){.testi-set.active{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.testi-set.active{grid-template-columns:1fr}}
+.t-card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .3s ease,background .3s ease,border-color .3s ease}
+.t-card:hover{background:rgba(255,255,255,.06);border-color:rgba(231,4,143,.3);transform:translateY(-3px)}
+.t-header{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.t-name{font-family:var(--display);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.02em;color:var(--white);line-height:1.3;margin-bottom:4px}
+.t-title{font-family:var(--display);font-weight:700;font-size:17px;color:var(--accent);margin-bottom:10px;line-height:1.3}
+.t-body{font-size:14px;line-height:1.6;color:var(--light)}
+
+.home-nav{text-align:center;margin-bottom:18px}
+.home-nav.bottom{margin:28px 0 0}
+
+footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(--line);margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.foot-contact-line{margin-bottom:10px;font-size:14px}
+.foot-contact-line a{color:var(--accent);text-decoration:none}
+.foot-copy{font-size:12px;color:var(--muted);text-align:center;padding-top:24px;border-top:1px solid var(--line);margin-top:24px}
+@media(max-width:700px){.foot-grid{grid-template-columns:1fr;text-align:center}}
+
+.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:99;transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:28px;height:28px;fill:white}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:700px){
+  .type-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .type-tab{min-width:0;padding:12px 8px;text-align:center}
+  .type-tab .tab-name{font-size:12px;line-height:1.2;overflow-wrap:anywhere}
+  .type-tab .tab-sub{display:none}
+}
+@media(max-width:520px){.wa-float{display:none}}
+@media(max-width:400px){.type-tab .tab-name{font-size:11px;overflow-wrap:normal}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/sociales" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+    <ul>
+      <li><a href="/sociales">Inicio</a></li>
+      <li><a href="/sociales#recorrido">Recorrido</a></li>
+      <li><a href="/sociales/testimonios">Testimonios</a></li>
+      <li><a href="/sociales#faq">FAQ</a></li>
+      <li><a href="/corporativos">Corporativos</a></li>
+    </ul>
+    <a href="/sociales#cta" class="nav-cta">Cotizar Evento</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <a href="/sociales" class="back-link">← Volver a Sociales</a>
+    <div class="eyebrow">Show Interactivo · Sociales</div>
+    <h1>Lo que dicen <em>de nosotros.</em></h1>
+    <p>Historias reales de familias que celebraron su evento con Show Interactivo.</p>
+  </div>
+</section>
+
+<div class="container selector">
+  <div class="selector-label">¿Qué tipo de evento te interesa?</div>
+  <div class="type-tabs">
+    <button class="type-tab" data-target="boda">
+      <div class="tab-name">Boda</div>
+      <div class="tab-sub">Testimonios de parejas</div>
+    </button>
+    <button class="type-tab" data-target="quince">
+      <div class="tab-name">Cumple de 15</div>
+      <div class="tab-sub">Testimonios de familias</div>
+    </button>
+    <button class="type-tab active" data-target="adulto">
+      <div class="tab-name">Cumpleaños de Adultos</div>
+      <div class="tab-sub">Testimonios de festejados</div>
+    </button>
+  </div>
+</div>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="home-nav"><a href="/sociales" class="back-link">← Volver a la Home</a></div>
+    <div class="testi-set" data-set="boda">
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA JULIETA Y MARTÍN</div>
+
+        </div>
+        <div class="t-title">¡Son los mejores!</div>
+        <p class="t-body">Sin dudarlo, los contrataría para todos mis eventos, Guada y Andrés hicieron de mi casamiento una noche soñada. Guada es una excelente cantante, los invitados me felicitaban por la elección. Cantó en la entrada al civil, en la recepción, y durante la fiesta. UNA GROSA! Y Andrés la rompe, un gran host y actor, la tiene clarísima animando, es super carismático, talentoso y muy buena onda. Hicieron una entrada actuada, con videos, mucha producción, todos me decían que fue muy original. Los chicos son muy profesionales, trabajan en pos de la fiesta y se involucran para que todo salga lo mejor posible y la gente la pase bien. Generan climas muy divertidos y participan todos los invitados. Hacen que el evento sea bien dinámico y llevadero, garantía de que la fiesta va a ser super divertida. Altamente recomendables. No lo duden, son los mejores.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA MAIA Y ALEJANDRO</div>
+
+        </div>
+        <div class="t-title">Increíbles!!!</div>
+        <p class="t-body">Cumplieron con todo lo pactado superando ampliamente las expectativas. Guada y Andy, dos personas increíbles y super profesionales. Si quieren diversión asegurada, no pueden faltar en su evento. Nos ayudaron a que nuestra noche sea soñada. Estamos más que agradecidos!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA MARIELA Y SERGIO</div>
+
+        </div>
+        <div class="t-title">¡Muy contentos!</div>
+        <p class="t-body">La fiesta salió muy bien, los invitados quedaron muy contentos, Guadalupe tu voz es hermosa, todos te elogiaron, vinieron nos hablaron, les encantó a todos la entrada especial de la radio que hicieron, fue muy original, todos nos dijeron. Nos gustó mucho la onda que le pusieron a la fiesta y los invitados se engancharon en todo y quedaron muy contentos con la fiesta.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA CLARA Y MARCELO</div>
+
+        </div>
+        <div class="t-title">Profesionales excelentes</div>
+        <p class="t-body">Muy contentos con todo el trabajo. Son dos profesionales excelentes, muy comprensivos con todos nuestros requerimientos y, además, supieron sortear todas las dificultades que surgieron en ese mismo día. En medio de tanto estrés fue un bálsamo saber que ellos iban a hacer lo suyo. Y salió mejor de lo que pensamos!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA CAMILA Y NICOLÁS</div>
+
+        </div>
+        <div class="t-title">¡Excelente!</div>
+        <p class="t-body">Super recomendable, la verdad que hicieron un trabajo impecable y espectacular, los invitados se divirtieron un montón y fue algo distinto. La hermosa voz de Guada se lució con cada canción que cantó. ¡Todo excelente!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA YANINA Y PABLO</div>
+
+        </div>
+        <div class="t-title">¡Los mejores lejos!</div>
+        <p class="t-body">Increíbles, originales, divertidos, muy muy recomendados, ya quiero que esté listo el video solo para volver a verlos.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA SOFÍA Y MATÍAS</div>
+
+        </div>
+        <div class="t-title">Hermosa experiencia</div>
+        <p class="t-body">Fue una experiencia inolvidable! Todos la pasaron bomba, los chicos levantaron la fiesta en todo momento! Y por supuesto resaltando la maravillosa voz de Guada! Super recomendable.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA LORELEY Y FRAN</div>
+
+        </div>
+        <div class="t-title">¡Excelente!</div>
+        <p class="t-body">Sumamente agradecidos con Andrés y Guada. ¡Nos hicieron pasar la boda de nuestros sueños! Hermoso todo lo que hacen, y gracias por prestarse a nuestras ideas locas, el falso cura estuvo genial! Ja, ja, ja. Andrés, excelente actor, animador y locutor. Guada, una genia cantando y animando.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA JULIETA Y BRIAN</div>
+
+        </div>
+        <div class="t-title">¡Espectaculares ambos!</div>
+        <p class="t-body">Teníamos todo organizado y sentíamos que nos faltaba algo, ahí decidimos buscar algún show para sumar al evento. La verdad es que no queríamos a los típicos animadores que te &quot;cargosean&quot; o te invitan cuando quizás no hay ganas de los invitados de participar. Por suerte ellos son todo lo que está bien. Desde un principio nos supieron entender a la perfección lo que queríamos, nos trataron hermosamente bien y lo dieron todo en nuestra gran noche. Guada canta como los dioses, todos hablaron de lo hermosa que fue la recepción con sus canciones en vivo... Como novia entre con su voz de fondo y les digo FUE la mejor decisión lejos. Andres, es el remador nato... ante cualquier tipo de público da vuelta con humor todas las cosas. La verdad es que los juegos fueron full entretenidos y la gente se re copo, ellos se quedaron hasta casi el final, lograron que cada centavo valiera la pena. Los mega recomiendo y los volvería a elegir! Gracias a ambos por cada buena predisposición y la paciencia... !</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA FRANCA Y MARCOS</div>
+
+        </div>
+        <div class="t-title">¡No duden en contratarlos! ¡La mejor elección!</div>
+        <p class="t-body">¡Superaron ampliamente mis expectativas! Andrés y Guada son excelentes profesionales. Guada canta como los dioses y Andrés es muy divertido y también canta muy bien. Los juegos que hicieron fueron un golazo y animaron un montón la fiesta, la gente quedó super feliz y sorprendida porque fue algo diferente. También les hice un pedido especial y lo hicieron sin problema. Contratar su servicio fue la mejor decisión sin dudas. Los juegos que hicieron durante la fiesta animaron un montón, la gente se divirtió y es algo diferente para ofrecerle a los invitados. Son muy flexibles para hacerles pedidos especiales, le solicité a Andrés hacer una imitación de Elvis al estilo las vegas y fue increíble!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA CAROLINA Y GABRIEL</div>
+
+        </div>
+
+        <p class="t-body">Total adaptación a lo que queríamos y excelentes las trivias Quedamos muy contentos, salió todo como habíamos planeado, cubrió nuestras expectativas, la pasamos bien y va a ser un momento que no nos vamos a olvidar, que va a quedar grabado. Son un equipo bárbaro de trabajo. Teníamos pensado una idea, y nos ayudaron a redondearla, con el aporte de su profesionalismo, hicieron que la fiesta saliera perfecta. Son considerados con los pedidos y fueron atentos con nosotros en todo momento calmando nuestros nervios y ansiedades haciendo nuestro casamiento un momento memorable. Gracias por todo.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA BELÉN Y MICHAEL</div>
+
+        </div>
+        <div class="t-title">¡Excelente ¡Recomendadisimos!</div>
+        <p class="t-body">¡Guadalupe tiene una voz increíble! Necesitábamos un maestro de ceremonias y Andrés supo adecuarse a nuestros pedidos con 0la00000 bendición de la ceremonia del reloj de arena. También animó la fiesta con Guadalupe de manera muy profesional. Son parte de lo que fue una fiesta inolvidable. Quedamos muy satisfechos con el servicio.¡Excelente! Lo recomendamos 100 %.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA MARA Y MARIANO</div>
+
+        </div>
+        <div class="t-title">¡Profesionales increíbles!</div>
+        <p class="t-body">Andrés y Guada la rompieron! Los juegos fueron excelentes. Todos los invitados estaban super divertidos, hicieron que todos disfrutarán el día, estuvieron atentos a los detalles. ¡Guada cantando fue algo alucinante! Una voz preciosa que fue ovacionada por todos. ¡Gracias chicos por hacer una fiesta increíble! ¡Gracias por acompañarnos! Lo recontra recomendamos, nos divertimos muchísimo organizándolo y, el día del evento, fue lo más. Excelentes profesionales y detallistas. ¡Gracias por todo! 0 00000</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODAS DE ORO DE CARMEN Y RICARDO</div>
+
+        </div>
+        <div class="t-title">Garantía de diversión</div>
+        <p class="t-body">Buen timming, trato super ameno antes y durante la fiesta. Están súper atentos a armar un show personalizado. La pasamos genial! ¡Participamos todos y nos súper divertimos! Una alternativa participativa e integradora para cualquier evento!!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA JAVIER Y FLOR</div>
+
+        </div>
+
+        <p class="t-body">Estamos super agradecidos por todo lo que hicieron por nosotros, salió todo espectacular lo que hicieron y la pasamos muy bien.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA SONIA Y JOSE</div>
+
+        </div>
+        <div class="t-title">¡Super recomendable!</div>
+        <p class="t-body">Estamos felices porque estuvieron en nuestro casamiento. La gente quedó fascinada con el show. Super conformes con todo. Guadalupe cantó en la recepción y la rompió, los invitados estaban chochos! Re copada con los comentarios. Y toda la conducción y el entretenimiento con la medida justa, ¡Gracias!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA COTY Y MATI</div>
+
+        </div>
+        <div class="t-title">¡Excelente!</div>
+        <p class="t-body">La verdad, me quiero casar de nuevo para volver a contratarlos. Superaron ampliamente nuestras expectativas y gracias a ellos lo pasamos bomba. Son super profesionales, buenísima onda y brindan un servicio espectacular. Como punto a destacar que nos convenció de entrada, fueron los únicos de los que contactamos que nos llamaron para charlar sobre cómo iba a ser la fiesta y contarnos con más detalle lo que hacen y ver cuáles eran nuestras expectativas. Se nota todo el amor que le ponen a lo que hacen y el resultado es excelente. Estamos felices por el fiestón que salió gracias a Guada y Andrés. ¡Genios, genios, genios!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA CECI Y FRANCO</div>
+
+        </div>
+        <div class="t-title">¡Excelente! ¡Super recomendable! Muy divertido</div>
+        <p class="t-body">¡Hicieron de la noche una fiesta! Fue muy divertido, lo disfrutamos muchísimo. Muy profesionales e innovadores en las propuestas.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA ROMINA Y DIEGO</div>
+
+        </div>
+        <div class="t-title">Genios, ¡Andrés y Guadalupe!</div>
+        <p class="t-body">¡¡Vale la pena, parejas!! Anímense a hacer algo diferente. Nos divertimos muchísimo, la noche pasó volando. Los invitados no querían irse y todos los buenos comentarios son respecto al evento, lo novedoso, todo lo original. No nos arrepentimos de haberlos contratado, fue la mejor decisión. Totalmente original. Siempre atentos a lo que se les pidió. No duden por favor pídanles ¡y ellos conceden! Unos genios. ¡Los recomendamos!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA SOFIA Y FRANCO</div>
+
+        </div>
+        <div class="t-title">Todo estuvo excelente</div>
+        <p class="t-body">Estuvo todo perfecto, fue un plus para nuestra fiesta que nadie esperaba, algo innovador que llamó la atención de todos y sobre todo divirtió a todos. Super divertido Andrés, un genio para dirigir y animar la fiesta. Super recomendable. Además de la excelente voz de Guada para interpretar el tema con el cual hicimos la entrada al salón con mi esposo.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA ALE Y DANI</div>
+
+        </div>
+        <div class="t-title">Una y otra vez los elegiría!</div>
+        <p class="t-body">Brindaron un gran show, no hubo tiempo de aburrirse... Unas voces únicas. Estamos super agradecidos por su responsabilidad y por su excelente trabajo. Todos los invitados quedaron fascinados con los dos. Nos divertimos y disfrutamos tanto, que nos queda todo guardadito en nuestro corazón ❤ . Excelentes profesionales, la verdad hacen que la fiesta sea dinámica, con mucha diversión, baile, canciones y juegos. Realmente un placer!!! Esperamos que sigan así con esa buena onda y transmitiendo tantas energías para que la noche de la fiesta sea inolvidable.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA FACUNDO Y AGUSTINA</div>
+
+        </div>
+        <div class="t-title">¡Tremendos! Genios totales</div>
+        <p class="t-body">Animaron mi casamiento y estuvo espectacular, me encantó, te levantan la fiesta a full, hacen que todo sea muy participativo. La voz de Guadalupe es imponente, cantó varios temas en vivo y estuvo bárbaro. Los volvería a contratar y los súper recomiendo.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">BODA CLIO Y DIEGO</div>
+
+        </div>
+        <div class="t-title">Si hubiesen más estrellas ¡se las pondría! ¡Excelentísimo!</div>
+        <p class="t-body">¡Excelentes! Estuvieron en todos los detalles, nos divertimos muchísimo. Los invitados quedaron todos maravillados y la gente nos pidió su contacto. ¡Un genio, Andrés! Nos super divertimos, se nota la experiencia que tiene. Estuvo en todo, super flexible, animó todo el tiempo, versátil y, la buena onda, ¡ni hablar! ¡Quedamos y quedaron todos encantados! ¡La voz de Guada impresionante! ¡Cantando y animando! La música excelente, Guadalupe 10 sobre 10, y las trivias 10 sobre 10. Los volveríamos a elegir definitivamente ¡Los elegiríamos mil veces más!</p>
+      </article>
+    </div>
+    <div class="testi-set" data-set="quince">
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 15 DE ANGIE</div>
+
+        </div>
+        <div class="t-title">Hola chicos, salió todo espectacular, gracias! Estábamos super</div>
+        <p class="t-body">ansiosos antes de la fiesta y pudimos disfrutarla un montón, al igual que los invitados que se divertían a full. Besos!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 15 AVRIL</div>
+
+        </div>
+        <div class="t-title">Super recomendable</div>
+        <p class="t-body">Gracias chicos por la hermosa noche que nos hicieron pasar, la buena onda… energía… los comentarios fueron todos positivos!!!!!. Gracias por la dedicatoria tan linda en el cuaderno para Avru!!! Una hermosa noche!!! 😀</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 15 AGUS</div>
+
+        </div>
+        <div class="t-title">Muy divertido!!!</div>
+        <p class="t-body">¡Salió todo muy bien! Las trivias personalizadas de Agus quedaron buenísimas! Los invitados se coparon con el juego!!!</p>
+      </article>
+    </div>
+    <div class="testi-set active" data-set="adulto">
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 50 DE ANDREA</div>
+
+        </div>
+        <div class="t-title">Calidad y calidez</div>
+        <p class="t-body">Contraté a dos artistas excelentes. La voz de Guada es de primera. Andrés tiene una simpatía enorme. Es divertido sin ser invasivo. La combinación de ambos es excelente. Pero lo más lindo es que encontré dos seres humanos de una calidez increíble. ¡Ponen mucho amor en su trabajo! ¡Aposté a ellos sin conocerlos y no encuentro palabras suficientes para recomendarlos! Entendieron perfectamente el estilo de animación que buscamos. Organizados y atentos. ¡Super recomendable!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 50 DE FLORENCIA</div>
+
+        </div>
+        <div class="t-title">¡Genios!</div>
+        <p class="t-body">Una de las mejores cosas que hice fue contratar a Guada y a Andrés. Son muy buenos y no dejaron que la fiesta decaiga en ningún momento. Guada canta increíble y Andrés te levanta la fiesta cada vez que la gente afloja. ¡¡Son unos genios!!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 50 DE MIRTA</div>
+
+        </div>
+        <div class="t-title">¡Excelente su trabajo, les encantó a todos!</div>
+        <p class="t-body">Estuvo muy bueno!!!! Los vi en un evento de Expo Vinos y no dudé en llamarlos para mi fiesta, ¡fue muy divertido! Las trivias estuvieron excelentes, ¡me las guardo de recuerdo!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 50 VERO</div>
+
+        </div>
+        <div class="t-title">Salió perfecto!!!</div>
+        <p class="t-body">Unos genios armando todo personalizado y respondiendo todas las dudas, están en todos los detalles. Mil gracias!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 50 DE GERARDO</div>
+
+        </div>
+        <div class="t-title">¡Salió maravilloso todo!!! Muchas gracias a los dos!!!</div>
+        <p class="t-body">La verdad que la noche fue espectacular, fue la noche soñada, la gente fascinada, cuando las cosas se hacen programadas bien armadas y del corazón se ven reflejadas en el disfrute de los invitados. La gente se sorprendió con el juego de la trivia, vio algo diferente, gustó muchísimo, tuvo muy buena repercusión porque no paran de decirme que fue fantástico, divertido, entretenido y distinto. Salió todo muy bien coordinado. Gracias!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 50 DE YANINA</div>
+
+        </div>
+        <div class="t-title">¡100% genios totales!</div>
+        <p class="t-body">Contraté a los chicos sin tener demasiadas referencias, y no me arrepiento un segundo de haberlo hecho. Hicieron una conducción de la fiesta impecable, interviniendo en los momentos justos con sus trivias re divertidas, logrando una noche inolvidable. La pasé super! Salió todo divino, la gente se divirtió mucho con las trivias. La voz de Guada es impresionante y todos quedaron encantados con su voz! Quiero agradecerles por haber sido parte de una noche hermosa! ¡Éxitos, Andrés y Guada! Se lo merecen.</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 40 DE DEBORA</div>
+
+        </div>
+        <div class="t-title">¡Muy divertido!</div>
+        <p class="t-body">Estuvo linda la fiesta!! La gente se copó y jugaron bastante!! ¡Se divirtieron un montón! Super feliz!</p>
+      </article>
+      <article class="t-card">
+        <div class="t-header">
+          <div class="t-name">CUMPLE DE 60 DIANA</div>
+
+        </div>
+        <div class="t-title">La fiesta salió hermosa!</div>
+        <p class="t-body">Estoy super agradecida, me gustaron mucho los juegos porque no nos daba para estar bailando todo el tiempo y que haya momentos lúdicos sirvió mucho. Guada es hermosa, una divina y canta como los dioses. La verdad es que hacen un dúo perfecto. Quedamos muy contentos.</p>
+      </article>
+    </div>
+    <div class="home-nav bottom"><a href="/sociales" class="back-link">← Volver a la Home</a></div>
+  </div>
+</section>
+
+<a href="https://wa.me/5411300555" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</a>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-contact-line">WhatsApp Sociales · <a href="https://wa.me/5411300555">+54 11 3005-555</a></div>
+        <div class="foot-contact-line">Instagram · <a href="https://instagram.com/si.showinteractivo">@si.showinteractivo</a></div>
+      </div>
+      <a href="/sociales" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+    </div>
+    <div class="foot-copy">Show Interactivo © 2026 · Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+const tabs = document.querySelectorAll('.type-tab');
+const sets = document.querySelectorAll('.testi-set');
+
+function setType(t){
+  tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === t));
+  sets.forEach(s => s.classList.toggle('active', s.dataset.set === t));
+  try { localStorage.setItem('si_soc_tab', t); } catch(e){}
+}
+
+tabs.forEach(tab => tab.addEventListener('click', () => setType(tab.dataset.target)));
+
+// Restaurar desde localStorage
+try {
+  const saved = localStorage.getItem('si_soc_tab');
+  const valid = ['boda','quince','adulto'];
+  if(saved && valid.includes(saved)) setType(saved);
+  else setType('adulto');
+} catch(e){ setType('adulto'); }
+
+// Nav scroll
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if(navEl) navEl.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+</script>
+</body>
+</html>

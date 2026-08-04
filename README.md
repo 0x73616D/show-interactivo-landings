@@ -1,6 +1,6 @@
 # Show Interactivo — Landings
 
-Sitio estático construido con Astro 7 y Tailwind CSS 4. Incluye las landings de eventos sociales y corporativos, sus páginas de testimonios, los 57 videos y formularios compatibles con Netlify Forms.
+Sitio estático construido con Astro 7. Conserva el diseño original de las landings sociales y corporativas, sus páginas de testimonios, los 57 videos y formularios compatibles con Netlify Forms.
 
 ## Desarrollo
 
@@ -36,20 +36,19 @@ En Netlify sólo hace falta importar el repositorio. Los formularios `contacto-s
 
 ```text
 src/
-  components/   Componentes Astro compartidos
-  data/         Copys, FAQs, testimonios, enlaces y URLs de videos
-  layouts/      Layout global, navegación y pie
-  pages/        Rutas del sitio
-  styles/       Tailwind y tokens globales
+  pages/        Rutas Astro del sitio
+  templates/    HTML, estilos y contenido visual originales
 public/media/
   clips/        Videos de portada
   images/       Logo, fotos de eventos y logos de clientes
   videos/       57 testimonios corporativos por categoría
 ```
 
-## Edición de contenido
+## Diseño y contenido
 
-- `src/data/site.json`: contenido por tipo de evento, testimonios, Instagram y videos.
-- `src/data/pages.json`: textos generales, cifras, diferenciales, FAQs y logos.
+- `src/templates/landing-sociales.html`: landing de eventos sociales.
+- `src/templates/landing-corporativos.html`: landing de eventos corporativos.
+- `src/templates/testimonios-sociales.html`: testimonios sociales.
+- `src/templates/testimonios-corporativos.html`: los 57 testimonios corporativos.
 
-No es necesario modificar los componentes para agregar, quitar, ordenar o filtrar testimonios y videos.
+Las rutas Astro cargan estas plantillas sin alterar su apariencia. Los recursos están organizados bajo `public/media` y usan rutas absolutas para funcionar correctamente en Netlify.

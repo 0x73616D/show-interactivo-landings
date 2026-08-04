@@ -1,9 +1,4 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import TestimonialHero from '../../components/TestimonialHero.astro';
-import VideoTestimonials from '../../components/VideoTestimonials.astro';
+import page from '../../templates/testimonios-corporativos.html?raw';
 ---
-<BaseLayout title="Testimonios Corporativos · Show Interactivo" description="Testimonios de empresas y equipos que vivieron una experiencia Show Interactivo." variant="corporativos">
-  <TestimonialHero variant="corporativos" title={'Lo que dicen <span class="accent">de nosotros.</span>'} description="Testimonios de empresas y equipos que vivieron una experiencia Show Interactivo." />
-  <VideoTestimonials />
-</BaseLayout>
+<Fragment set:html={page} />
