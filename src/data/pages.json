@@ -1,9 +1,9 @@
 {
   "sociales": {
     "hero": {
-      "eyebrow": "Eventos sociales · Argentina",
-      "title": "Convertimos tu fiesta en una experiencia inolvidable.",
-      "description": "Conducción, animación, música en vivo y tecnología interactiva para bodas, cumpleaños de 15 y cumpleaños de adultos."
+      "eyebrow": "Show Interactivo",
+      "title": "Eventos sociales",
+      "description": ""
     },
     "tabs": [
       {
@@ -46,15 +46,15 @@
       },
       {
         "title": "Softwares interactivos propios",
-        "body": "Juegos 100% personalizados con contenidos y la estética del evento. Trivias, memotest y más."
+        "body": "Juegos 100% personalizados con contenidos y la estética del evento. Trivias, memotest, y más."
       },
       {
         "title": "Profesionales de eventos",
-        "body": "Locutores, conductores y cantantes con más de 20 años de experiencia y cientos de eventos realizados."
+        "body": "Locutores, conductores, cantantes, con más de 20 años de experiencia y más de 1000 eventos realizados."
       },
       {
         "title": "Respeto por el público",
-        "body": "No forzamos a nadie a participar. Percibimos el ambiente y conectamos con empatía, sin humor incómodo."
+        "body": "No forzamos a nadie a participar ni pasar al frente. Somos divertidos sin necesidad de hacer chistes ni humor incómodo. Sabemos percibir el ambiente y conectar con empatía."
       }
     ],
     "faqs": [
@@ -126,9 +126,9 @@
   },
   "corporativos": {
     "hero": {
-      "eyebrow": "Eventos corporativos · Argentina",
-      "title": "Experiencias que conectan, integran y sorprenden.",
-      "description": "Conducción, gamificación, música en vivo y tecnología para transformar cada encuentro de tu empresa."
+      "eyebrow": "Show Interactivo",
+      "title": "Eventos corporativos",
+      "description": ""
     },
     "tabs": [
       {
@@ -166,20 +166,20 @@
     ],
     "differences": [
       {
-        "title": "Hilo conductor integral",
-        "body": "Sostenemos la energía de principio a fin y coordinamos con todos los proveedores para evitar baches."
+        "title": "Sin baches",
+        "body": "Somos el hilo conductor que maneja la energía del encuentro con animación y música en vivo con cantantes profesionales."
       },
       {
-        "title": "Tecnología propia",
-        "body": "Trivias, memotest, sorteos y dinámicas personalizadas con la identidad y objetivos de cada empresa."
+        "title": "Softwares interactivos propios",
+        "body": "Juegos 100% personalizados con contenidos y la estética del evento. Trivias, memotest, y más."
       },
       {
-        "title": "Equipo profesional",
-        "body": "Locutores, conductores y cantantes con experiencia real en eventos de distintas escalas."
+        "title": "Profesionales de eventos",
+        "body": "Locutores, conductores, cantantes, con más de 20 años de experiencia y más de 1000 eventos realizados."
       },
       {
-        "title": "Participación con propósito",
-        "body": "Diseñamos experiencias inclusivas, medibles y respetuosas que generan conexión auténtica."
+        "title": "Respeto por el público",
+        "body": "No forzamos a nadie a participar ni pasar al frente. Somos divertidos sin necesidad de hacer chistes ni humor incómodo. Sabemos percibir el ambiente y conectar con empatía."
       }
     ],
     "faqs": [

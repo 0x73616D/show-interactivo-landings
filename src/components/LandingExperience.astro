@@ -5,7 +5,7 @@ const title = variant === 'sociales' ? initial.subTitleHtml : initial.subTitle;
 const description = variant === 'sociales' ? initial.subDescHtml : initial.subDesc;
 const cards = [
   { key:'previa', number:'01', eyebrow:'Antes', title:'La previa', description:initial.previaDesc, points:initial.previaPoints, top:initial.visualPreviaTop, bottom:initial.visualPreviaBot },
-  { key:'evento', number:'02', eyebrow:'Durante', title:'El evento', description:initial.eventoDesc ?? 'Somos el hilo conductor del encuentro y cuidamos cada transición para sostener la energía.', points:initial.eventoPoints, top:initial.visualEventoTop, bottom:initial.visualEventoBot },
+  { key:'evento', number:'02', eyebrow:'Durante', title:'El evento', description:initial.eventoDesc ?? '', points:initial.eventoPoints, top:initial.visualEventoTop, bottom:initial.visualEventoBot },
   { key:'resultado', number:'03', eyebrow:'Después', title:'El resultado', description:initial.resultadoDesc, points:initial.resultadoPoints ?? [], top:initial.visualResultadoTop, bottom:initial.visualResultadoBot }
 ];
 ---
@@ -26,7 +26,7 @@ const cards = [
         <div class="copy">
           <span class="step">{card.number} · {card.eyebrow}</span>
           <h3>{card.title}</h3>
-          <p data-description>{card.description}</p>
+          <p data-description class:list={{ hidden: !card.description }}>{card.description}</p>
           <ul>{card.points.map((point: string) => <li>{point}</li>)}</ul>
         </div>
         <div class="visuals" aria-hidden="true">
@@ -50,6 +50,7 @@ const cards = [
   .step { color: var(--color-brand); font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
   h3 { margin: .4rem 0 .7rem; font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem); line-height: 1; text-transform: uppercase; }
   p { color: var(--light); }
+  p.hidden { display: none; }
   ul { display: grid; gap: .45rem; margin: 1.2rem 0 0; padding-left: 1.15rem; color: var(--light); }
   li::marker { color: var(--color-brand); }
   .visuals { position: relative; min-height: 380px; background: var(--color-plum-dark); overflow: hidden; }
@@ -58,5 +59,14 @@ const cards = [
   .visuals img:last-child { right: 5%; bottom: 5%; }
   .journey-card:hover .visuals img:first-child { transform: translate(-3px,-3px) rotate(-1deg); }
   .journey-card:hover .visuals img:last-child { transform: translate(3px,3px) rotate(1deg); }
-  @media(max-width:780px){.journey-card{grid-template-columns:1fr}.journey-card:nth-child(even) .copy{order:0}.visuals{min-height:300px}}
+  @media(max-width:780px){
+    .journey-card{min-height:0;grid-template-columns:1fr;border-radius:1rem}
+    .journey-card:nth-child(even) .copy{order:0}
+    .copy{padding:1.35rem}
+    h3{font-size:clamp(1.9rem,9vw,2.7rem)}
+    ul{margin-top:1rem;padding-left:1.05rem;font-size:.94rem}
+    .visuals{min-height:270px}
+    .visuals img{width:74%;height:68%;border-radius:.8rem}
+  }
+  @media(max-width:400px){.visuals{min-height:245px}}
 </style>

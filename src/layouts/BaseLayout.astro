@@ -45,7 +45,9 @@ const { title, description, variant = 'neutral' } = Astro.props;
 
       function observeReveals(root = document) {
         root.querySelectorAll('.reveal:not(.is-visible)').forEach((element) => {
-          if (revealObserver) revealObserver.observe(element);
+          const rect = element.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 16 && rect.bottom > 0) element.classList.add('is-visible', 'reveal-instant');
+          else if (revealObserver) revealObserver.observe(element);
           else element.classList.add('is-visible');
         });
       }

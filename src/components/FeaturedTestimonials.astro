@@ -9,7 +9,7 @@ const { items, target, heading = 'Lo que dicen de nosotros.' } = Astro.props;
     <div class="grid" id="featured-testimonials">
       {items.map(item => <article class="glass-card reveal"><p>“{item.quote}”</p><strong>{item.author}</strong><span>{item.event}</span></article>)}
     </div>
-    <div class="more reveal"><a href={target} target="_blank" rel="noopener" class="button button-secondary">Ver videos de testimonios ↗</a></div>
+    <div class="more reveal"><a href={target} target="_blank" rel="noopener" class="button button-secondary">Ver videos de testimonios</a></div>
   </div>
 </section>
 <style>

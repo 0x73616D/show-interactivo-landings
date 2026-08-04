@@ -40,10 +40,12 @@ const initialHeading = variant === 'sociales' ? initial.testiTitleHtml : 'Lo que
   function updateJourney(key, data) {
     const card = document.querySelector(`[data-journey="${key}"]`);
     if (!card) return;
-    const description = key === 'previa' ? data.previaDesc : key === 'evento' ? (data.eventoDesc || 'Somos el hilo conductor del encuentro y cuidamos cada transición para sostener la energía.') : data.resultadoDesc;
+    const description = key === 'previa' ? data.previaDesc : key === 'evento' ? (data.eventoDesc || '') : data.resultadoDesc;
     const points = key === 'previa' ? data.previaPoints : key === 'evento' ? data.eventoPoints : (data.resultadoPoints || []);
     const imagePrefix = key[0].toUpperCase() + key.slice(1);
-    card.querySelector('[data-description]').textContent = description;
+    const descriptionElement = card.querySelector('[data-description]');
+    descriptionElement.textContent = description;
+    descriptionElement.classList.toggle('hidden', !description);
     card.querySelector('ul').innerHTML = points.map(point => `<li>${escapeHtml(point)}</li>`).join('');
     card.querySelector('[data-image="top"]').src = data[`visual${imagePrefix}Top`];
     card.querySelector('[data-image="bottom"]').src = data[`visual${imagePrefix}Bot`];

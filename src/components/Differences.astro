@@ -5,7 +5,7 @@ const { items } = Astro.props;
 ---
 <section class="section differences">
   <div class="shell">
-    <div class="section-heading reveal"><div class="eyebrow">Nuestro diferencial</div><h2>Lo que nos hace <span class="accent">únicos.</span></h2></div>
+    <div class="section-heading reveal"><div class="eyebrow">Diferenciales</div><h2>Lo que nos hace <span class="accent">únicos.</span></h2></div>
     <div class="grid">{items.map((item,index) => <article class="glass-card reveal"><span>0{index+1}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
   </div>
 </section>

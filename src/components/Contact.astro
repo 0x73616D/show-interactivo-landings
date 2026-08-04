@@ -6,7 +6,7 @@ const whatsapp = corporate ? 'https://wa.me/541124629086' : 'https://wa.me/54113
 ---
 <section class="contact section" id="contacto">
   <div class="shell wrap">
-    <div class="copy reveal"><div class="eyebrow">Contactanos</div><h2>Hablemos de <span class="accent">tu evento.</span></h2><p>Completá el formulario o escribinos por WhatsApp. Te respondemos lo antes posible.</p><a href={whatsapp} target="_blank" rel="noopener" class="button button-primary">Hablar por WhatsApp</a></div>
+    <div class="copy reveal"><div class="eyebrow">Contactanos</div><h2>Hablemos de <span class="accent">{corporate ? 'tu evento.' : 'tu fiesta.'}</span></h2><p>{corporate ? 'Completá el formulario o escribinos por WhatsApp. Te respondemos lo antes posible.' : 'Llenás el formulario o nos escribís por WhatsApp. Te respondemos lo antes posible en menos de 24 horas.'}</p><a href={whatsapp} target="_blank" rel="noopener" class="button button-primary">Hablar por WhatsApp</a></div>
     <form class="glass-card reveal" name={`contacto-${variant}`} method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value={`contacto-${variant}`} />
       <label>Nombre y apellido<input required name="nombre" autocomplete="name" /></label>
@@ -29,4 +29,10 @@ const whatsapp = corporate ? 'https://wa.me/541124629086' : 'https://wa.me/54113
   select option{color:#1d0821} textarea{resize:vertical}
   form .button{justify-self:start}
   @media(max-width:800px){.wrap{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+  @media(max-width:480px){
+    h2{font-size:2.25rem}
+    form{padding:1.05rem;border-radius:1rem}
+    input,select,textarea{font-size:16px}
+    form .button{width:100%}
+  }
 </style>

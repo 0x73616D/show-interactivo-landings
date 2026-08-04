@@ -31,6 +31,11 @@ const other = isSocial ? '/corporativos' : '/sociales';
     toggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
     menu?.classList.toggle('is-open', !isOpen);
   });
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Abrir menú');
+    menu.classList.remove('is-open');
+  }));
 </script>
 
 <style>
@@ -45,10 +50,12 @@ const other = isSocial ? '/corporativos' : '/sociales';
   .nav-cta:hover { background: var(--color-brand); color: white; transform: translateY(-1px); }
   .menu-toggle { display: none; margin-left: auto; border: 0; background: transparent; color: white; font-size: 1.6rem; cursor: pointer; }
   @media (max-width: 880px) {
+    .nav-inner { min-height: 64px; }
+    img { width: 132px; }
     .nav-cta { display: none; }
     .menu-toggle { display: block; }
-    nav { position: absolute; inset: 72px 0 auto; display: none; padding: 1.25rem 24px 1.6rem; background: rgba(42,14,48,.98); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; }
+    nav { position: absolute; inset: 64px 0 auto; max-height: calc(100svh - 64px); overflow-y: auto; display: none; padding: 1rem 20px 1.35rem; background: rgba(42,14,48,.98); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: .55rem; }
     nav.is-open { display: flex; }
-    nav a { width: 100%; padding-block: .45rem; }
+    nav a { width: 100%; padding-block: .5rem; }
   }
 </style>

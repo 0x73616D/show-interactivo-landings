@@ -5,7 +5,7 @@ const { items } = Astro.props;
 ---
 <section class="faq section" id="faq">
   <div class="shell">
-    <div class="section-heading reveal"><div class="eyebrow">Todo claro</div><h2>Preguntas frecuentes</h2></div>
+    <div class="section-heading reveal"><h2>Preguntas frecuentes</h2></div>
     <div class="list reveal">
       {items.map((item,index) => (
         <details>
@@ -23,4 +23,9 @@ const { items } = Astro.props;
   summary::-webkit-details-marker{display:none} summary::after{content:'+';margin-left:auto;color:var(--color-brand);font-size:1.4rem;line-height:1} details[open] summary::after{content:'−'}
   summary span{color:var(--color-brand);font-size:.75rem;letter-spacing:.1em}
   p{max-width:900px;margin:-.35rem 0 1.4rem 2.5rem;color:var(--light)}
+  @media(max-width:640px){
+    summary{gap:.65rem;padding:1rem 0;font-size:.94rem;line-height:1.35}
+    summary span{font-size:.68rem}
+    p{margin:-.15rem 0 1.2rem 1.75rem;font-size:.92rem}
+  }
 </style>

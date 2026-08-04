@@ -25,5 +25,14 @@ const initial = groups[initialType];
   .selector{background:var(--color-plum-deep);border-block:1px solid var(--line)} .label{text-align:center;color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem}
   .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}.tab{padding:1rem;border:2px solid var(--line);border-radius:1rem;background:rgba(255,255,255,.035);color:white;text-align:left;cursor:pointer;transition:.25s}.tab:hover,.tab.active{border-color:var(--color-brand);background:rgba(231,4,143,.12);transform:translateY(-2px)}.tab strong,.tab span{display:block}.tab strong{font-family:var(--font-display);text-transform:uppercase}.tab span{color:var(--muted);font-size:.78rem}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.grid article{padding:1.5rem;transition:transform .25s ease,border-color .25s ease}.grid article:hover{transform:translateY(-4px);border-color:rgba(231,4,143,.4)}article>strong{font-family:var(--font-display);font-size:.84rem;text-transform:uppercase}h2{color:var(--color-brand);font-family:var(--font-display);font-size:1.05rem}p{color:var(--light);font-size:.9rem}.home{text-align:center;margin-bottom:1.5rem}.bottom{margin:1.7rem 0 0}
-  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.tabs,.grid{grid-template-columns:1fr}}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:650px){
+    .tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+    .tab{min-height:56px;padding:.65rem .45rem;text-align:center}
+    .tab strong{font-size:.68rem;line-height:1.2;overflow-wrap:anywhere}
+    .tab span{display:none}
+    .grid{grid-template-columns:1fr}
+    .grid article{padding:1.2rem}
+    .home .button{width:100%}
+  }
 </style>

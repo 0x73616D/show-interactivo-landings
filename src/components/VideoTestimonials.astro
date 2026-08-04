@@ -8,7 +8,7 @@ const categoryNames = { fiesta:'Fiestas corporativas', team:'Team Building', otr
 const initialType: keyof typeof groups = 'fiesta';
 const initialOrder: (keyof typeof groups)[] = [initialType, ...categoryOrder.filter(item => item !== initialType)];
 ---
-<section class="selector section-tight"><div class="shell"><div class="label">Elegí una categoría para verla primero</div><div class="tabs" role="tablist">{tabs.map(tab => <button type="button" class:list={['tab',{active:tab.id===initialType}]} data-video-tab={tab.id} role="tab" aria-selected={tab.id===initialType?'true':'false'}><strong>{tab.name}</strong><span>{tab.sub}</span></button>)}</div></div></section>
+<section class="selector section-tight"><div class="shell"><div class="label">¿Qué tipo de evento te interesa?</div><div class="tabs" role="tablist">{tabs.map(tab => <button type="button" class:list={['tab',{active:tab.id===initialType}]} data-video-tab={tab.id} role="tab" aria-selected={tab.id===initialType?'true':'false'}><strong>{tab.name}</strong><span>{tab.sub}</span></button>)}</div></div></section>
 <section class="catalog section-tight"><div class="shell"><div class="home"><a href="/corporativos" class="button button-secondary">← Volver a la Home</a></div><div id="video-catalog">{initialOrder.map(category => <section class="category reveal"><h2>{categoryNames[category]}</h2><div class="grid">{groups[category].map(item => <article class="video-card"><video controls playsinline preload="none" data-src={item.src} aria-label={`Testimonio de ${item.name}`}></video><h3>{item.name}</h3></article>)}</div></section>)}</div><div class="home bottom"><a href="/corporativos" class="button button-secondary">← Volver a la Home</a></div></div></section>
 
 <script is:inline define:vars={{ groups, categoryOrder, categoryNames }}>
@@ -42,5 +42,16 @@ const initialOrder: (keyof typeof groups)[] = [initialType, ...categoryOrder.fil
 <style>
   .selector{background:var(--color-plum-deep);border-block:1px solid var(--line)}.label{text-align:center;color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}.tab{padding:1rem;border:2px solid var(--line);border-radius:1rem;background:rgba(255,255,255,.035);color:white;text-align:left;cursor:pointer;transition:transform .25s ease,border-color .25s ease,background .25s ease}.tab:hover,.tab.active{border-color:var(--color-brand);background:rgba(231,4,143,.12);transform:translateY(-2px)}.tab strong,.tab span{display:block}.tab strong{font-family:var(--font-display);text-transform:uppercase}.tab span{color:var(--muted);font-size:.78rem}
   .category{margin-bottom:3rem}.category h2{margin:0 0 1.15rem;font-family:var(--font-display);font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.video-card{overflow:hidden;border:1px solid var(--line);border-radius:1rem;background:var(--color-plum-deep);box-shadow:0 10px 28px rgba(0,0,0,.2);transition:transform .25s ease,box-shadow .25s ease}.video-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 16px 36px rgba(0,0,0,.32)}video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#18071c}h3{min-height:3rem;margin:0;padding:.75rem;display:grid;place-items:center;font-family:var(--font-display);font-size:.78rem;line-height:1.25;text-align:center;text-transform:uppercase}.home{text-align:center;margin-bottom:1.7rem}.bottom{margin:0}
-  @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.tabs{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:.7rem}}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:650px){
+    .tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+    .tab{min-height:56px;padding:.65rem .45rem;text-align:center}
+    .tab strong{font-size:.68rem;line-height:1.2;overflow-wrap:anywhere}
+    .tab span{display:none}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+    .category{margin-bottom:2.25rem}
+    .category h2{font-size:1.6rem}
+    h3{padding:.55rem .35rem;font-size:.67rem;overflow-wrap:anywhere}
+    .home .button{width:100%}
+  }
 </style>
