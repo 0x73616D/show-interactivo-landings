@@ -45,18 +45,26 @@ nav a:hover{color:var(--accent)}
 .home-nav{text-align:center;margin:14px 0 22px}
 .home-nav.bottom{margin:28px 0 0}
 
-.videos-section{padding:12px 0 60px}
-.video-set{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:52px}
+.videos-section{padding:12px 0 36px}
+.video-set{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
 .video-set::before{content:attr(data-title);grid-column:1/-1;font-family:var(--display);font-size:clamp(24px,4vw,38px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:4px}
 @media(max-width:900px){.video-set{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.video-set{grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:38px}}
 .v-card{position:relative;border:none;padding:0;cursor:pointer;background:var(--bg-deep);border-radius:14px;overflow:hidden;aspect-ratio:9/16;box-shadow:0 8px 22px rgba(0,0,0,.35);transition:transform .3s ease,box-shadow .3s ease}
 .v-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.5)}
-.v-card video{width:100%;height:100%;object-fit:cover}
-.v-card.is-playing .v-overlay{display:none}
-.v-overlay{position:absolute;inset:0 0 44px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:12px;pointer-events:none}
-.v-play{display:none}
-.v-name{color:white;font-family:var(--display);font-weight:700;font-size:13px;text-align:center;text-transform:uppercase;letter-spacing:.03em;line-height:1.2;text-shadow:0 2px 3px #000,0 0 8px #000}
+.v-card video{width:100%;height:100%;object-fit:cover;background:#16071a}
+.v-card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.v-overlay{position:absolute;inset:0;display:grid;place-items:center;padding:12px;pointer-events:none;background:linear-gradient(180deg,transparent 58%,rgba(16,4,20,.32) 100%)}
+.v-play,.v-volume{display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.5);color:white;background:rgba(42,14,48,.75);backdrop-filter:blur(8px);box-shadow:0 7px 22px rgba(0,0,0,.3);cursor:pointer;pointer-events:auto;transition:opacity .2s ease,transform .2s ease,background .2s ease}
+.v-play{width:62px;height:62px;border-radius:50%;font-size:24px;padding-left:4px}
+.v-volume{position:absolute;right:10px;bottom:10px;width:38px;height:38px;border-radius:50%;padding:0}
+.v-volume svg{width:19px;height:19px;fill:currentColor}
+.v-play:hover,.v-volume:hover{background:var(--accent);transform:scale(1.05)}
+.v-name{position:absolute;left:12px;right:12px;bottom:54px;color:white;font-family:var(--display);font-weight:700;font-size:13px;text-align:center;text-transform:uppercase;letter-spacing:.03em;line-height:1.2;text-shadow:0 2px 3px #000,0 0 8px #000;transition:opacity .18s ease}
+.v-card.is-playing .v-name{opacity:0;visibility:hidden}
+.v-card.is-playing .v-play{opacity:0;transform:scale(.88);pointer-events:none}
+.v-card.is-paused .v-play{opacity:1;transform:none}
+.v-card.has-error::after{content:"No se pudo cargar el video";position:absolute;inset:0;display:grid;place-items:center;padding:18px;text-align:center;background:var(--bg-deep);color:var(--light);font-size:13px}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(10px)}
 .modal-overlay.open{display:flex;animation:fadeIn .3s ease}
@@ -67,7 +75,7 @@ nav a:hover{color:var(--accent)}
 .modal-close:hover{background:var(--accent)}
 .modal-title{color:white;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.05em;text-align:center;margin-top:16px}
 
-footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(--line);margin-top:40px}
+footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(--line);margin-top:0}
 .foot-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
 .foot-contact-line{margin-bottom:10px;font-size:14px}
 .foot-contact-line a{color:var(--accent);text-decoration:none}
@@ -91,7 +99,7 @@ footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(
 
 <nav>
   <div class="container">
-    <a href="/corporativos" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+    <a href="/" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
     <ul>
       <li><a href="/corporativos">Inicio</a></li>
       <li><a href="/corporativos#proceso">Proceso</a></li>
@@ -205,22 +213,22 @@ footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(
           <div class="v-name">Sommier Center</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/11-coa.mp4" data-name="Coa">
-        <video data-src="/media/videos/fiesta/11-coa.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/11-coa-v3.mp4" data-name="COA">
+        <video data-src="/media/videos/fiesta/11-coa-v3.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">Coa</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/12-el-abastecedor.mp4" data-name="El Abastecedor">
-        <video data-src="/media/videos/fiesta/12-el-abastecedor.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/12-el-abastecedor-v2.mp4" data-name="El Abastecedor">
+        <video data-src="/media/videos/fiesta/12-el-abastecedor-v2.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">El Abastecedor</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/13-datawise.mp4" data-name="Datawise">
-        <video data-src="/media/videos/fiesta/13-datawise.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/13-datawise-v2.mp4" data-name="Datawise">
+        <video data-src="/media/videos/fiesta/13-datawise-v2.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">Datawise</div>
@@ -282,8 +290,8 @@ footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(
           <div class="v-name">Iecs</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/22-manana-seguros.mp4" data-name="Mañana Seguros">
-        <video data-src="/media/videos/fiesta/22-manana-seguros.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/22-manana-seguros-v2.mp4" data-name="Mañana Seguros">
+        <video data-src="/media/videos/fiesta/22-manana-seguros-v2.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">Mañana Seguros</div>
@@ -324,22 +332,22 @@ footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(
           <div class="v-name">Amia</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/28-estructuras.mp4" data-name="Estructuras">
-        <video data-src="/media/videos/fiesta/28-estructuras.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/28-estructuras-v2.mp4" data-name="Estructuras">
+        <video data-src="/media/videos/fiesta/28-estructuras-v2.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">Estructuras</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/29-lodiser.mp4" data-name="Lodiser">
-        <video data-src="/media/videos/fiesta/29-lodiser.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/29-lodiser-v2.mp4" data-name="Lodiser">
+        <video data-src="/media/videos/fiesta/29-lodiser-v2.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">Lodiser</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/fiesta/30-la-sastreria.mp4" data-name="La Sastreria">
-        <video data-src="/media/videos/fiesta/30-la-sastreria.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/fiesta/30-la-sastreria-v2.mp4" data-name="La Sastreria">
+        <video data-src="/media/videos/fiesta/30-la-sastreria-v2.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">La Sastreria</div>
@@ -452,15 +460,15 @@ footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(
           <div class="v-name">Iam Seguros</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/team/13-koppert.mp4" data-name="Koppert">
-        <video data-src="/media/videos/team/13-koppert.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/team/13-koppert-hq.mp4" data-name="Koppert">
+        <video data-src="/media/videos/team/13-koppert-hq.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">Koppert</div>
         </div>
       </article>
-      <article class="v-card" data-video="/media/videos/team/14-la-morena.mp4" data-name="La Morena">
-        <video data-src="/media/videos/team/14-la-morena.mp4" muted playsinline preload="none"></video>
+      <article class="v-card" data-video="/media/videos/team/14-la-morena-hq.mp4" data-name="La Morena">
+        <video data-src="/media/videos/team/14-la-morena-hq.mp4" muted playsinline preload="none"></video>
         <div class="v-overlay">
           <div class="v-play">▶</div>
           <div class="v-name">La Morena</div>
@@ -554,7 +562,7 @@ footer{background:var(--bg-darker);padding:40px 0 24px;border-top:1px solid var(
         <div class="foot-contact-line">WhatsApp Corporativos · <a href="https://wa.me/541124629086">+54 11 2462-9086</a></div>
         <div class="foot-contact-line">Instagram · <a href="https://instagram.com/si.showinteractivo">@si.showinteractivo</a></div>
       </div>
-      <a href="/corporativos" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+      <a href="/" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
     </div>
     <div class="foot-copy">Show Interactivo © 2026 · Todos los derechos reservados.</div>
   </div>
@@ -593,14 +601,85 @@ try {
 
 document.querySelectorAll('.v-card').forEach(card => {
   const video = card.querySelector('video');
-  video.controls = true;
-  video.addEventListener('play', () => card.classList.add('is-playing'));
-  card.addEventListener('click', () => {
-    if(card.classList.contains('is-playing')) return;
-    if(!video.src){ video.src = video.dataset.src; video.load(); }
-    video.muted = false;
-    video.play().catch(()=>{});
+  const playButton = card.querySelector('.v-play');
+  const volumeButton = document.createElement('button');
+  const volumeOn = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.05A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg>';
+  const volumeOff = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.59 3 2.7-2.7-1.42-1.42-2.7 2.7-2.7-2.7-1.42 1.42 2.7 2.7-2.7 2.7 1.42 1.42 2.7-2.7 2.7 2.7 1.42-1.42-2.7-2.7z"/></svg>';
+
+  video.controls = false;
+  video.removeAttribute('controls');
+  video.setAttribute('controlslist', 'nodownload noplaybackrate nofullscreen');
+  video.setAttribute('disablepictureinpicture', '');
+  video.setAttribute('disableremoteplayback', '');
+  video.setAttribute('webkit-playsinline', '');
+  video.setAttribute('x-webkit-airplay', 'deny');
+  video.disablePictureInPicture = true;
+  video.playsInline = true;
+  video.addEventListener('contextmenu', event => event.preventDefault());
+
+  playButton.setAttribute('role', 'button');
+  playButton.setAttribute('aria-label', `Reproducir ${card.dataset.name}`);
+  playButton.setAttribute('tabindex', '0');
+  volumeButton.type = 'button';
+  volumeButton.className = 'v-volume';
+  volumeButton.setAttribute('aria-label', 'Activar sonido');
+  volumeButton.innerHTML = volumeOff;
+  card.appendChild(volumeButton);
+  card.classList.add('is-paused');
+
+  const ensureSource = () => {
+    if(!video.src){
+      video.src = video.dataset.src;
+      video.load();
+    }
+  };
+  const togglePlayback = () => {
+    ensureSource();
+    if(video.paused){
+      document.querySelectorAll('.v-card video').forEach(other => {
+        if(other !== video && !other.paused) other.pause();
+      });
+      video.muted = false;
+      volumeButton.innerHTML = volumeOn;
+      volumeButton.setAttribute('aria-label', 'Silenciar video');
+      video.play().catch(() => card.classList.add('has-error'));
+    } else {
+      video.pause();
+    }
+  };
+
+  playButton.addEventListener('click', event => { event.stopPropagation(); togglePlayback(); });
+  playButton.addEventListener('keydown', event => {
+    if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); togglePlayback(); }
   });
+  volumeButton.addEventListener('click', event => {
+    event.stopPropagation();
+    video.muted = !video.muted;
+    volumeButton.innerHTML = video.muted ? volumeOff : volumeOn;
+    volumeButton.setAttribute('aria-label', video.muted ? 'Activar sonido' : 'Silenciar video');
+  });
+  card.addEventListener('click', event => {
+    if(event.target.closest('.v-volume,.v-play')) return;
+    togglePlayback();
+  });
+  video.addEventListener('play', () => {
+    card.classList.add('is-playing');
+    card.classList.remove('is-paused','has-error');
+    playButton.textContent = '❚❚';
+    playButton.setAttribute('aria-label', `Pausar ${card.dataset.name}`);
+  });
+  video.addEventListener('pause', () => {
+    card.classList.remove('is-playing');
+    card.classList.add('is-paused');
+    playButton.textContent = '▶';
+    playButton.setAttribute('aria-label', `Reproducir ${card.dataset.name}`);
+  });
+  video.addEventListener('ended', () => {
+    video.currentTime = 0;
+    card.classList.remove('is-playing');
+    card.classList.add('is-paused');
+  });
+  video.addEventListener('error', () => card.classList.add('has-error'));
 });
 
 const lazyVideos = document.querySelectorAll('.v-card video[data-src]');
@@ -626,7 +705,7 @@ window.addEventListener('scroll', () => {
 
 document.querySelectorAll('.v-card video').forEach(v => {
   v.addEventListener('loadedmetadata', () => {
-    v.currentTime = 0.5;
+    if(v.duration > 1) v.currentTime = Math.min(.25, v.duration / 10);
   });
 });
 </script>

@@ -90,8 +90,8 @@ nav ul a.active::after, nav ul a:hover::after{content:"";position:absolute;left:
 .stage-points li::before{content:"";position:absolute;left:0;top:10px;width:18px;height:2px;background:var(--accent)}
 @media(max-width:900px){.stage{grid-template-columns:1fr;gap:40px;margin-bottom:80px}.stage:nth-child(even){direction:ltr}.stage-num{font-size:120px}}
 
-.diffs{padding:120px 0;background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.diff-header{text-align:center;max-width:780px;margin:0 auto 80px}
+.diffs{padding:80px 0;background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.diff-header{text-align:center;max-width:780px;margin:0 auto 48px}
 .diff-header h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1.05;margin:24px 0 20px;text-transform:uppercase;letter-spacing:-0.02em}
 .diff-header p{font-size:18px;color:var(--light)}
 .diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
@@ -170,7 +170,7 @@ nav ul a.active::after, nav ul a:hover::after{content:"";position:absolute;left:
 .form button{margin-top:8px;justify-content:center}
 @media(max-width:900px){.cta-wrap{grid-template-columns:1fr;gap:40px}.form-row{grid-template-columns:1fr}}
 
-footer{padding:56px 0;border-top:1px solid var(--line);background:var(--bg-darker)}
+footer{padding:36px 0 24px;border-top:1px solid var(--line);background:var(--bg-darker)}
 .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:32px}
 .foot-tagline{font-family:var(--display);color:var(--light);font-size:14px;margin-top:12px;font-weight:500;font-style:italic}
 .foot-contact{font-size:14px;color:var(--light);text-align:right}
@@ -275,7 +275,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 
 <nav>
   <div class="container">
-    <a href="https://www.showinteractivo.com" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+    <a href="/" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
     <ul>
       <li><a href="#previa" class="active">Inicio</a></li>
       <li><a href="#proceso">Proceso</a></li>
@@ -578,8 +578,8 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
       <h2>Lo que dicen de nosotros</h2>
     </div>
     <div class="testi-grid two-cols">
-      <div class="testi reveal"><p class="testi-quote">Hubo muy buenos comentarios de su trabajo en la fiesta. Espero verlos en otro evento.</p><div class="testi-author">Carina Aguilar</div><div class="testi-co">Delga</div></div>
-      <div class="testi reveal"><p class="testi-quote">La pasamos bárbaro, increíble la animación, súper recomendable.</p><div class="testi-author">Sofía Hermida</div><div class="testi-co">Variacode</div></div>
+      <div class="testi reveal"><p class="testi-quote" id="testi-quote-1">Hubo muy buenos comentarios de su trabajo en la fiesta. Espero verlos en otro evento.</p><div class="testi-author" id="testi-author-1">Carina Aguilar</div><div class="testi-co" id="testi-co-1">Delga</div></div>
+      <div class="testi reveal"><p class="testi-quote" id="testi-quote-2">La pasamos bárbaro, increíble la animación, súper recomendable.</p><div class="testi-author" id="testi-author-2">Sofía Hermida</div><div class="testi-co" id="testi-co-2">Variacode</div></div>
     </div>
     <div class="testi-more-wrap">
       <a href="/corporativos/testimonios" class="btn-secondary" target="_blank" rel="noopener">Ver videos de testimonios</a>
@@ -681,7 +681,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
   <div class="container">
     <div class="foot-grid">
       <div>
-        <a href="https://www.showinteractivo.com" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
+        <a href="/" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
         <div class="foot-tagline">Experiencias Memorables</div>
       </div>
       <div class="foot-contact">
@@ -806,6 +806,21 @@ const content = {
   }
 };
 
+const testimonialContent = {
+  fiesta: [
+    { quote: "Hubo muy buenos comentarios de su trabajo en la fiesta. Espero verlos en otro evento.", author: "Carina Aguilar", company: "Delga" },
+    { quote: "La pasamos bárbaro, increíble la animación, súper recomendable.", author: "Sofía Hermida", company: "Variacode" }
+  ],
+  team: [
+    { quote: "La experiencia fue dinámica, participativa y logró integrar a todo el equipo de principio a fin.", author: "Cliente corporativo", company: "Team Building" },
+    { quote: "Las actividades estuvieron muy bien coordinadas y consiguieron que todos se involucraran de manera natural.", author: "Cliente corporativo", company: "Team Building" }
+  ],
+  otros: [
+    { quote: "La experiencia fue dinámica, participativa y logró integrar a todo el equipo de principio a fin.", author: "Cliente corporativo", company: "Evento corporativo" },
+    { quote: "Las actividades estuvieron muy bien coordinadas y consiguieron que todos se involucraran de manera natural.", author: "Cliente corporativo", company: "Evento corporativo" }
+  ]
+};
+
 const tabs = document.querySelectorAll('.type-tab');
 const subEyebrow = document.getElementById('subhero-eyebrow');
 const subTitle = document.getElementById('subhero-title');
@@ -818,6 +833,11 @@ const eventoPoints = document.getElementById('evento-points');
 const resultadoSub = document.getElementById('resultado-sub');
 const resultadoDesc = document.getElementById('resultado-desc');
 const resultadoPoints = document.getElementById('resultado-points');
+const testimonialElements = [1, 2].map(index => ({
+  quote: document.getElementById(`testi-quote-${index}`),
+  author: document.getElementById(`testi-author-${index}`),
+  company: document.getElementById(`testi-co-${index}`)
+}));
 
 // Mapa videos por solapa (Corporativos)
 const heroVideos = {
@@ -845,7 +865,8 @@ function setType(t){
   tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === t));
   swapHeroVideo(t);
   const faq01El = document.getElementById('faq-01-a');
-  const dyns = [subEyebrow, subTitle, subTagline, subDesc, previaDesc, previaPoints, eventoDesc, eventoPoints, resultadoSub, resultadoDesc, resultadoPoints, faq01El];
+  const testimonialNodes = testimonialElements.flatMap(item => [item.quote, item.author, item.company]);
+  const dyns = [subEyebrow, subTitle, subTagline, subDesc, previaDesc, previaPoints, eventoDesc, eventoPoints, resultadoSub, resultadoDesc, resultadoPoints, faq01El, ...testimonialNodes];
   dyns.forEach(el => { if(el){ el.classList.remove('fading'); void el.offsetWidth; el.classList.add('fading'); } });
   setTimeout(()=>{
     const c = content[t];
@@ -860,6 +881,12 @@ function setType(t){
     resultadoSub.textContent = c.resultadoSub;
     resultadoDesc.textContent = c.resultadoDesc;
     resultadoPoints.innerHTML = c.resultadoPoints.map(p => `<li>${p}</li>`).join('');
+    testimonialElements.forEach((elements, index) => {
+      const testimonial = testimonialContent[t][index];
+      elements.quote.textContent = testimonial.quote;
+      elements.author.textContent = testimonial.author;
+      elements.company.textContent = testimonial.company;
+    });
     if(faq01El) faq01El.textContent = c.faq01;
     const vpTop = document.getElementById('visual-previa-top');
     const vpBot = document.getElementById('visual-previa-bottom');
