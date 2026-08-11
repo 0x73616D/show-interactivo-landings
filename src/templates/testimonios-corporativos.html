@@ -22,7 +22,19 @@ nav a{color:var(--white);text-decoration:none;font-size:14px;font-weight:500;tra
 nav a:hover{color:var(--accent)}
 .nav-cta{background:var(--white);color:var(--bg);padding:11px 24px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
 .nav-cta:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
-@media(max-width:900px){nav ul{display:none}}
+.nav-toggle{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer}
+.nav-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:var(--white)}
+.mobile-menu{display:none}
+@media(max-width:900px){
+  nav ul{display:none}
+  nav .container{gap:10px}
+  .logo-link{margin-right:auto}
+  .nav-toggle{display:inline-flex}
+  .mobile-menu{position:absolute;top:100%;left:0;right:0;background:rgba(42,14,48,.98);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 20px 18px}
+  .mobile-menu:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}
+  .mobile-menu a{color:var(--white);text-decoration:none;font-size:14px;font-weight:600;padding:10px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .mobile-menu a.mobile-menu-social{color:var(--accent);font-weight:800}
+}
 
 .page-hero{padding:120px 0 32px;text-align:center;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-deep) 100%)}
 .page-hero .eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
@@ -109,6 +121,18 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
       <li><a href="/sociales">Sociales</a></li>
     </ul>
     <a href="/corporativos#cta" class="nav-cta">Cotizar Evento</a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a href="/corporativos">Inicio</a>
+    <a href="/corporativos#proceso">Proceso</a>
+    <a href="/corporativos#clientes">Clientes</a>
+    <a href="/corporativos/testimonios">Testimonios</a>
+    <a href="/corporativos#faq">FAQ</a>
+    <a href="/corporativos/fiesta-corporativa">Fiesta corporativa</a>
+    <a href="/corporativos/team-building">Team Building</a>
+    <a href="/corporativos/otros">Otros</a>
+    <a href="/sociales" class="mobile-menu-social">Sociales</a>
   </div>
 </nav>
 
@@ -569,6 +593,29 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
 </footer>
 
 <script>
+const navToggle = document.querySelector('.nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if(navToggle && mobileMenu){
+  navToggle.addEventListener('click', () => {
+    const willOpen = mobileMenu.hasAttribute('hidden');
+    mobileMenu.toggleAttribute('hidden', !willOpen);
+    navToggle.setAttribute('aria-expanded', String(willOpen));
+    navToggle.setAttribute('aria-label', willOpen ? 'Cerrar menú' : 'Abrir menú');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    mobileMenu.setAttribute('hidden', '');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menú');
+  }));
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && !mobileMenu.hasAttribute('hidden')){
+      mobileMenu.setAttribute('hidden', '');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Abrir menú');
+      navToggle.focus();
+    }
+  });
+}
 const tabs = document.querySelectorAll('.type-tab');
 const sets = document.querySelectorAll('.video-set');
 const catalog = document.querySelector('.videos-section .container');

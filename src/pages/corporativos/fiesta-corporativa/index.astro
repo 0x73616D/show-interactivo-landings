@@ -1,0 +1,9 @@
+---
+import landingHtml from '../../../templates/landing-corporativos.html?raw';
+const pageHtml = landingHtml.replace(
+  '<title>Show Interactivo · Eventos Corporativos</title>',
+  '<title>Show Interactivo · Fiesta Corporativa</title>'
+);
+---
+
+<Fragment set:html={pageHtml} />

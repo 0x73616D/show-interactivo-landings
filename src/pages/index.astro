@@ -22,11 +22,12 @@
           <span class="choice-media" aria-hidden="true">
             <picture class="choice-photo choice-photo-main">
               <source media="(max-width: 620px)" srcset="/media/images/events/SI-Boda-Resultado-02.jpg" />
-              <img src="/media/images/events/SI-Boda-Previa-01.jpg" alt="" width="1067" height="1600" loading="eager" />
+              <img src="/media/images/events/SI-Boda-Resultado-02.jpg" alt="" width="1600" height="1067" loading="eager" />
             </picture>
-            <span class="choice-photo choice-photo-fifteen">
-              <img src="/media/images/events/SI-Cumple15-Evento-01.jpg" alt="" width="1600" height="901" loading="eager" />
-            </span>
+            <picture class="choice-photo choice-photo-fifteen">
+              <source media="(max-width: 620px)" srcset="/media/images/events/SI-Cumple15-Evento-01.jpg" />
+              <img src="/media/images/events/SI-Cumple15-Resultado-01.jpg" alt="" width="1600" height="1067" loading="eager" />
+            </picture>
             <span class="choice-photo choice-photo-adults">
               <img src="/media/images/events/SI-Adultos-Resultado-01.jpg" alt="" width="1600" height="1067" loading="eager" />
             </span>
@@ -41,14 +42,16 @@
           <span class="choice-media" aria-hidden="true">
             <picture class="choice-photo choice-photo-main choice-photo-team">
               <source media="(max-width: 620px)" srcset="/media/images/events/SI-Team-Previa-02.jpg" />
-              <img src="/media/images/events/SI-Team-Evento-02.jpg" alt="" width="901" height="1600" loading="eager" />
+              <img src="/media/images/events/SI-Corporativos-Portada-YPF-Limpia.webp" alt="" width="940" height="1672" loading="eager" />
             </picture>
-            <span class="choice-photo choice-photo-party">
-              <img src="/media/images/events/SI-Fiesta-Evento-01.jpg" alt="" width="1600" height="976" loading="eager" />
-            </span>
-            <span class="choice-photo choice-photo-others">
-              <img src="/media/images/events/SI-Otros-Evento-02.jpg" alt="" width="1600" height="1066" loading="eager" />
-            </span>
+            <picture class="choice-photo choice-photo-party">
+              <source media="(max-width: 620px)" srcset="/media/images/events/SI-Fiesta-Evento-01.jpg" />
+              <img src="/media/images/events/SI-Team-Previa-02.jpg" alt="" width="1600" height="1283" loading="eager" />
+            </picture>
+            <picture class="choice-photo choice-photo-others">
+              <source media="(max-width: 620px)" srcset="/media/images/events/SI-Otros-Evento-02.jpg" />
+              <img src="/media/images/events/SI-Otros-Evento-01.jpg" alt="" width="1600" height="1066" loading="eager" />
+            </picture>
           </span>
           <span class="choice-copy">
             <small>Empresas y equipos</small>
@@ -78,15 +81,15 @@
   .choice{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:0;border:1px solid var(--line);border-radius:22px;overflow:hidden;color:var(--white);text-decoration:none;background:var(--deep);box-shadow:0 16px 44px rgba(0,0,0,.28);transition:transform .25s ease,border-color .25s ease}
   .choice::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(25,6,30,.05) 10%,rgba(25,6,30,.9) 88%)}
   .choice:hover,.choice:focus-visible{transform:translateY(-3px);border-color:var(--accent);outline:none}
-  .choice-media{position:absolute;inset:0;z-index:-2;display:grid;grid-template-columns:1.08fr .92fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:2px;background:var(--deep)}
+  .choice-media{position:absolute;inset:0;z-index:-2;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:2px;background:var(--deep)}
   .choice-photo{display:block;min-width:0;min-height:0;overflow:hidden}
   .choice-photo-main{grid-row:1/-1}
-  .choice-photo img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.01)}
-  .choice-photo-fifteen img{object-position:58% center}
-  .choice-photo-adults img{object-position:center 42%}
-  .choice-photo-team img{object-position:center 48%}
-  .choice-photo-party img{object-position:47% center}
-  .choice-photo-others img{object-position:center 44%}
+  .choice-photo img{display:block;width:100%;height:100%;object-fit:cover}
+  .choice-photo-fifteen img{object-position:54% 58%}
+  .choice-photo-adults img{object-position:center 44%}
+  .choice-photo-team img{object-position:center 50%}
+  .choice-photo-party img{object-position:center 42%}
+  .choice-photo-others img{object-position:center 48%}
   .choice-copy{position:relative;z-index:1;display:block;width:100%;padding:clamp(15px,3vh,28px)}
   .choice-copy small,.choice-copy strong,.choice-copy > span{display:block}
   .choice-copy small{font-size:clamp(10px,1.5vh,13px);font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#f7a7d7}
@@ -94,6 +97,7 @@
   .choice-copy > span{font-size:clamp(11px,1.7vh,14px);color:rgba(255,255,255,.86)}
   .choice-copy b{color:var(--accent);font-size:1.25em;margin-left:4px}
   footer{text-align:center;color:rgba(255,255,255,.55);font-size:11px}
+  @media(min-width:621px){.choice-social .choice-photo-main img{object-position:37% center}}
   @media(max-width:620px){
     main{gap:10px;padding-left:16px;padding-right:16px}
     nav{grid-template-columns:1fr;gap:10px}

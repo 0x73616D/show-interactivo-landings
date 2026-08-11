@@ -37,7 +37,19 @@ nav ul a{color:var(--white);text-decoration:none;font-size:15px;font-weight:600;
 nav ul a.active::after, nav ul a:hover::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent);border-radius:2px}
 .nav-cta{background:var(--white);color:var(--bg);padding:11px 24px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
 .nav-cta:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
-@media(max-width:900px){nav ul{display:none}}
+.nav-toggle{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer}
+.nav-toggle span{display:block;width:18px;height:2px;border-radius:2px;background:var(--white)}
+.mobile-menu{display:none}
+@media(max-width:900px){
+  nav ul{display:none}
+  nav .container{gap:10px}
+  .logo-link{margin-right:auto}
+  .nav-toggle{display:inline-flex}
+  .mobile-menu{position:absolute;top:100%;left:0;right:0;background:rgba(42,14,48,.98);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 20px 18px}
+  .mobile-menu:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}
+  .mobile-menu a{color:var(--white);text-decoration:none;font-size:14px;font-weight:600;padding:10px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .mobile-menu a.mobile-menu-social{color:var(--accent);font-weight:800}
+}
 
 .hero{padding:110px 0 20px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--bg) 0%,var(--bg-deep) 50%,var(--bg) 100%)}
 .hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.55;pointer-events:none;transition:opacity .4s ease}
@@ -111,10 +123,11 @@ nav ul a.active::after, nav ul a:hover::after{content:"";position:absolute;left:
 .testi-more-wrap{text-align:center;margin-top:24px}
 .testi{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;transition:all .25s}
 .testi:hover{border-color:var(--accent);background:rgba(231,4,143,.06)}
+.testi-title{font-family:var(--display);font-size:18px;font-weight:800;color:var(--white);margin-bottom:10px}
 .testi-quote{font-family:var(--body);font-style:italic;font-size:16px;line-height:1.55;margin-bottom:24px;flex:1;color:var(--light)}
 .testi-quote::before{content:"\201C";display:block;font-family:var(--display);font-size:48px;color:var(--accent);line-height:1;margin-bottom:8px}
-.testi-author{font-size:14px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-.testi-co{font-size:13px;color:var(--muted);margin-top:4px}
+.testi-author{font-size:14px;color:var(--light);font-weight:400;text-transform:none;letter-spacing:0}
+.testi-co{font-size:13px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
 @media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
 
 .logos{padding:16px 0;overflow:hidden;background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -285,6 +298,18 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
       <li><a href="/sociales">Sociales</a></li>
     </ul>
     <a href="#cta" class="nav-cta">Cotizar Evento</a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a href="#previa">Inicio</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#faq">FAQ</a>
+    <a href="/corporativos/fiesta-corporativa">Fiesta corporativa</a>
+    <a href="/corporativos/team-building">Team Building</a>
+    <a href="/corporativos/otros">Otros</a>
+    <a href="/sociales" class="mobile-menu-social">Sociales</a>
   </div>
 </nav>
 
@@ -297,16 +322,16 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 
     <div class="selector" id="tipos">
       <div class="selector-label">¿Qué tipo de evento estás organizando?</div>
-      <div class="type-tabs">
-        <button class="type-tab active" data-target="fiesta">
+      <div class="type-tabs" role="tablist" aria-label="Tipo de evento corporativo">
+        <button class="type-tab active" type="button" role="tab" aria-selected="true" data-target="fiesta">
           <div class="tab-name">Fiesta</div>
           <div class="tab-sub">Fin de año, aniversarios</div>
         </button>
-        <button class="type-tab" data-target="team">
+        <button class="type-tab" type="button" role="tab" aria-selected="false" data-target="team">
           <div class="tab-name">Team Building</div>
           <div class="tab-sub">Integración y motivación</div>
         </button>
-        <button class="type-tab" data-target="otros">
+        <button class="type-tab" type="button" role="tab" aria-selected="false" data-target="otros">
           <div class="tab-name">Otros</div>
           <div class="tab-sub">Lanzamientos, congresos, family day</div>
         </button>
@@ -578,8 +603,8 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
       <h2>Lo que dicen de nosotros</h2>
     </div>
     <div class="testi-grid two-cols">
-      <div class="testi reveal"><p class="testi-quote" id="testi-quote-1">Hubo muy buenos comentarios de su trabajo en la fiesta. Espero verlos en otro evento.</p><div class="testi-author" id="testi-author-1">Carina Aguilar</div><div class="testi-co" id="testi-co-1">Delga</div></div>
-      <div class="testi reveal"><p class="testi-quote" id="testi-quote-2">La pasamos bárbaro, increíble la animación, súper recomendable.</p><div class="testi-author" id="testi-author-2">Sofía Hermida</div><div class="testi-co" id="testi-co-2">Variacode</div></div>
+      <div class="testi reveal"><div class="testi-title" id="testi-title-1">Muy dinámico</div><p class="testi-quote" id="testi-quote-1">Andrés y Guada hicieron todo muy dinámico y entretenido, haciendo divertir a todos los invitados.</p><div class="testi-author" id="testi-author-1">Ricardo Duque</div><div class="testi-co" id="testi-co-1">YPF</div></div>
+      <div class="testi reveal"><div class="testi-title" id="testi-title-2">¡La rompieron!</div><p class="testi-quote" id="testi-quote-2">Mil gracias a los dos, la rompieron! Salió todo bárbaro, repetiremos así que estamos en contacto!</p><div class="testi-author" id="testi-author-2">Nadia Cristalli</div><div class="testi-co" id="testi-co-2">OVERSOFT</div></div>
     </div>
     <div class="testi-more-wrap">
       <a href="/corporativos/testimonios" class="btn-secondary" target="_blank" rel="noopener">Ver videos de testimonios</a>
@@ -808,16 +833,16 @@ const content = {
 
 const testimonialContent = {
   fiesta: [
-    { quote: "Hubo muy buenos comentarios de su trabajo en la fiesta. Espero verlos en otro evento.", author: "Carina Aguilar", company: "Delga" },
-    { quote: "La pasamos bárbaro, increíble la animación, súper recomendable.", author: "Sofía Hermida", company: "Variacode" }
+    { title: "Muy dinámico", quote: "Andrés y Guada hicieron todo muy dinámico y entretenido, haciendo divertir a todos los invitados.", author: "Ricardo Duque", company: "YPF" },
+    { title: "¡La rompieron!", quote: "Mil gracias a los dos, la rompieron! Salió todo bárbaro, repetiremos así que estamos en contacto!", author: "Nadia Cristalli", company: "OVERSOFT" }
   ],
   team: [
-    { quote: "La experiencia fue dinámica, participativa y logró integrar a todo el equipo de principio a fin.", author: "Cliente corporativo", company: "Team Building" },
-    { quote: "Las actividades estuvieron muy bien coordinadas y consiguieron que todos se involucraran de manera natural.", author: "Cliente corporativo", company: "Team Building" }
+    { title: "Súper profesionales", quote: "Salió hermoso, lo disfrutamos un montón, estuvo espectacular. Gracias por la voluntad, buena onda, muy profesionales.", author: "Mariana Mascotti", company: "INTA" },
+    { title: "¡Son excelentes!", quote: "Quería agradecer por la onda que le pusieron en el evento, realmente son excelentes! ¡Y son súper recomendables!", author: "Marina Arata", company: "COA" }
   ],
   otros: [
-    { quote: "La experiencia fue dinámica, participativa y logró integrar a todo el equipo de principio a fin.", author: "Cliente corporativo", company: "Evento corporativo" },
-    { quote: "Las actividades estuvieron muy bien coordinadas y consiguieron que todos se involucraran de manera natural.", author: "Cliente corporativo", company: "Evento corporativo" }
+    { title: "¡Excelente!", quote: "¡La experiencia fue excelente! Proponen actividades muy divertidas y dinámicas que gustan mucho. Son grandes profesionales.", author: "Facundo Tolosa", company: "IT PATAGONIA" },
+    { title: "¡Salió genial!", quote: "Quiero agradecerles por el espectacular evento que nos hicieron pasar!! ¡Salió genial! Los volveremos a elegir.", author: "Analia Gutierrez de Moura", company: "PUNTO ROJO" }
   ]
 };
 
@@ -834,6 +859,7 @@ const resultadoSub = document.getElementById('resultado-sub');
 const resultadoDesc = document.getElementById('resultado-desc');
 const resultadoPoints = document.getElementById('resultado-points');
 const testimonialElements = [1, 2].map(index => ({
+  title: document.getElementById(`testi-title-${index}`),
   quote: document.getElementById(`testi-quote-${index}`),
   author: document.getElementById(`testi-author-${index}`),
   company: document.getElementById(`testi-co-${index}`)
@@ -846,29 +872,38 @@ const heroVideos = {
   otros: '/media/clips/clip_otros.mp4'
 };
 
-function swapHeroVideo(t){
+function swapHeroVideo(t, immediate = false){
   const v = document.getElementById('hero-bg-video');
   if(!v) return;
   const target = heroVideos[t] || '/media/clips/clip_fiesta.mp4';
   const current = v.getAttribute('src');
   if(current === target) return;
-  v.classList.add('swapping');
-  setTimeout(()=>{
+  const updateVideo = ()=>{
     v.setAttribute('src', target);
     v.load();
     v.play().catch(()=>{});
     v.classList.remove('swapping');
-  }, 250);
+  };
+  if(immediate) updateVideo();
+  else {
+    v.classList.add('swapping');
+    setTimeout(updateVideo, 250);
+  }
 }
 
-function setType(t){
-  tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === t));
-  swapHeroVideo(t);
+function setType(t, immediate = false){
+  tabs.forEach(tab => {
+    const isActive = tab.dataset.target === t;
+    tab.classList.toggle('active', isActive);
+    tab.setAttribute('aria-selected', String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
+  });
+  swapHeroVideo(t, immediate);
   const faq01El = document.getElementById('faq-01-a');
-  const testimonialNodes = testimonialElements.flatMap(item => [item.quote, item.author, item.company]);
+  const testimonialNodes = testimonialElements.flatMap(item => [item.title, item.quote, item.author, item.company]);
   const dyns = [subEyebrow, subTitle, subTagline, subDesc, previaDesc, previaPoints, eventoDesc, eventoPoints, resultadoSub, resultadoDesc, resultadoPoints, faq01El, ...testimonialNodes];
-  dyns.forEach(el => { if(el){ el.classList.remove('fading'); void el.offsetWidth; el.classList.add('fading'); } });
-  setTimeout(()=>{
+  if(!immediate) dyns.forEach(el => { if(el){ el.classList.remove('fading'); void el.offsetWidth; el.classList.add('fading'); } });
+  const updateContent = ()=>{
     const c = content[t];
     subEyebrow.textContent = c.subEyebrow;
     subTitle.textContent = c.subTitle;
@@ -883,6 +918,7 @@ function setType(t){
     resultadoPoints.innerHTML = c.resultadoPoints.map(p => `<li>${p}</li>`).join('');
     testimonialElements.forEach((elements, index) => {
       const testimonial = testimonialContent[t][index];
+      elements.title.textContent = testimonial.title;
       elements.quote.textContent = testimonial.quote;
       elements.author.textContent = testimonial.author;
       elements.company.textContent = testimonial.company;
@@ -902,23 +938,27 @@ function setType(t){
     if(vrBot) vrBot.style.backgroundImage = `url('${c.visualResultadoBot}')`;
     dyns.forEach(el => el && el.classList.remove('fading'));
     if(typeof animateAllStats === 'function') animateAllStats();
-  }, 250);
+  };
+  if(immediate) updateContent();
+  else setTimeout(updateContent, 250);
 }
 
 tabs.forEach(tab => tab.addEventListener('click', () => {
   const t = tab.dataset.target;
   try { localStorage.setItem('si_corp_tab', t); } catch(e){}
+  const typeRoutes = { fiesta: '/corporativos/fiesta-corporativa', team: '/corporativos/team-building', otros: '/corporativos/otros' };
+  history.replaceState({}, '', typeRoutes[t]);
   setType(t);
 }));
 
-// Restaurar la última solapa elegida al cargar la página
-try {
-  const saved = localStorage.getItem('si_corp_tab');
-  const validTabs = ['fiesta','team','otros'];
-  if(saved && validTabs.includes(saved)) {
-    setType(saved);
-  }
-} catch(e){}
+// Abrir la solapa correspondiente en cada enlace directo.
+const routeTypes = { '/corporativos/fiesta-corporativa': 'fiesta', '/corporativos/team-building': 'team', '/corporativos/otros': 'otros' };
+const path = location.pathname.replace(/\/+$/, '') || '/';
+const validTabs = ['fiesta','team','otros'];
+let savedType = null;
+try { savedType = localStorage.getItem('si_corp_tab'); } catch(e){}
+const initialType = routeTypes[path] || (savedType && validTabs.includes(savedType) ? savedType : 'fiesta');
+setType(initialType, true);
 
 function animateStatEl(el){
   const target = parseFloat(el.dataset.target);
@@ -974,6 +1014,24 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ============ NAV SCROLL ============
 const navEl = document.querySelector('nav');
+const navToggle = document.querySelector('.nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if(navToggle && mobileMenu){
+  navToggle.addEventListener('click', () => {
+    const willOpen = mobileMenu.hasAttribute('hidden');
+    mobileMenu.toggleAttribute('hidden', !willOpen);
+    navToggle.setAttribute('aria-expanded', String(willOpen));
+    navToggle.setAttribute('aria-label', willOpen ? 'Cerrar menú' : 'Abrir menú');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    mobileMenu.setAttribute('hidden', '');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menú');
+  }));
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && !mobileMenu.hasAttribute('hidden')) navToggle.click();
+  });
+}
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
