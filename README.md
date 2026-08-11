@@ -32,6 +32,24 @@ El archivo `netlify.toml` ya define:
 
 En Netlify sólo hace falta importar el repositorio. Los formularios `contacto-sociales` y `contacto-corporativos` serán detectados durante el build.
 
+## Sincronización con Google Sheets
+
+Las consultas verificadas por Netlify Forms pueden sincronizarse con la planilla mensual `SHOW INTERACTIVO CORPORATIVOS - CONSULTAS PROCEDENCIA 2026`. La función conserva Netlify Forms como respaldo y envía únicamente los campos permitidos a un webhook firmado.
+
+1. En la [planilla](https://docs.google.com/spreadsheets/d/1vYxH69oHIQi5FwWrbESupSYQHtonou97rb2Ktz9-8QQ/edit), abrir **Extensiones → Apps Script** y pegar `integrations/google-sheets/Code.gs`.
+2. Guardar el script, volver a cargar la planilla y elegir **Integración web → Generar secreto**. Copiar el valor mostrado en el cuadro de diálogo.
+3. Desplegar el script como **Aplicación web**, ejecutándolo como el propietario y permitiendo acceso a cualquier usuario. Copiar la URL terminada en `/exec`.
+4. En Netlify, crear estas variables para Functions:
+   - `GOOGLE_SHEETS_WEBHOOK_URL`: URL `/exec` del despliegue.
+   - `GOOGLE_SHEETS_HMAC_SECRET`: secreto generado por `setupIntegration`.
+5. Volver a desplegar el sitio.
+
+Cada alta se inserta en la fila 2 de la pestaña correspondiente al mes de recepción en `America/Buenos_Aires`, con fondo amarillo y el esquema A:M existente. Si falta una pestaña mensual, el script crea `NN-Mes` copiando el formato de la última pestaña disponible.
+
+Las dos variables deben configurarse antes de recibir consultas nuevas. Mientras falten, Netlify Forms conserva los envíos como respaldo, pero no los reenvía automáticamente cuando la integración se activa.
+
+Este repositorio sólo contiene los formularios de Sociales y Corporativos. El formulario de Trivias pertenece a otro sitio o flujo y debe conectarse desde ese origen usando su esquema real de campos.
+
 ## Estructura
 
 ```text

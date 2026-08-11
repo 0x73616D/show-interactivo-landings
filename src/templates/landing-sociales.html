@@ -680,6 +680,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
       </div>
       <form class="form" name="contacto-sociales" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contacto-sociales">
+        <input type="hidden" name="submission_key" value="">
         <input required type="text" name="nombre" placeholder="Nombre y apellido" autocomplete="name">
         <div class="form-row">
           <select required id="form-tipo" name="tipo">
@@ -948,6 +949,16 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ============ FIN ============
+
+// Identificador estable para evitar duplicados al sincronizar Netlify Forms.
+document.querySelectorAll('input[name="submission_key"]').forEach(input => {
+  if(input.value) return;
+  if(globalThis.crypto && typeof globalThis.crypto.randomUUID === 'function') {
+    input.value = globalThis.crypto.randomUUID();
+  } else {
+    input.value = `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`;
+  }
+});
 
 
 // ============ NAV SCROLL ============
