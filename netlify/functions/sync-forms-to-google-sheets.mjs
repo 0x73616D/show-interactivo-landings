@@ -26,8 +26,22 @@ function sign(message, secret) {
   return createHmac('sha256', secret).update(message, 'utf8').digest('base64url');
 }
 
+function resolveFormName(data) {
+  const explicitName = clean(data?.integration_form || data?.['form-name'], 80);
+  if (FORM_FIELDS[explicitName]) return explicitName;
+
+  // Netlify usa `form-name` para enrutar el envío, pero no lo incluye en
+  // `FormSubmittedEvent.data`. Este fallback mantiene compatibles los envíos
+  // realizados antes de agregar `integration_form` a los formularios.
+  if (data && Object.prototype.hasOwnProperty.call(data, 'empresa')) {
+    return 'contacto-corporativos';
+  }
+
+  return data?.submission_key ? 'contacto-sociales' : '';
+}
+
 export function buildSheetsEnvelope(data, receivedAt = new Date()) {
-  const formName = clean(data?.['form-name'], 80);
+  const formName = resolveFormName(data);
   if (!FORM_FIELDS[formName]) return null;
 
   const submissionKey = clean(data?.submission_key);
@@ -79,6 +93,9 @@ export default {
       if (result?.ok !== true) {
         throw new Error(`Google Sheets rechazó la consulta: ${clean(result?.error, 300) || 'respuesta inválida'}.`);
       }
+    } catch (error) {
+      console.error(`No se pudo sincronizar ${envelope.submissionKey}:`, error);
+      throw error;
     } finally {
       clearTimeout(timeout);
     }
