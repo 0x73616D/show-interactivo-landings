@@ -150,14 +150,7 @@ nav ul a.active::after, nav ul a:hover::after{content:"";position:absolute;left:
 .logos-marquee .logo-card img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes scroll-reverse{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-@media(max-width:900px){.logos-marquee .logo-card{height:110px;width:110px;padding:16px}}
-@media(max-width:900px){
-  .logos{padding-left:16px;padding-right:16px}
-  .logos-rows{overflow-x:auto;border-radius:14px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .logos-rows::-webkit-scrollbar{display:none}
-  .logos-marquee{animation:none!important;transform:none!important}
-  .logos-marquee .logo-card{scroll-snap-align:start}
-}
+@media(max-width:900px){.logos-marquee .logo-card{height:100px;width:100px;padding:14px}}
 .virtual{padding:26px 0;background:linear-gradient(135deg,var(--bg-deep) 0%,var(--bg) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .virtual-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .virtual-visual{background-size:cover;background-position:center;border-radius:24px;aspect-ratio:4/3;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.3)}
@@ -211,7 +204,9 @@ footer{padding:36px 0 24px;border-top:1px solid var(--line);background:var(--bg-
 
 
 .selector{margin:32px 0 32px}
-.selector-label{font-size:13px;text-transform:uppercase;letter-spacing:.15em;color:var(--light);margin-bottom:16px;font-weight:600}
+.selector-head{display:flex;align-items:baseline;justify-content:center;gap:24px;max-width:900px;margin-bottom:16px;text-align:center}
+.selector-label{font-size:13px;text-transform:uppercase;letter-spacing:.15em;color:var(--white);font-weight:800}
+.selector-help{font-size:13px;color:var(--white);font-weight:700}
 .type-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px}
 .type-tab{background:rgba(255,255,255,.06);border:2px solid transparent;border-radius:16px;padding:24px;cursor:pointer;transition:all .25s;font-family:inherit;color:var(--white);text-align:left}
 .type-tab:hover{background:rgba(255,255,255,.1)}
@@ -288,6 +283,9 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 .stage:last-child{margin-bottom:0}
 .section-intro:only-child{margin-bottom:0}
 @media(max-width:700px){
+  .selector-head{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:14px;text-align:center}
+  .selector-label{font-size:clamp(15px,4vw,18px);line-height:1.3;color:#fff;font-weight:800}
+  .selector-help{display:block;font-size:13px;color:var(--light)}
   .type-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .type-tab{min-width:0;padding:12px 8px;text-align:center}
   .type-tab .tab-name{font-size:13px;line-height:1.2;overflow-wrap:anywhere}
@@ -307,7 +305,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
   <div class="container">
     <a href="/" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
     <ul>
-      <li><a href="#previa" class="active">Inicio</a></li>
+      <li><a href="#tipos" class="active">Inicio</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#clientes">Clientes</a></li>
       <li><a href="/corporativos/testimonios" target="_blank" rel="noopener">Testimonios</a></li>
@@ -328,7 +326,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
     <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <a href="#previa">Inicio</a>
+    <a href="#tipos">Inicio</a>
     <a href="#proceso">Proceso</a>
     <a href="#clientes">Clientes</a>
     <a href="/corporativos/testimonios" target="_blank" rel="noopener">Testimonios</a>
@@ -348,7 +346,10 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
     <p class="lead"><strong>Aliados estratégicos de RRHH, MKT y AGENCIAS.</strong> Juegos interactivos y participativos <strong>para integrar a todos los invitados.</strong> Conductores, animadores, locutores, cantantes, con <strong>más de 20 años de experiencia.</strong> Trivias interactivas personalizadas y <strong>dinámicas originales de nuestro método exclusivo</strong> probado en más de 500 eventos.</p>
 
     <div class="selector" id="tipos">
-      <div class="selector-label">¿Qué tipo de evento estás organizando?</div>
+      <div class="selector-head">
+        <div class="selector-label">¿Qué evento estás organizando?</div>
+        <div class="selector-help">Seleccioná para ver según tipo de evento.</div>
+      </div>
       <div class="type-tabs" role="tablist" aria-label="Tipo de evento corporativo">
         <button class="type-tab active" type="button" role="tab" aria-selected="true" data-target="fiesta">
           <div class="tab-name">Fiesta</div>
@@ -367,7 +368,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 
     <div class="cta-row">
       <a href="#cta" class="btn-primary btn-uppercase">Cotizá tu evento corporativo</a>
-      <a href="https://wa.me/541124629086" class="btn-secondary">Hablar por WhatsApp</a>
+      <a href="https://wa.me/541124629086?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n.%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="btn-secondary">Hablar por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -634,7 +635,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
       <div class="testi reveal"><div class="testi-title" id="testi-title-2">¡La rompieron!</div><p class="testi-quote" id="testi-quote-2">Mil gracias a los dos, la rompieron! Salió todo bárbaro, repetiremos así que estamos en contacto!</p><div class="testi-author" id="testi-author-2">Nadia Cristalli</div><div class="testi-co" id="testi-co-2">OVERSOFT</div></div>
     </div>
     <div class="testi-more-wrap">
-      <a href="/corporativos/testimonios" class="btn-secondary" target="_blank" rel="noopener">Leer más comentarios</a>
+      <a href="/corporativos/testimonios" class="btn-secondary" target="_blank" rel="noopener">VER VIDEOS DE TESTIMONIOS</a>
     </div>
   </div>
 </section>
@@ -692,7 +693,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
         <div class="eyebrow">Contactanos</div>
         <h2>Hablemos del <em>próximo evento</em> de tu empresa.</h2>
         <p>Llenás el formulario o nos escribís por WhatsApp. Te respondemos lo antes posible en menos de 24 horas.</p>
-        <a href="https://wa.me/541124629086" class="btn-primary">Hablar por WhatsApp</a>
+        <a href="https://wa.me/541124629086?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n.%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="btn-primary">Hablar por WhatsApp</a>
       </div>
       <form class="form" name="contacto-corporativos" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contacto-corporativos">
@@ -739,7 +740,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
         <div class="foot-tagline">Experiencias Memorables</div>
       </div>
       <div class="foot-contact">
-        <div class="foot-contact-line">WhatsApp Corporativos · <a href="https://wa.me/541124629086">+54 11 2462-9086</a></div>
+        <div class="foot-contact-line">WhatsApp Corporativos · <a href="https://wa.me/541124629086?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n.%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29">+54 11 2462-9086</a></div>
         <div class="foot-contact-line">Instagram · <a href="https://instagram.com/si.showinteractivo">@si.showinteractivo</a></div>
       </div>
     </div>
@@ -747,7 +748,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
   </div>
 </footer>
 
-<a href="https://wa.me/541124629086" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Corporativos">
+<a href="https://wa.me/541124629086?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n.%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Corporativos">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 

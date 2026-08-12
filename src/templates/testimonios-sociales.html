@@ -45,7 +45,9 @@ nav a:hover{color:var(--accent)}
 .back-link:hover{color:var(--accent)}
 
 .selector{padding:24px 0 12px}
-.selector-label{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;text-align:center}
+.selector-head{display:flex;align-items:baseline;justify-content:center;gap:24px;margin-bottom:12px;text-align:center}
+.selector-label{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--white);font-weight:800}
+.selector-help{font-size:13px;color:var(--white);font-weight:700}
 .type-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto}
 .type-tab{background:rgba(255,255,255,.03);border:2px solid var(--line);color:var(--white);padding:16px 20px;border-radius:16px;cursor:pointer;transition:all .25s ease;font-family:inherit;text-align:left}
 .type-tab:hover{background:rgba(255,255,255,.06);border-color:rgba(231,4,143,.4)}
@@ -83,6 +85,8 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:none}
 @media(max-width:700px){
+  .selector-head{flex-direction:column;align-items:center;gap:4px}
+  .selector-label{font-size:clamp(15px,4vw,18px);line-height:1.3}
   .type-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .type-tab{min-width:0;padding:12px 8px;text-align:center}
   .type-tab .tab-name{font-size:12px;line-height:1.2;overflow-wrap:anywhere}
@@ -130,7 +134,10 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
 </section>
 
 <div class="container selector">
-  <div class="selector-label">¿Qué tipo de evento te interesa?</div>
+  <div class="selector-head">
+    <div class="selector-label">¿Qué evento estás organizando?</div>
+    <div class="selector-help">Seleccioná para ver según tipo de evento.</div>
+  </div>
   <div class="type-tabs">
     <button class="type-tab" data-target="boda">
       <div class="tab-name">Boda</div>
@@ -229,7 +236,7 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
 
         </div>
         <div class="t-title">¡Excelente ¡Recomendadisimos!</div>
-        <p class="t-body">¡Guadalupe tiene una voz increíble! Necesitábamos un maestro de ceremonias y Andrés supo adecuarse a nuestros pedidos con 0la00000 bendición de la ceremonia del reloj de arena. También animó la fiesta con Guadalupe de manera muy profesional. Son parte de lo que fue una fiesta inolvidable. Quedamos muy satisfechos con el servicio.¡Excelente! Lo recomendamos 100 %.</p>
+        <p class="t-body">¡Guadalupe tiene una voz increíble! Necesitábamos un maestro de ceremonias y Andrés supo adecuarse a nuestros pedidos con la bendición de la ceremonia del reloj de arena. También animó la fiesta con Guadalupe de manera muy profesional. Son parte de lo que fue una fiesta inolvidable. Quedamos muy satisfechos con el servicio.¡Excelente! Lo recomendamos 100 %.</p>
       </article>
       <article class="t-card">
         <div class="t-header">
@@ -237,7 +244,7 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
 
         </div>
         <div class="t-title">¡Profesionales increíbles!</div>
-        <p class="t-body">Andrés y Guada la rompieron! Los juegos fueron excelentes. Todos los invitados estaban super divertidos, hicieron que todos disfrutarán el día, estuvieron atentos a los detalles. ¡Guada cantando fue algo alucinante! Una voz preciosa que fue ovacionada por todos. ¡Gracias chicos por hacer una fiesta increíble! ¡Gracias por acompañarnos! Lo recontra recomendamos, nos divertimos muchísimo organizándolo y, el día del evento, fue lo más. Excelentes profesionales y detallistas. ¡Gracias por todo! 0 00000</p>
+        <p class="t-body">Andrés y Guada la rompieron! Los juegos fueron excelentes. Todos los invitados estaban super divertidos, hicieron que todos disfrutarán el día, estuvieron atentos a los detalles. ¡Guada cantando fue algo alucinante! Una voz preciosa que fue ovacionada por todos. ¡Gracias chicos por hacer una fiesta increíble! ¡Gracias por acompañarnos! Lo recontra recomendamos, nos divertimos muchísimo organizándolo y, el día del evento, fue lo más. Excelentes profesionales y detallistas. ¡Gracias por todo!</p>
       </article>
       <article class="t-card">
         <div class="t-header">
@@ -519,7 +526,7 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
       </article>
       <article class="t-card">
         <div class="t-header">
-          <div class="t-name">CUMPLE DE 60 DE MARIA TERESA</div>
+          <div class="t-name">CUMPLE DE 60 DE MARÍA TERESA</div>
 
         </div>
         <div class="t-title">¡Súper recomendable todo lo que hacen!</div>
@@ -570,7 +577,7 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
   </div>
 </section>
 
-<a href="https://wa.me/541130055555" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Sociales">
+<a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Sociales">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
 </a>
 
@@ -578,7 +585,7 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
   <div class="container">
     <div class="foot-grid">
       <div>
-        <div class="foot-contact-line">WhatsApp Sociales · <a href="https://wa.me/541130055555">+54 11 3005-5555</a></div>
+        <div class="foot-contact-line">WhatsApp Sociales · <a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29">+54 11 3005-5555</a></div>
         <div class="foot-contact-line">Instagram · <a href="https://instagram.com/si.showinteractivo">@si.showinteractivo</a></div>
       </div>
       <a href="/" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
