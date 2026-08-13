@@ -159,7 +159,10 @@ function siResolveMonthSheet_(spreadsheet, receivedAt, timeZone) {
   const name = String(monthNumber).padStart(2, '0') + '-' + monthName;
   const sheet = source.copyTo(spreadsheet).setName(name);
   if (sheet.getMaxRows() > 1) {
-    sheet.getRange(2, 1, sheet.getMaxRows() - 1, sheet.getMaxColumns()).clear();
+    // Conserva bordes, tipografías, formatos numéricos y validaciones del
+    // modelo mensual. Sólo se vacía la tabla A:M; cualquier columna auxiliar
+    // o fórmula que el equipo agregue a la plantilla queda intacta.
+    sheet.getRange(2, 1, sheet.getMaxRows() - 1, SI_HEADERS.length).clearContent();
   }
   sheet.setFrozenRows(1);
   return sheet;
@@ -171,11 +174,17 @@ function siInsertLead_(sheet, receivedAt, payload, timeZone) {
   const rowTwoIsEmpty = sheet.getRange(2, 1, 1, 13).isBlank();
   if (!rowTwoIsEmpty) {
     sheet.insertRowsBefore(2, 1);
-    sheet.getRange(3, 1, 1, 13).copyTo(
-      sheet.getRange(2, 1, 1, 13),
-      SpreadsheetApp.CopyPasteType.PASTE_FORMAT,
-      false,
-    );
+  }
+
+  // Si el mes todavía está vacío, busca una fila real del mes anterior. Así
+  // el primer lead también hereda bordes, tipografías, validaciones y altura.
+  const template = siFindTemplateRow_(sheet.getParent(), sheet);
+  if (template) {
+    const sourceRange = template.sheet.getRange(template.row, 1, 1, SI_HEADERS.length);
+    const targetRange = sheet.getRange(2, 1, 1, SI_HEADERS.length);
+    sourceRange.copyTo(targetRange, SpreadsheetApp.CopyPasteType.PASTE_FORMAT, false);
+    sourceRange.copyTo(targetRange, SpreadsheetApp.CopyPasteType.PASTE_DATA_VALIDATION, false);
+    sheet.setRowHeight(2, template.sheet.getRowHeight(template.row));
   }
 
   const monthNumber = Number(Utilities.formatDate(receivedAt, timeZone, 'M'));
@@ -206,6 +215,38 @@ function siInsertLead_(sheet, receivedAt, payload, timeZone) {
   sheet.getRange(2, 1, 1, 2).setHorizontalAlignment('left');
   sheet.getRange(2, 13).setWrap(true);
   return 2;
+}
+
+function siFindTemplateRow_(spreadsheet, targetSheet) {
+  const candidates = [targetSheet].concat(
+    spreadsheet.getSheets()
+      .filter(function(sheet) {
+        return sheet.getSheetId() !== targetSheet.getSheetId() && siIsMonthSheet_(sheet);
+      })
+      .reverse(),
+  );
+
+  for (let index = 0; index < candidates.length; index += 1) {
+    const candidate = candidates[index];
+    const lastRow = candidate.getLastRow();
+    if (lastRow < 2) continue;
+
+    const rows = candidate.getRange(2, 1, lastRow - 1, SI_HEADERS.length).getDisplayValues();
+    for (let rowIndex = 0; rowIndex < rows.length; rowIndex += 1) {
+      if (rows[rowIndex].some(function(value) { return String(value || '').trim(); })) {
+        return { sheet: candidate, row: rowIndex + 2 };
+      }
+    }
+  }
+
+  return null;
+}
+
+function siIsMonthSheet_(sheet) {
+  const normalizedName = siNormalize_(sheet.getName().replace(/^\d{2}-/, ''));
+  return SI_MONTHS.some(function(month) {
+    return normalizedName === siNormalize_(month);
+  });
 }
 
 function siAssertHeaders_(sheet) {
