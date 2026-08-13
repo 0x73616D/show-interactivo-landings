@@ -27,6 +27,7 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 .container{max-width:1280px;margin:0 auto;padding:0 32px}
 @media(max-width:768px){.container{padding:0 20px}}
+@media(min-width:901px){#clientes{scroll-margin-top:80px}}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(76,28,86,.85);border-bottom:1px solid var(--line)}
 nav .container{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px}
@@ -647,15 +648,15 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
     <div class="faq-list">
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">01</span>¿En qué se diferencia Show Interactivo de otros servicios?</button><div class="faq-a"><p class="dyn" id="faq-01-a">La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable.</p></div></div>
 
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">02</span>¿Qué incluye el servicio?</button><div class="faq-a"><p>Se arma a medida de cada evento. El servicio más contratado incluye la dupla (hombre/mujer) como conductores animadores de todo el evento, cantante en vivo para recepción y/o segmentos a elección, producción de trivias interactivas personalizadas con software propio, y bloques cortos de juegos a medida.</p><p><strong>Servicios bonificados opcionales incluidos:</strong> 1) Entrevistas divertidas en la llegada de invitados. 2) Memotest personalizado. 3) Software propio de sorteos con branding personalizado y premiaciones innovadoras.</p><p><strong>Extras opcionales con costo adicional:</strong> Tótems touch y pulseras LED audiorítmicas.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">02</span>¿Qué incluye el servicio?</button><div class="faq-a"><p>Se arma a medida de cada evento. El servicio más contratado incluye la dupla (hombre/mujer) como conductores animadores de todo el evento, cantante en vivo para recepción y/o segmentos a elección, producción de trivias interactivas personalizadas con software propio, y bloques cortos de juegos a medida.</p><p><strong>Servicios bonificados opcionales incluidos:</strong> 1) Entrevistas divertidas en la llegada de invitados. 2) Memotest personalizado. 3) Software propio de sorteos con branding personalizado y premiaciones innovadoras.</p><p><strong>Extras opcionales:</strong> Tótems touch y pulseras LED audiorítmicas.</p></div></div>
 
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">03</span>¿Hacen eventos en todas las provincias? ¿Cómo manejan los traslados?</button><div class="faq-a"><p>Sí, trabajamos en todo el país. No cobramos extra por traslados, siempre están incluidos dentro del servicio del evento. A veces viajamos nosotros desde donde estuvimos en un evento anterior y también contamos con animadores del equipo en diferentes localidades de Argentina.</p></div></div>
 
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">04</span>¿Qué tipo de eventos hacen?</button><div class="faq-a"><p>Fiestas de fin de año, team buildings, inauguraciones, lanzamientos, congresos, workshops, family day, jornadas de integración, capacitaciones, etc.</p><p>Para eventos sociales ingresá a <a href="/sociales" style="color:var(--accent);font-weight:600">landing sociales →</a></p></div></div>
 
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">05</span>¿En fiestas con tandas de baile hay que sacar una tanda para hacer su show?</button><div class="faq-a"><p>No, justamente lo bueno de nuestro servicio es que no hay que eliminar ninguna tanda de baile del timing, ya que nosotros realizamos intervenciones de 15-20 minutos previas a cada tanda uniendo el segmento participativo con la invitación a volver a la pista.</p></div></div>
+      <div class="faq-item" data-hide-for="team"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">05</span>¿En fiestas con tandas de baile hay que sacar una tanda para hacer su show?</button><div class="faq-a"><p>No, justamente lo bueno de nuestro servicio es que no hay que eliminar ninguna tanda de baile del timing, ya que nosotros realizamos intervenciones de 15-20 minutos previas a cada tanda uniendo el segmento participativo con la invitación a volver a la pista.</p></div></div>
 
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">06</span>¿Si no hay baile en nuestra fiesta qué hacen?</button><div class="faq-a"><p>En los eventos sin tandas de baile el entretenimiento dosificado a lo largo de todo el cronograma es fundamental, haciendo que el encuentro sea dinámico y armonioso.</p></div></div>
+      <div class="faq-item" data-hide-for="team"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">06</span>¿Si no hay baile en nuestra fiesta qué hacen?</button><div class="faq-a"><p>En los eventos sin tandas de baile el entretenimiento dosificado a lo largo de todo el cronograma es fundamental, haciendo que el encuentro sea dinámico y armonioso.</p></div></div>
 
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">07</span>¿Los invitados tienen que descargar alguna app para los juegos?</button><div class="faq-a"><p>No, para nada. Nadie tiene que descargar nada en su teléfono, lo cual agiliza muchísimo la participación. Los invitados simplemente escanean un código QR de las pantallas o entran directamente desde el navegador de su celular a la página web que los animadores mencionan. Desde allí responden preguntas en tiempo real y participan del ranking general.</p></div></div>
 
@@ -667,7 +668,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">11</span>¿Tienen una banda de música o cantantes con pistas?</button><div class="faq-a"><p>La mayoría de los eventos los realizamos con cantantes con pistas. Se pueden sumar más músicos en vivo.</p></div></div>
 
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">12</span>¿Qué pasa si ya tenemos una banda de música contratada?</button><div class="faq-a"><p>La banda musical reemplaza una tanda de baile, nosotros la presentamos y no modifica en nada el desarrollo de todo lo que realizamos durante el evento.</p></div></div>
+      <div class="faq-item" data-hide-for="team"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">12</span>¿Qué pasa si ya tenemos una banda de música contratada?</button><div class="faq-a"><p>La banda musical reemplaza una tanda de baile, nosotros la presentamos y no modifica en nada el desarrollo de todo lo que realizamos durante el evento.</p></div></div>
 
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span class="faq-num">13</span>¿Con cuánta anticipación recomiendan reservar la fecha del evento?</button><div class="faq-a"><p>No hay un tiempo preestablecido, a veces nos reservan con un año de anticipación y otras veces hasta unos días antes si hay disponibilidad. Siempre recomendamos asegurarse la fecha con tiempo.</p></div></div>
 
@@ -822,7 +823,7 @@ const content = {
     visualEventoBot: '/media/images/events/SI-Team-Evento-02.jpg',
     visualResultadoTop: '/media/images/events/SI-Team-Resultado-01.jpg',
     visualResultadoBot: '/media/images/events/SI-Team-Resultado-02.jpg',
-    faq01: "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+    faq01: "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
   },
   otros: {
     subEyebrow: "Innovar, conectar, sorprender",
@@ -857,7 +858,7 @@ const content = {
     visualEventoBot: '/media/images/events/SI-Otros-Evento-02.jpg',
     visualResultadoTop: '/media/images/events/SI-Otros-Resultado-01.jpg',
     visualResultadoBot: '/media/images/events/SI-Otros-Resultado-02.jpg',
-    faq01: "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el brindis de cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
+    faq01: "La mayoría ofrece un show enlatado de 45 minutos: llegan, hacen su rutina idéntica y se van. Nosotros personalizamos nuestras dinámicas y funcionamos como el hilo conductor integral sosteniendo la energía durante todo el evento. Desde antes de que ingrese el primer invitado hasta el cierre. Manejamos los climas, evitamos baches y coordinamos con los demás proveedores (catering, salón, DJ) para que todo fluya de forma impecable."
   }
 };
 
@@ -894,6 +895,19 @@ const testimonialElements = [1, 2].map(index => ({
   author: document.getElementById(`testi-author-${index}`),
   company: document.getElementById(`testi-co-${index}`)
 }));
+const faqItems = Array.from(document.querySelectorAll('.faq-list .faq-item'));
+
+function updateFaqVisibility(t){
+  faqItems.forEach(item => {
+    const shouldHide = item.dataset.hideFor === t;
+    item.hidden = shouldHide;
+    if(shouldHide) item.classList.remove('open');
+  });
+  faqItems.filter(item => !item.hidden).forEach((item, index) => {
+    const number = item.querySelector('.faq-num');
+    if(number) number.textContent = String(index + 1).padStart(2, '0');
+  });
+}
 
 // Mapa videos por solapa (Corporativos)
 const heroVideos = {
@@ -954,6 +968,7 @@ function setType(t, immediate = false){
       elements.company.textContent = testimonial.company;
     });
     if(faq01El) faq01El.textContent = c.faq01;
+    updateFaqVisibility(t);
     const vpTop = document.getElementById('visual-previa-top');
     const vpBot = document.getElementById('visual-previa-bottom');
     const veTop = document.getElementById('visual-evento-top');
