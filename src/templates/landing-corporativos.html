@@ -27,7 +27,7 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 .container{max-width:1280px;margin:0 auto;padding:0 32px}
 @media(max-width:768px){.container{padding:0 20px}}
-@media(min-width:901px){#clientes{scroll-margin-top:80px}}
+#clientes{scroll-margin-top:80px}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(76,28,86,.85);border-bottom:1px solid var(--line)}
 nav .container{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px}
@@ -607,7 +607,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 <section class="virtual reveal">
   <div class="container">
     <div class="virtual-wrap">
-      <div class="virtual-visual" style="background-image:url('https://www.showinteractivo.com/wp-content/uploads/2026/04/VIRTUALES.webp')"></div>
+      <div class="virtual-visual" style="background-image:url('/media/images/virtuales.webp')"></div>
       <div>
         <div class="eyebrow">Show Interactivo Virtual</div>
         <h2>Ideal para <em>equipos distribuidos.</em></h2>
@@ -696,7 +696,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
         <p>Llenás el formulario o nos escribís por WhatsApp. Te respondemos lo antes posible en menos de 24 horas.</p>
         <a href="https://wa.me/541124629086?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n.%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="btn-primary">Hablar por WhatsApp</a>
       </div>
-      <form class="form" name="contacto-corporativos" method="POST" data-netlify="true">
+      <form class="form" name="contacto-corporativos" method="POST" action="/corporativos/gracias/" data-netlify="true">
         <input type="hidden" name="form-name" value="contacto-corporativos">
         <input type="hidden" name="integration_form" value="contacto-corporativos">
         <input type="hidden" name="submission_key" value="">
@@ -714,7 +714,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
             <option>Lanzamiento</option>
             <option>Congreso / Convención</option>
             <option>Family Day</option>
-            <option>Show Interactivo Virtual</option>
+            <option>Virtual</option>
             <option>Otro</option>
           </select>
           <input type="text" name="fecha" placeholder="Fecha">

@@ -1,4 +1,6 @@
-const SI_SPREADSHEET_ID = '1vYxH69oHIQi5FwWrbESupSYQHtonou97rb2Ktz9-8QQ';
+const SI_SOCIAL_SPREADSHEET_ID = '1jSLN_yrVr3QeRjYVp77HR5BQSH5Z7Hl4bOfpgiTeo-U';
+const SI_CORPORATE_SPREADSHEET_ID = '1vYxH69oHIQi5FwWrbESupSYQHtonou97rb2Ktz9-8QQ';
+const SI_SOCIAL_SHEET_NAME = 'Sociales 2026 desde abril';
 const SI_TIME_ZONE = 'America/Buenos_Aires';
 const SI_SECRET_PROPERTY = 'SHEETS_HMAC_SECRET';
 const SI_PROCESSED_PROPERTY = 'PROCESSED_SUBMISSIONS';
@@ -9,6 +11,11 @@ const SI_HEADERS = [
   'Cantidad', 'Solo msj', 'Llamado', 'Zoom', 'Perdido', 'Ganado',
   'Razón / Estado Seguimiento', 'Fecha Evento + Nombre contacto',
 ];
+const SI_SOCIAL_HEADERS = [
+  'Mes', 'Fecha Consulta', 'Procedencia', 'Social o Corporativo', 'Tipo de evento',
+  'Cantidad', 'Solo mensaje', 'Llamado', 'Videollamada', 'Perdido', 'Ganado',
+  'Razón / Estado', 'Fecha Evento + Nombre contacto',
+];
 const SI_MONTHS = [
   'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
@@ -16,6 +23,8 @@ const SI_MONTHS = [
 
 const SI_FORM_CONFIG = {
   'contacto-sociales': {
+    spreadsheetId: SI_SOCIAL_SPREADSHEET_ID,
+    sheetName: SI_SOCIAL_SHEET_NAME,
     source: 'Formulario de Sociales',
     segment: 'Social',
     types: {
@@ -26,6 +35,7 @@ const SI_FORM_CONFIG = {
     },
   },
   'contacto-corporativos': {
+    spreadsheetId: SI_CORPORATE_SPREADSHEET_ID,
     source: 'Formulario de Corporativo',
     segment: 'Corporativo',
     types: {
@@ -34,7 +44,8 @@ const SI_FORM_CONFIG = {
       Lanzamiento: 'Lanzamiento',
       'Congreso / Convención': 'Congreso / Convención',
       'Family Day': 'Family Day',
-      'Show Interactivo Virtual': 'Show Interactivo Virtual',
+      Virtual: 'Virtual',
+      'Show Interactivo Virtual': 'Virtual',
       Otro: 'Otro',
     },
   },
@@ -70,13 +81,24 @@ function doPost(e) {
         return siJson_({ ok: true, duplicate: true });
       }
 
-      const spreadsheet = SpreadsheetApp.openById(SI_SPREADSHEET_ID);
+      const config = SI_FORM_CONFIG[payload.formName];
+      const spreadsheet = SpreadsheetApp.openById(config.spreadsheetId);
       const receivedAt = new Date(payload.receivedAt);
       const timeZone = spreadsheet.getSpreadsheetTimeZone() || SI_TIME_ZONE;
       siAssertWorkbookYear_(spreadsheet, receivedAt, timeZone);
-      const sheet = siResolveMonthSheet_(spreadsheet, receivedAt, timeZone);
-      siAssertHeaders_(sheet);
-      const row = siInsertLead_(sheet, receivedAt, payload, timeZone);
+      let sheet;
+      let row;
+
+      if (payload.formName === 'contacto-sociales') {
+        sheet = spreadsheet.getSheetByName(config.sheetName);
+        if (!sheet) throw new Error('No existe la pestaña de Sociales configurada.');
+        siAssertHeaders_(sheet, SI_SOCIAL_HEADERS);
+        row = siAppendSocialLead_(sheet, receivedAt, payload, timeZone);
+      } else {
+        sheet = siResolveMonthSheet_(spreadsheet, receivedAt, timeZone);
+        siAssertHeaders_(sheet, SI_HEADERS);
+        row = siInsertLead_(sheet, receivedAt, payload, timeZone);
+      }
 
       processed[payload.submissionKey] = Date.now();
       siSaveProcessedSubmissions_(processed);
@@ -169,8 +191,6 @@ function siResolveMonthSheet_(spreadsheet, receivedAt, timeZone) {
 }
 
 function siInsertLead_(sheet, receivedAt, payload, timeZone) {
-  const config = SI_FORM_CONFIG[payload.formName];
-  const fields = payload.fields || {};
   const rowTwoIsEmpty = sheet.getRange(2, 1, 1, 13).isBlank();
   if (!rowTwoIsEmpty) {
     sheet.insertRowsBefore(2, 1);
@@ -187,6 +207,39 @@ function siInsertLead_(sheet, receivedAt, payload, timeZone) {
     sheet.setRowHeight(2, template.sheet.getRowHeight(template.row));
   }
 
+  const range = sheet.getRange(2, 1, 1, 13);
+  range.setValues(siLeadValues_(receivedAt, payload, timeZone));
+  range.setBackground('#ffff00');
+  sheet.getRange(2, 1).setNumberFormat('mmmm yyyy');
+  sheet.getRange(2, 1, 1, 2).setHorizontalAlignment('left');
+  sheet.getRange(2, 13).setWrap(true);
+  return 2;
+}
+
+function siAppendSocialLead_(sheet, receivedAt, payload, timeZone) {
+  const row = Math.max(sheet.getLastRow() + 1, 2);
+  const previousRow = row - 1;
+
+  if (previousRow >= 2) {
+    const sourceRange = sheet.getRange(previousRow, 1, 1, SI_SOCIAL_HEADERS.length);
+    const targetRange = sheet.getRange(row, 1, 1, SI_SOCIAL_HEADERS.length);
+    sourceRange.copyTo(targetRange, SpreadsheetApp.CopyPasteType.PASTE_FORMAT, false);
+    sourceRange.copyTo(targetRange, SpreadsheetApp.CopyPasteType.PASTE_DATA_VALIDATION, false);
+    sheet.setRowHeight(row, sheet.getRowHeight(previousRow));
+  }
+
+  const range = sheet.getRange(row, 1, 1, SI_SOCIAL_HEADERS.length);
+  range.setValues(siLeadValues_(receivedAt, payload, timeZone));
+  range.setBackground('#ffff00');
+  sheet.getRange(row, 1).setNumberFormat('mmmm yyyy');
+  sheet.getRange(row, 1, 1, 2).setHorizontalAlignment('left');
+  sheet.getRange(row, 13).setWrap(true);
+  return row;
+}
+
+function siLeadValues_(receivedAt, payload, timeZone) {
+  const config = SI_FORM_CONFIG[payload.formName];
+  const fields = payload.fields || {};
   const monthNumber = Number(Utilities.formatDate(receivedAt, timeZone, 'M'));
   const year = Number(Utilities.formatDate(receivedAt, timeZone, 'yyyy'));
   const day = Number(Utilities.formatDate(receivedAt, timeZone, 'd'));
@@ -197,7 +250,7 @@ function siInsertLead_(sheet, receivedAt, payload, timeZone) {
   );
   const type = config.types[String(fields.tipo || '')] || 'Otro';
 
-  const values = [[
+  return [[
     monthDate,
     day,
     config.source,
@@ -207,14 +260,6 @@ function siInsertLead_(sheet, receivedAt, payload, timeZone) {
     '', '', '', '', '', '',
     siContactSummary_(fields),
   ]];
-
-  const range = sheet.getRange(2, 1, 1, 13);
-  range.setValues(values);
-  range.setBackground('#ffff00');
-  sheet.getRange(2, 1).setNumberFormat('mmmm yyyy');
-  sheet.getRange(2, 1, 1, 2).setHorizontalAlignment('left');
-  sheet.getRange(2, 13).setWrap(true);
-  return 2;
 }
 
 function siFindTemplateRow_(spreadsheet, targetSheet) {
@@ -249,10 +294,10 @@ function siIsMonthSheet_(sheet) {
   });
 }
 
-function siAssertHeaders_(sheet) {
+function siAssertHeaders_(sheet, expectedHeaders) {
   const headers = sheet.getRange(1, 1, 1, 13).getDisplayValues()[0]
     .map(function(value) { return String(value || '').trim(); });
-  if (JSON.stringify(headers) !== JSON.stringify(SI_HEADERS)) {
+  if (JSON.stringify(headers) !== JSON.stringify(expectedHeaders)) {
     throw new Error('La pestaña ' + sheet.getName() + ' no conserva el encabezado A:M esperado.');
   }
 }
