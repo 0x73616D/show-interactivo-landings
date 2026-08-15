@@ -6,6 +6,48 @@
   NODE_VERSION = "24"
 
 [[redirects]]
+  from = "https://www.showinteractivo.com/eventos-corporativos/"
+  to = "https://showinteractivo.com/corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://showinteractivo.com/eventos-corporativos/"
+  to = "https://showinteractivo.com/corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://showinteractivo.com/eventos/empresariales/"
+  to = "https://showinteractivo.com/corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://showinteractivo.com/eventos-empresariales/"
+  to = "https://showinteractivo.com/corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://showinteractivo.com/eventos/"
+  to = "https://showinteractivo.com/corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://showinteractivo.com/evento/"
+  to = "https://showinteractivo.com/corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.showinteractivo.com/corporativos/"
+  to = "https://showinteractivo.com/corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/landing_sociales.html"
   to = "/sociales"
   status = 301

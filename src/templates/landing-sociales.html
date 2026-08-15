@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) - Google Ads Base -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-642736374"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-642736374');
+</script>
 <title>Show Interactivo · Eventos Sociales</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -373,7 +382,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 
     <div class="cta-row">
       <a href="#cta" class="btn-primary">Cotizá tu evento</a>
-      <a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="btn-secondary">Hablar por WhatsApp</a>
+      <a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="btn-secondary" data-google-ads-contact>Hablar por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -677,7 +686,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
         <div class="eyebrow">Contactanos</div>
         <h2>Hablemos de <em>tu fiesta.</em></h2>
         <p>Llenás el formulario o nos escribís por WhatsApp. Te respondemos lo antes posible en menos de 24 horas.</p>
-        <a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="btn-primary">Hablar por WhatsApp</a>
+        <a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" class="btn-primary" data-google-ads-contact>Hablar por WhatsApp</a>
       </div>
       <form class="form" name="contacto-sociales" method="POST" action="/sociales/gracias/" data-netlify="true">
         <input type="hidden" name="form-name" value="contacto-sociales">
@@ -960,6 +969,14 @@ document.querySelectorAll('input[name="submission_key"]').forEach(input => {
   } else {
     input.value = `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`;
   }
+});
+
+document.querySelectorAll('[data-google-ads-contact]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'conversion', {
+      send_to: 'AW-642736374/ZxdrCLaAopgCEPbBvbIC'
+    });
+  });
 });
 
 
