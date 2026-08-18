@@ -1,0 +1,14 @@
+---
+import landingHtml from '../../../templates/landing-sociales.html?raw';
+const pageHtml = landingHtml
+  .replace(
+    '<title>Show Interactivo · Eventos Sociales</title>',
+    '<title>Show Interactivo · Cumpleaños de Adultos</title>'
+  )
+  .replace(
+    '__SI_CANONICAL_URL__',
+    'https://showinteractivo.com/eventos-sociales/cumpleanos-de-adultos/'
+  );
+---
+
+<Fragment set:html={pageHtml} />

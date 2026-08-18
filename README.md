@@ -27,7 +27,7 @@ El archivo `netlify.toml` ya define:
 - directorio publicado: `dist`
 - Node.js 24
 - caché anual para los recursos de `public/media`
-- redirecciones desde las cuatro URLs HTML anteriores
+- redirecciones permanentes desde las URLs cortas y las cuatro URLs HTML anteriores hacia las rutas canónicas `eventos-*`
 - cabeceras básicas de seguridad
 
 En Netlify sólo hace falta importar el repositorio. Los formularios `contacto-sociales` y `contacto-corporativos` serán detectados durante el build.

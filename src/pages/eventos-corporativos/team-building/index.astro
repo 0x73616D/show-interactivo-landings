@@ -1,0 +1,14 @@
+---
+import landingHtml from '../../../templates/landing-corporativos.html?raw';
+const pageHtml = landingHtml
+  .replace(
+    '<title>Show Interactivo · Eventos Corporativos</title>',
+    '<title>Show Interactivo · Team Building</title>'
+  )
+  .replace(
+    '__SI_CANONICAL_URL__',
+    'https://showinteractivo.com/eventos-corporativos/team-building/'
+  );
+---
+
+<Fragment set:html={pageHtml} />

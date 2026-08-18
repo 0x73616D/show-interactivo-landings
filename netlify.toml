@@ -6,65 +6,131 @@
   NODE_VERSION = "24"
 
 [[redirects]]
-  from = "https://www.showinteractivo.com/eventos-corporativos/"
-  to = "https://showinteractivo.com/corporativos/"
+  from = "/sociales"
+  to = "https://showinteractivo.com/eventos-sociales/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://showinteractivo.com/eventos-corporativos/"
-  to = "https://showinteractivo.com/corporativos/"
+  from = "/sociales/bodas/"
+  to = "https://showinteractivo.com/eventos-sociales/bodas/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://showinteractivo.com/eventos/empresariales/"
-  to = "https://showinteractivo.com/corporativos/"
+  from = "/sociales/cumple-de-15/"
+  to = "https://showinteractivo.com/eventos-sociales/cumple-de-15/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://showinteractivo.com/eventos-empresariales/"
-  to = "https://showinteractivo.com/corporativos/"
+  from = "/sociales/cumpleanos-de-adultos/"
+  to = "https://showinteractivo.com/eventos-sociales/cumpleanos-de-adultos/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://showinteractivo.com/eventos/"
-  to = "https://showinteractivo.com/corporativos/"
+  from = "/sociales/testimonios/"
+  to = "https://showinteractivo.com/eventos-sociales/testimonios/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://showinteractivo.com/evento/"
-  to = "https://showinteractivo.com/corporativos/"
+  from = "/sociales/gracias/"
+  to = "https://showinteractivo.com/eventos-sociales/gracias/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://www.showinteractivo.com/corporativos/"
-  to = "https://showinteractivo.com/corporativos/"
+  from = "/sociales/*"
+  to = "https://showinteractivo.com/eventos-sociales/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporativos"
+  to = "https://showinteractivo.com/eventos-corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporativos/fiesta-corporativa/"
+  to = "https://showinteractivo.com/eventos-corporativos/fiesta-corporativa/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporativos/team-building/"
+  to = "https://showinteractivo.com/eventos-corporativos/team-building/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporativos/otros/"
+  to = "https://showinteractivo.com/eventos-corporativos/otros/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporativos/testimonios/"
+  to = "https://showinteractivo.com/eventos-corporativos/testimonios/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporativos/gracias/"
+  to = "https://showinteractivo.com/eventos-corporativos/gracias/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporativos/*"
+  to = "https://showinteractivo.com/eventos-corporativos/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/eventos/empresariales/"
+  to = "https://showinteractivo.com/eventos-corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/eventos-empresariales/"
+  to = "https://showinteractivo.com/eventos-corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/eventos/"
+  to = "https://showinteractivo.com/eventos-corporativos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/evento/"
+  to = "https://showinteractivo.com/eventos-corporativos/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/landing_sociales.html"
-  to = "/sociales"
+  to = "https://showinteractivo.com/eventos-sociales/"
   status = 301
 
 [[redirects]]
   from = "/landing_corporativos.html"
-  to = "/corporativos"
+  to = "https://showinteractivo.com/eventos-corporativos/"
   status = 301
 
 [[redirects]]
   from = "/testimonios-sociales.html"
-  to = "/sociales/testimonios"
+  to = "https://showinteractivo.com/eventos-sociales/testimonios/"
   status = 301
 
 [[redirects]]
   from = "/testimonios-corporativos.html"
-  to = "/corporativos/testimonios"
+  to = "https://showinteractivo.com/eventos-corporativos/testimonios/"
   status = 301
 
 [[headers]]

@@ -1,0 +1,8 @@
+---
+import landingHtml from '../../templates/landing-sociales.html?raw';
+const page = landingHtml.replace(
+  '__SI_CANONICAL_URL__',
+  'https://showinteractivo.com/eventos-sociales/'
+);
+---
+<Fragment set:html={page} />
