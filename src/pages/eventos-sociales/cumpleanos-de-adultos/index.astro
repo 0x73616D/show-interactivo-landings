@@ -1,14 +1,17 @@
 ---
 import landingHtml from '../../../templates/landing-sociales.html?raw';
-const pageHtml = landingHtml
-  .replace(
-    '<title>Show Interactivo · Eventos Sociales</title>',
-    '<title>Show Interactivo · Cumpleaños de Adultos</title>'
-  )
-  .replace(
-    '__SI_CANONICAL_URL__',
-    'https://showinteractivo.com/eventos-sociales/cumpleanos-de-adultos/'
-  );
+import { applyLandingSeo } from '../../../lib/seo';
+
+const pageHtml = applyLandingSeo(landingHtml, {
+  title: 'Animación para Cumpleaños de Adultos (40, 50, 60) | Show Interactivo',
+  description: 'Cumplís los que cumplís, la fiesta se arma a tu manera. Cantante en vivo, trivias sobre vos y un ritmo que no decae.',
+  canonical: 'https://showinteractivo.com/eventos-sociales/cumpleanos-de-adultos/',
+  image: 'https://showinteractivo.com/media/images/og/sociales.jpg',
+  imageAlt: 'Cumpleaños de adultos animado por Show Interactivo',
+  heroHeadingHtml: 'Una fiesta que se sienta <em>como vos.</em>',
+  eventType: 'cumple_adultos',
+  landingPath: '/eventos-sociales/cumpleanos-de-adultos/'
+});
 ---
 
 <Fragment set:html={pageHtml} />

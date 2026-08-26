@@ -1,14 +1,17 @@
 ---
 import landingHtml from '../../../templates/landing-sociales.html?raw';
-const pageHtml = landingHtml
-  .replace(
-    '<title>Show Interactivo · Eventos Sociales</title>',
-    '<title>Show Interactivo · Cumples de 15</title>'
-  )
-  .replace(
-    '__SI_CANONICAL_URL__',
-    'https://showinteractivo.com/eventos-sociales/cumple-de-15/'
-  );
+import { applyLandingSeo } from '../../../lib/seo';
+
+const pageHtml = applyLandingSeo(landingHtml, {
+  title: 'Animación para Fiestas de 15 Años | Show Interactivo',
+  description: 'Entrada original, trivias sobre la cumpleañera y cantante en vivo. La fiesta de 15 que se imaginó mil veces, sin baches y a pura diversión.',
+  canonical: 'https://showinteractivo.com/eventos-sociales/cumple-de-15/',
+  image: 'https://showinteractivo.com/media/images/og/cumple-15.jpg',
+  imageAlt: 'Invitadas celebrando durante un cumpleaños de 15',
+  heroHeadingHtml: 'La que se imaginaron <em>mil veces.</em>',
+  eventType: 'cumple_15',
+  landingPath: '/eventos-sociales/cumple-de-15/'
+});
 ---
 
 <Fragment set:html={pageHtml} />

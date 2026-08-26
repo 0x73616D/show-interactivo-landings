@@ -11,6 +11,24 @@ const SI_HEADERS = [
   'Cantidad', 'Solo msj', 'Llamado', 'Zoom', 'Perdido', 'Ganado',
   'Razón / Estado Seguimiento', 'Fecha Evento + Nombre contacto',
 ];
+const SI_CORPORATE_HEADER_ALIASES = [
+  ['Mes'],
+  ['Fecha', 'Fecha Consulta'],
+  ['Procedencia'],
+  ['Social o Corporativo'],
+  ['Tipo de evento'],
+  ['Cantidad'],
+  ['Solo msj', 'Solo mensaje'],
+  ['Llamado'],
+  ['Zoom', 'Videollamada'],
+  ['Perdido'],
+  ['Ganado'],
+  ['Razón / Estado Seguimiento', 'Razón / Estado'],
+  [
+    'Fecha Evento + Nombre contacto',
+    'Fecha Evento / Nombre / Empresa / Email / Teléfono / Mensaje',
+  ],
+];
 const SI_SOCIAL_HEADERS = [
   'Mes', 'Fecha Consulta', 'Procedencia', 'Social o Corporativo', 'Tipo de evento',
   'Cantidad', 'Solo mensaje', 'Llamado', 'Videollamada', 'Perdido', 'Ganado',
@@ -96,7 +114,7 @@ function doPost(e) {
         row = siAppendSocialLead_(sheet, receivedAt, payload, timeZone);
       } else {
         sheet = siResolveMonthSheet_(spreadsheet, receivedAt, timeZone);
-        siAssertHeaders_(sheet, SI_HEADERS);
+        siAssertHeaders_(sheet, SI_CORPORATE_HEADER_ALIASES);
         row = siInsertLead_(sheet, receivedAt, payload, timeZone);
       }
 
@@ -297,8 +315,21 @@ function siIsMonthSheet_(sheet) {
 function siAssertHeaders_(sheet, expectedHeaders) {
   const headers = sheet.getRange(1, 1, 1, 13).getDisplayValues()[0]
     .map(function(value) { return String(value || '').trim(); });
-  if (JSON.stringify(headers) !== JSON.stringify(expectedHeaders)) {
-    throw new Error('La pestaña ' + sheet.getName() + ' no conserva el encabezado A:M esperado.');
+
+  const invalidColumns = headers.reduce(function(columns, header, index) {
+    const expected = Array.isArray(expectedHeaders[index])
+      ? expectedHeaders[index]
+      : [expectedHeaders[index]];
+    const allowed = expected.map(function(value) { return String(value || '').trim(); });
+    if (allowed.indexOf(header) === -1) columns.push(index + 1);
+    return columns;
+  }, []);
+
+  if (invalidColumns.length) {
+    throw new Error(
+      'La pestaña ' + sheet.getName() +
+      ' no conserva el encabezado esperado en columna(s): ' + invalidColumns.join(', ') + '.',
+    );
   }
 }
 

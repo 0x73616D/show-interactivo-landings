@@ -1,14 +1,17 @@
 ---
 import landingHtml from '../../../templates/landing-corporativos.html?raw';
-const pageHtml = landingHtml
-  .replace(
-    '<title>Show Interactivo · Eventos Corporativos</title>',
-    '<title>Show Interactivo · Otros Eventos Corporativos</title>'
-  )
-  .replace(
-    '__SI_CANONICAL_URL__',
-    'https://showinteractivo.com/eventos-corporativos/otros/'
-  );
+import { applyLandingSeo } from '../../../lib/seo';
+
+const pageHtml = applyLandingSeo(landingHtml, {
+  title: 'Lanzamientos, Congresos y Family Day | Show Interactivo',
+  description: 'Animación para inauguraciones, lanzamientos de producto, congresos, workshops y family day. El hilo conductor que tu evento corporativo necesita.',
+  canonical: 'https://showinteractivo.com/eventos-corporativos/otros/',
+  image: 'https://showinteractivo.com/media/images/og/otros-corporativos.jpg',
+  imageAlt: 'Conductores de Show Interactivo frente a una audiencia en un evento corporativo',
+  heroHeadingHtml: 'Conexión, interactividad y diversión <em>con un objetivo.</em>',
+  eventType: 'otros_corporativos',
+  landingPath: '/eventos-corporativos/otros/'
+});
 ---
 
 <Fragment set:html={pageHtml} />

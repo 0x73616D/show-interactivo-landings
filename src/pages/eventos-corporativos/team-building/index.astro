@@ -1,14 +1,17 @@
 ---
 import landingHtml from '../../../templates/landing-corporativos.html?raw';
-const pageHtml = landingHtml
-  .replace(
-    '<title>Show Interactivo · Eventos Corporativos</title>',
-    '<title>Show Interactivo · Team Building</title>'
-  )
-  .replace(
-    '__SI_CANONICAL_URL__',
-    'https://showinteractivo.com/eventos-corporativos/team-building/'
-  );
+import { applyLandingSeo } from '../../../lib/seo';
+
+const pageHtml = applyLandingSeo(landingHtml, {
+  title: 'Team Building con Dinámicas Gamificadas | Show Interactivo',
+  description: 'Conexión, interactividad y diversión con un propósito. Dinámicas gamificadas a medida para integrar y motivar a todo tu equipo.',
+  canonical: 'https://showinteractivo.com/eventos-corporativos/team-building/',
+  image: 'https://showinteractivo.com/media/images/og/team-building.jpg',
+  imageAlt: 'Equipo participando de una dinámica grupal al aire libre',
+  heroHeadingHtml: 'Conexión, interactividad y diversión <em>con un propósito.</em>',
+  eventType: 'team_building',
+  landingPath: '/eventos-corporativos/team-building/'
+});
 ---
 
 <Fragment set:html={pageHtml} />

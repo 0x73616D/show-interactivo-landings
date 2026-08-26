@@ -1,8 +1,17 @@
 ---
 import landingHtml from '../../templates/landing-sociales.html?raw';
-const page = landingHtml.replace(
-  '__SI_CANONICAL_URL__',
-  'https://showinteractivo.com/eventos-sociales/'
-);
+import { applyLandingSeo, faqPageSchemaFromHtml } from '../../lib/seo';
+
+const page = applyLandingSeo(landingHtml, {
+  title: 'Animación para Bodas, Cumple de 15 y Fiestas | Show Interactivo',
+  description: 'Cantante en vivo, trivias interactivas y el hilo conductor que tu fiesta necesita. Bodas, cumpleaños de 15 y cumpleaños de adultos en toda Argentina.',
+  canonical: 'https://showinteractivo.com/eventos-sociales/',
+  image: 'https://showinteractivo.com/media/images/og/sociales.jpg',
+  imageAlt: 'Invitados celebrando un evento social de Show Interactivo',
+  heroHeadingHtml: 'Eventos que se recuerdan <em>toda la vida.</em>',
+  eventType: 'cumple_adultos',
+  landingPath: '/eventos-sociales/',
+  structuredData: [faqPageSchemaFromHtml(landingHtml)]
+});
 ---
 <Fragment set:html={page} />

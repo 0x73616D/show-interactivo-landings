@@ -1,8 +1,17 @@
 ---
 import landingHtml from '../../templates/landing-corporativos.html?raw';
-const page = landingHtml.replace(
-  '__SI_CANONICAL_URL__',
-  'https://showinteractivo.com/eventos-corporativos/'
-);
+import { applyLandingSeo, faqPageSchemaFromHtml } from '../../lib/seo';
+
+const page = applyLandingSeo(landingHtml, {
+  title: 'Animación para Eventos Corporativos | Show Interactivo',
+  description: 'Aliados estratégicos de RRHH, Marketing y agencias. Fiestas de fin de año, team building y eventos con más de 500 empresas en Argentina.',
+  canonical: 'https://showinteractivo.com/eventos-corporativos/',
+  image: 'https://showinteractivo.com/media/images/og/corporativos.jpg',
+  imageAlt: 'Equipo disfrutando un evento corporativo de Show Interactivo',
+  heroHeadingHtml: 'El evento que <em>conecta</em>, <em>integra</em> y <em>divierte</em> a todos.',
+  eventType: 'fiesta_fin_ano',
+  landingPath: '/eventos-corporativos/',
+  structuredData: [faqPageSchemaFromHtml(landingHtml)]
+});
 ---
 <Fragment set:html={page} />

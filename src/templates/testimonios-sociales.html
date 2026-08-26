@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-58BQC7H');
+</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) - Google Ads Base -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-642736374"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-642736374');
-</script>
-<title>Testimonios · Show Interactivo · Sociales</title>
+<script src="/measurement.js" defer></script>
+<title>Testimonios de Bodas y Fiestas Sociales | Show Interactivo</title>
+<meta name="description" content="Lo que dicen las parejas, cumpleañeras y familias que ya festejaron con nosotros. Historias reales de bodas, cumples de 15 y adultos.">
 <link rel="canonical" href="https://showinteractivo.com/eventos-sociales/testimonios/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Show Interactivo">
+<meta property="og:url" content="https://showinteractivo.com/eventos-sociales/testimonios/">
+<meta property="og:title" content="Testimonios de Bodas y Fiestas Sociales | Show Interactivo">
+<meta property="og:description" content="Lo que dicen las parejas, cumpleañeras y familias que ya festejaron con nosotros. Historias reales de bodas, cumples de 15 y adultos.">
+<meta property="og:image" content="https://showinteractivo.com/media/images/og/sociales.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Invitados celebrando un evento social de Show Interactivo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Testimonios de Bodas y Fiestas Sociales | Show Interactivo">
+<meta name="twitter:description" content="Lo que dicen las parejas, cumpleañeras y familias que ya festejaron con nosotros. Historias reales de bodas, cumples de 15 y adultos.">
+<meta name="twitter:image" content="https://showinteractivo.com/media/images/og/sociales.jpg">
+<meta name="twitter:image:alt" content="Invitados celebrando un evento social de Show Interactivo">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#4C1C56;--bg-deep:#3A1442;--bg-darker:#2A0E30;--accent:#E7048F;--accent-soft:rgba(231,4,143,.1);--white:#fff;--light:#e5d8e8;--muted:#a598aa;--line:rgba(255,255,255,.08);--display:'Montserrat',sans-serif;--body:'Inter',sans-serif;--wa:#25D366}
@@ -106,7 +123,14 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
 @media(max-width:400px){.type-tab .tab-name{font-size:11px;overflow-wrap:normal}}
 </style>
 </head>
-<body>
+<body data-event-type="cumple_adultos">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58BQC7H"
+          height="0" width="0"
+          style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <nav>
   <div class="container">
@@ -595,7 +619,7 @@ footer{background:var(--bg-darker);padding:32px 0 20px;border-top:1px solid var(
   <div class="container">
     <div class="foot-grid">
       <div>
-        <div class="foot-contact-line">WhatsApp Sociales · <a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29">+54 11 3005-5555</a></div>
+        <div class="foot-contact-line">WhatsApp Sociales · <a href="https://wa.me/541130055555?text=Hola%21%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20%3B%29%20%28Agreg%C3%A1%20tipo%20de%20evento%2C%20fecha%2C%20cantidad%20de%20invitados%20y%20localidad%20del%20pa%C3%ADs%29" target="_blank" rel="noopener">+54 11 3005-5555</a></div>
         <div class="foot-contact-line">Instagram · <a href="https://instagram.com/si.showinteractivo">@si.showinteractivo</a></div>
       </div>
       <a href="/" class="logo-link"><img src="/media/images/logo.png" alt="Show Interactivo" class="logo-img"></a>
@@ -632,6 +656,8 @@ const tabs = document.querySelectorAll('.type-tab');
 const sets = document.querySelectorAll('.testi-set');
 
 function setType(t){
+  const measurementTypes = { boda: 'boda', quince: 'cumple_15', adulto: 'cumple_adultos' };
+  document.body.dataset.eventType = measurementTypes[t] || 'sin_clasificar';
   tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === t));
   sets.forEach(s => s.classList.toggle('active', s.dataset.set === t));
   try { localStorage.setItem('si_soc_tab', t); } catch(e){}

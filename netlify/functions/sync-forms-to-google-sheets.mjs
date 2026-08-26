@@ -5,8 +5,8 @@ const WEBHOOK_SECRET_ENV = 'GOOGLE_SHEETS_HMAC_SECRET';
 const REQUEST_TIMEOUT_MS = 30_000;
 
 const FORM_FIELDS = {
-  'contacto-sociales': ['nombre', 'tipo', 'fecha', 'email', 'telefono', 'localidad', 'invitados', 'mensaje'],
-  'contacto-corporativos': ['nombre', 'empresa', 'email', 'telefono', 'tipo', 'fecha', 'localidad', 'invitados', 'mensaje'],
+  'contacto-sociales': ['nombre', 'tipo', 'fecha', 'email', 'telefono', 'localidad', 'invitados', 'mensaje', 'event_type', 'landing_path'],
+  'contacto-corporativos': ['nombre', 'empresa', 'email', 'telefono', 'tipo', 'fecha', 'localidad', 'invitados', 'mensaje', 'event_type', 'landing_path'],
 };
 
 function clean(value, maxLength = 4_000) {

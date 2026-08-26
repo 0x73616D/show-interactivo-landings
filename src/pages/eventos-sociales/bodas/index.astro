@@ -1,14 +1,17 @@
 ---
 import landingHtml from '../../../templates/landing-sociales.html?raw';
-const pageHtml = landingHtml
-  .replace(
-    '<title>Show Interactivo · Eventos Sociales</title>',
-    '<title>Show Interactivo · Bodas</title>'
-  )
-  .replace(
-    '__SI_CANONICAL_URL__',
-    'https://showinteractivo.com/eventos-sociales/bodas/'
-  );
+import { applyLandingSeo } from '../../../lib/seo';
+
+const pageHtml = applyLandingSeo(landingHtml, {
+  title: 'Animación de Bodas con Cantante en Vivo | Show Interactivo',
+  description: 'Ceremonias originales, trivias sobre la pareja y cantante en vivo. Co creamos el evento que vos y tu pareja imaginaron. Cotizá tu boda.',
+  canonical: 'https://showinteractivo.com/eventos-sociales/bodas/',
+  image: 'https://showinteractivo.com/media/images/og/bodas.jpg',
+  imageAlt: 'Novios e invitados participando de un show interactivo en una boda',
+  heroHeadingHtml: 'La fiesta que vos y tu pareja <em>imaginaron mil veces.</em>',
+  eventType: 'boda',
+  landingPath: '/eventos-sociales/bodas/'
+});
 ---
 
 <Fragment set:html={pageHtml} />
