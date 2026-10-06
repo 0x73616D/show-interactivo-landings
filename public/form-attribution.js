@@ -7,6 +7,13 @@
     attribution = Object.fromEntries(fields.map(key => [key, params.get(key) || '']));
   }
   attribution.referrer ||= document.referrer;
+  // Keep the same acquisition session when the confirmation page returns to the landing.
+  let internalNavigation = false;
+  try { internalNavigation = new URL(document.referrer).origin === location.origin; } catch {}
+  if (!fields.some(key => params.has(key)) && internalNavigation) {
+    for (const key of fields) if (attribution[key]) params.set(key, attribution[key]);
+    if (params.size) history.replaceState({}, '', location.pathname + '?' + params.toString() + location.hash);
+  }
   try { sessionStorage.setItem('si_form_attribution', JSON.stringify(attribution)); } catch {}
   document.querySelectorAll('form[name="contacto-corporativos"], form[name="contacto-sociales"]').forEach(form => {
     const syncContactFields = () => {
