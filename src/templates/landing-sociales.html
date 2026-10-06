@@ -719,19 +719,19 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
         <input type="hidden" name="form-name" value="contacto-sociales">
         <input type="hidden" name="integration_form" value="contacto-sociales">
         <input type="hidden" name="submission_key" value="">
-        <input type="hidden" name="utm_source" value="">
-        <input type="hidden" name="utm_medium" value="">
-        <input type="hidden" name="utm_campaign" value="">
+        <input type="text" class="si-form-label" tabindex="-1" aria-hidden="true" name="utm_source" value="">
+        <input type="text" class="si-form-label" tabindex="-1" aria-hidden="true" name="utm_medium" value="">
+        <input type="text" class="si-form-label" tabindex="-1" aria-hidden="true" name="utm_campaign" value="">
         <input type="hidden" name="utm_content" value="">
         <input type="hidden" name="utm_term" value="">
-        <input type="hidden" name="gclid" value="">
+        <input type="text" class="si-form-label" tabindex="-1" aria-hidden="true" name="gclid" value="">
         <input type="hidden" name="fbclid" value="">
-        <input type="hidden" name="gbraid" value="">
-        <input type="hidden" name="wbraid" value="">
+        <input type="text" class="si-form-label" tabindex="-1" aria-hidden="true" name="gbraid" value="">
+        <input type="text" class="si-form-label" tabindex="-1" aria-hidden="true" name="wbraid" value="">
         <input type="hidden" name="referrer" value="">
         <input type="hidden" name="event_type" value="__SI_EVENT_TYPE__">
         <input type="hidden" name="landing_path" value="__SI_LANDING_PATH__">
-        <label for="si-sociales-nombre" class="si-form-label">Nombre y apellido</label>
+        <label for="si-sociales-nombre" class="si-form-label">Full Name</label>
           <input required type="text" id="si-sociales-nombre" name="nombre" placeholder="Nombre y apellido" autocomplete="name">
         <div class="form-row">
           <label for="si-sociales-tipo" class="si-form-label">TIPO DE EVENTO</label>
@@ -763,7 +763,9 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
         <label for="si-sociales-mensaje" class="si-form-label">MENSAJE:</label>
           <textarea id="si-sociales-mensaje" name="mensaje" placeholder="Contanos sobre el evento (opcional — recomendado para una respuesta más rápida)"></textarea>
         <button type="submit" class="btn-primary">Enviar</button>
-      </form>
+      <input type="text" name="full_name" class="si-form-label" tabindex="-1" aria-hidden="true" aria-label="Full Name">
+<input type="text" name="fecha_del_evento" class="si-form-label" tabindex="-1" aria-hidden="true" aria-label="FECHA DEL EVENTO">
+</form>
     </div>
   </div>
 </section>
