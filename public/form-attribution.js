@@ -8,7 +8,7 @@
   }
   attribution.referrer ||= document.referrer;
   try { sessionStorage.setItem('si_form_attribution', JSON.stringify(attribution)); } catch {}
-  document.querySelectorAll('form[data-netlify]').forEach(form => {
+  document.querySelectorAll('form[name="contacto-corporativos"], form[name="contacto-sociales"]').forEach(form => {
     const syncContactFields = () => {
       const set = (key, value) => { const input = form.querySelector(`input[name="${key}"]`); if (input) input.value = value; };
       set('full_name', form.querySelector('[name="nombre"]')?.value || '');
