@@ -331,6 +331,7 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 }
 @media(max-width:400px){.type-tab .tab-name{font-size:11px;overflow-wrap:normal}}
 </style>
+<style>.si-form-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}</style>
 </head>
 <body data-event-type="__SI_EVENT_TYPE__">
 <!-- Google Tag Manager (noscript) -->
@@ -718,31 +719,49 @@ nav.scrolled{background:rgba(30,10,36,.92);box-shadow:0 4px 20px rgba(0,0,0,.3)}
         <input type="hidden" name="form-name" value="contacto-sociales">
         <input type="hidden" name="integration_form" value="contacto-sociales">
         <input type="hidden" name="submission_key" value="">
+        <input type="hidden" name="utm_source" value="">
+        <input type="hidden" name="utm_medium" value="">
+        <input type="hidden" name="utm_campaign" value="">
+        <input type="hidden" name="utm_content" value="">
+        <input type="hidden" name="utm_term" value="">
+        <input type="hidden" name="gclid" value="">
+        <input type="hidden" name="fbclid" value="">
+        <input type="hidden" name="gbraid" value="">
+        <input type="hidden" name="wbraid" value="">
+        <input type="hidden" name="referrer" value="">
         <input type="hidden" name="event_type" value="__SI_EVENT_TYPE__">
         <input type="hidden" name="landing_path" value="__SI_LANDING_PATH__">
-        <input required type="text" name="nombre" placeholder="Nombre y apellido" autocomplete="name">
+        <label for="si-sociales-nombre" class="si-form-label">Nombre y apellido</label>
+          <input required type="text" id="si-sociales-nombre" name="nombre" placeholder="Nombre y apellido" autocomplete="name">
         <div class="form-row">
-          <select required id="form-tipo" name="tipo">
+          <label for="si-sociales-tipo" class="si-form-label">TIPO DE EVENTO</label>
+          <select required id="form-tipo" id="si-sociales-tipo" name="tipo">
             <option value="">Tipo de evento</option>
             <option value="boda">Boda</option>
             <option value="quince">Cumple de 15</option>
             <option value="adulto">Cumpleaños de Adultos</option>
             <option value="otro">Otro</option>
           </select>
-          <input type="text" name="fecha" placeholder="Fecha">
+          <label for="si-sociales-fecha" class="si-form-label">FECHA DEL EVENTO</label>
+          <input type="text" id="si-sociales-fecha" name="fecha" placeholder="Fecha">
         </div>
         <div class="form-row">
-          <input required type="email" name="email" placeholder="Email" autocomplete="email">
-          <input required type="tel" name="telefono" placeholder="Teléfono" autocomplete="tel">
+          <label for="si-sociales-email" class="si-form-label">Email</label>
+          <input required type="email" id="si-sociales-email" name="email" placeholder="Email" autocomplete="email">
+          <label for="si-sociales-telefono" class="si-form-label">Phone</label>
+          <input required type="tel" id="si-sociales-telefono" name="telefono" placeholder="Teléfono" autocomplete="tel">
         </div>
         <div class="form-row">
-          <input required type="text" name="localidad" placeholder="Localidad" autocomplete="address-level2">
-          <select required name="invitados">
+          <label for="si-sociales-localidad" class="si-form-label">LOCALIDAD</label>
+          <input required type="text" id="si-sociales-localidad" name="localidad" placeholder="Localidad" autocomplete="address-level2">
+          <label for="si-sociales-invitados" class="si-form-label">CANTIDAD DE INVITADOS</label>
+          <select required id="si-sociales-invitados" name="invitados">
             <option value="">Cantidad de invitados</option>
             <option>Hasta 50</option><option>50-100</option><option>100-150</option><option>+150</option>
           </select>
         </div>
-        <textarea name="mensaje" placeholder="Contanos sobre el evento (opcional — recomendado para una respuesta más rápida)"></textarea>
+        <label for="si-sociales-mensaje" class="si-form-label">MENSAJE:</label>
+          <textarea id="si-sociales-mensaje" name="mensaje" placeholder="Contanos sobre el evento (opcional — recomendado para una respuesta más rápida)"></textarea>
         <button type="submit" class="btn-primary">Enviar</button>
       </form>
     </div>
@@ -930,7 +949,7 @@ tabs.forEach(tab => tab.addEventListener('click', () => {
   const t = tab.dataset.target;
   try { localStorage.setItem('si_soc_tab', t); } catch(e){}
   const typeRoutes = { boda: '/eventos-sociales/bodas/', quince: '/eventos-sociales/cumple-de-15/', adulto: '/eventos-sociales/cumpleanos-de-adultos/' };
-  history.replaceState({}, '', typeRoutes[t]);
+  history.replaceState({}, '', typeRoutes[t] + location.search + location.hash);
   setType(t);
 }));
 
@@ -1033,5 +1052,7 @@ window.addEventListener('scroll', () => {
 // ============ FIN ============
 
 </script>
+<script src="/form-attribution.js"></script>
+<script src="https://link.msgsndr.com/js/external-tracking.js" data-tracking-id="tk_43d307e3f5ed42c3936957f269284198"></script>
 </body>
 </html>
