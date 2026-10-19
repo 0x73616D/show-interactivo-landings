@@ -32,6 +32,22 @@ El archivo `netlify.toml` ya define:
 
 En Netlify sólo hace falta importar el repositorio. Los formularios `contacto-sociales` y `contacto-corporativos` serán detectados durante el build.
 
+## Avisos de consultas confirmadas en GoHighLevel
+
+Las ocho landings de Sociales y Corporativos usan el POST nativo de Netlify Forms. `public/form-confirmation.js` bloquea un segundo envío mientras el primero está en curso y conserva el identificador de una consulta idéntica durante 15 minutos para reconocer reintentos desde el mismo navegador. El identificador también se usa en la medición y la sincronización con Sheets.
+
+La función `netlify/functions/notify-confirmed-consultation.mjs` escucha únicamente el evento firmado `formSubmitted`, emitido por Netlify al verificar una consulta. Valida los campos requeridos y reclama de forma atómica su identificador en el almacén Blobs `confirmed-consultation-notifications`, con consistencia fuerte. Sólo quien obtiene esa reserva transmite el evento al endpoint de External Tracking de GHL. Las entregas repetidas del mismo identificador se omiten. Los filtros de los workflows A-SI! CORPORATIVOS y A-SI! SOCIALES conservan sus nombres de formulario existentes.
+
+El script automático `external-tracking.js` ya no se incluye en las páginas: ese script emitía eventos al pulsar Enviar, incluso si la validación del navegador impedía guardar el formulario. El seguimiento de conversiones de GTM y las UTMs del contacto se conservan.
+
+Los registros de Blobs guardan el identificador, las fechas y el estado del aviso, sin copiar los datos personales de la consulta. Ante una respuesta perdida o un fallo de GHL, la reserva pasa a `needs-review` y la función registra el error. No se reenvía automáticamente un resultado incierto: primero hay que contrastar el contacto y los correos de GHL para evitar duplicar un aviso ya aceptado. La consulta original permanece en Netlify y la sincronización a Sheets es independiente. No borrar una reserva de aviso sin hacer esa comprobación.
+
+`notification_version=2` identifica las páginas nuevas. Las consultas de una página antigua que siga abierta mantienen su captura anterior y no generan además un aviso desde esta función.
+
+El formulario nativo de Trivias Fun pertenece a otro sitio y conserva su trigger nativo Form Submitted; no usa el capturador automático retirado de estas landings.
+
+Verificar la protección con `npm test` y compilar con `npm run build` antes de publicar.
+
 ## Sincronización con Google Sheets
 
 Las consultas verificadas por Netlify Forms se sincronizan con su planilla correspondiente: `CONSULTAS SOCIALES DESDE ABRIL 2026` para Sociales y `SHOW INTERACTIVO CORPORATIVOS - CONSULTAS PROCEDENCIA 2026` para Corporativos. La función conserva Netlify Forms como respaldo y envía únicamente los campos permitidos a un webhook firmado.
